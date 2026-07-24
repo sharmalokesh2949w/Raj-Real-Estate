@@ -152,11 +152,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 "projects/neelkanth-nagar.html",
                 "projects/riyasat-bliss.html",
                 "projects/aerocrystal.html",
-                "projects/happy-aerocity-1.html",
+                "projects/riyasat-paradise-ii.html",
+                "projects/riyasat-ecopark.html",
                 "projects/happy-aerocity.html",
                 "projects/heritage.html",
                 "projects/the-riyasat-sankalp.html",
-                "projects/riyasat-royelcrest.html",
+                "projects/riyasat-royalcrest.html",
                 "projects/riyasat-montera.html"
             ];
 
