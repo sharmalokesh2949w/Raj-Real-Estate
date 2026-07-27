@@ -299,7 +299,13 @@ document.querySelectorAll(".sheet-form").forEach(form => {
             name: form.querySelector('[name="name"]').value,
             phone: form.querySelector('[name="phone"]').value,
             email: form.querySelector('[name="email"]').value,
+            formType: form.querySelector('[name="formType"]')
+                ? form.querySelector('[name="formType"]').value
+                : "",
 
+            projectName: form.querySelector('[name="projectName"]')
+                ? form.querySelector('[name="projectName"]').value
+                : "",
             message: form.querySelector('[name="message"]')
                 ? form.querySelector('[name="message"]').value
                 : "",

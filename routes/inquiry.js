@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
     try {
-        const { name, phone, email, message } = req.body;
+        const { name, phone, email, message, projectName } = req.body;
 
         const params = new URLSearchParams();
         params.append("sheet", "Inquiries");
@@ -13,6 +13,7 @@ router.post("/", async (req, res) => {
         params.append("phone", phone);
         params.append("email", email);
         params.append("message", message);
+        params.append("projectName", projectName); // Use the projectName from the request body
 
         const response = await axios.post(
             process.env.GOOGLE_SCRIPT_URL,
