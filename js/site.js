@@ -291,9 +291,11 @@ document.querySelectorAll(".sheet-form").forEach(form => {
         e.preventDefault();
 
         // Decide which backend route to use
+        const BACKEND_URL = "https://raj-real-estate-backend.onrender.com";
+
         const url = window.location.pathname.includes("career")
-            ? "http://localhost:5000/api/career"
-            : "http://localhost:5000/api/inquiry";
+            ? `${BACKEND_URL}/api/career`
+            : `${BACKEND_URL}/api/inquiry`;
 
         const formData = {
             name: form.querySelector('[name="name"]').value,
