@@ -352,5 +352,7 @@ document.querySelectorAll(".sheet-form").forEach(form => {
             console.error(err);
             alert("Server error.");
         }
+    });
+});
 
 
