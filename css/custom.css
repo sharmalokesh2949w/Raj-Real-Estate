@@ -147,7 +147,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* POPUP ADVERTISEMENT GLASSMORPHISM - REDIRECT CLICK ACTION */
-.popup-slide {
+/* .popup-slide {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -184,7 +184,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
     text-align: center;
     cursor: pointer; /* Indicates click-to-redirect action */
-}
+/* }
 
 .ad-popup-close {
     position: absolute;
@@ -197,7 +197,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 32px;
     height: 32px;
     display: none; /* Blocked for 5 seconds */
-    align-items: center;
+    /* align-items: center;
     justify-content: center;
     cursor: pointer;
     font-size: 1.1rem;
@@ -208,7 +208,7 @@ h1, h2, h3, h4, h5, h6 {
 .ad-popup-close:hover {
     background: var(--luxury-gold);
     color: var(--dark-accent);
-}
+/* } */ 
 
 /* STICKY FLOATING BUTTONS */
 .sticky-contact-bar {
