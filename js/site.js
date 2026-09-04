@@ -198,159 +198,101 @@ document.addEventListener("DOMContentLoaded", () => {
     //     }
     // }
 
-    // 5. GOOGLE SHEETS AJAX FORM SUBMISSION
-    const forms = document.querySelectorAll(".sheet-form");
-    forms.forEach(form => {
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            console.log("Submitting form...");
-            console.log(url);
-            console.log(formData);
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
-            
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Saving...`;
+    // 5. FORM SUBMISSION
+const forms = document.querySelectorAll(".sheet-form");
 
-            let feedback = form.querySelector(".form-feedback");
-            if (!feedback) {
-                feedback = document.createElement("div");
-                feedback.className = "form-feedback mt-3 alert d-none";
-                form.appendChild(feedback);
-            }
-            feedback.classList.add("d-none");
-
-            try {
-                const formData = new FormData(form);
-                const dataObj = {};
-                formData.forEach((value, key) => {
-                    dataObj[key] = value;
-                });
-
-                if (document.body.getAttribute("data-project-name")) {
-                    dataObj["projectName"] = document.body.getAttribute("data-project-name");
-                }
-                dataObj["sourcePage"] = window.location.pathname.split("/").pop() || "index.html";
-
-                // Handle Resume file uploads in Careers
-                const resumeFileInput = form.querySelector('input[type="file"][name="resumeFile"]');
-                if (resumeFileInput && resumeFileInput.files.length > 0) {
-                    const file = resumeFileInput.files[0];
-                    const cloudinaryData = new FormData();
-                    cloudinaryData.append("file", file);
-                    cloudinaryData.append("upload_preset", CONFIG.CLOUDINARY_UPLOAD_PRESET);
-
-                    feedback.classList.remove("d-none");
-                    feedback.className = "form-feedback mt-3 alert alert-info";
-                    feedback.innerText = "Uploading resume file to Cloudinary...";
-
-                    const uploadRes = await fetch(CONFIG.CLOUDINARY_URL, {
-                        method: "POST",
-                        body: cloudinaryData
-                    });
-
-                    if (!uploadRes.ok) {
-                        throw new Error("Cloudinary file upload failed. Please verify credentials.");
-                    }
-
-                    const uploadJson = await uploadRes.json();
-                    dataObj["resumeUrl"] = uploadJson.secure_url;
-                }
-
-                feedback.classList.remove("d-none");
-                feedback.className = "form-feedback mt-3 alert alert-info";
-                feedback.innerText = "Recording submission to Sheets...";
-
-                const response = await fetch(CONFIG.GOOGLE_SHEET_API_URL, {
-                    method: "POST",
-                    mode: "cors",
-                    headers: {
-                        "Content-Type": "text/plain;charset=utf-8"
-                    },
-                    body: JSON.stringify(dataObj)
-                });
-
-                feedback.className = "form-feedback mt-3 alert alert-success";
-                feedback.innerText = "Success! Your submission has been securely recorded.";
-                form.reset();
-
-            } catch (err) {
-                console.error(err);
-                feedback.className = "form-feedback mt-3 alert alert-danger";
-                feedback.innerText = "Error: " + err.message + ". Please verify configuration URLs.";
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
-            }
-        });
-    });
-});
-document.querySelectorAll(".sheet-form").forEach(form => {
-    form.addEventListener("submit", async function (e) {
-
+forms.forEach(form => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        // Decide which backend route to use
-        const BACKEND_URL = "https://raj-real-estate.onrender.com";
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
 
-        const url = window.location.pathname.includes("career")
-            ? `${BACKEND_URL}/api/career`
-            : `${BACKEND_URL}/api/inquiry`;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML =
+            `<span class="spinner-border spinner-border-sm me-2" role="status"></span>Saving...`;
 
-        const formData = {
-            name: form.querySelector('[name="name"]').value,
-            phone: form.querySelector('[name="phone"]').value,
-            email: form.querySelector('[name="email"]').value,
-            formType: form.querySelector('[name="formType"]')
-                ? form.querySelector('[name="formType"]').value
-                : "",
+        let feedback = form.querySelector(".form-feedback");
 
-            projectName: form.querySelector('[name="projectName"]')
-                ? form.querySelector('[name="projectName"]').value
-                : "",
-            message: form.querySelector('[name="message"]')
-                ? form.querySelector('[name="message"]').value
-                : "",
+        if (!feedback) {
+            feedback = document.createElement("div");
+            feedback.className = "form-feedback mt-3 alert d-none";
+            form.appendChild(feedback);
+        }
 
-            address: form.querySelector('[name="address"]')
-                ? form.querySelector('[name="address"]').value
-                : "",
-
-            qualification: form.querySelector('[name="qualification"]')
-                ? form.querySelector('[name="qualification"]').value
-                : "",
-
-            experience: form.querySelector('[name="experience"]')
-                ? form.querySelector('[name="experience"]').value
-                : "",
-
-            appliedPosition: form.querySelector('[name="appliedPosition"]')
-                ? form.querySelector('[name="appliedPosition"]').value
-                : "",
-
-            coverLetter: form.querySelector('[name="coverLetter"]')
-                ? form.querySelector('[name="coverLetter"]').value
-                : ""
-        };
+        feedback.className = "form-feedback mt-3 alert alert-info";
+        feedback.innerText = "Submitting...";
 
         try {
+            const formData = new FormData(form);
+            const dataObj = {};
 
+            formData.forEach((value, key) => {
+                // Don't send the actual file object as JSON
+                if (!(value instanceof File)) {
+                    dataObj[key] = value;
+                }
+            });
+
+            // Add project name if present on the page
+            if (document.body.getAttribute("data-project-name")) {
+                dataObj.projectName =
+                    document.body.getAttribute("data-project-name");
+            }
+
+            // Add source page
+            dataObj.sourcePage =
+                window.location.pathname.split("/").pop() || "index.html";
+
+            // Render backend URL
+            const BACKEND_URL =
+                "https://raj-real-estate.onrender.com";
+
+            // Decide whether this is a career or inquiry form
+            const isCareer =
+                window.location.pathname.toLowerCase().includes("career");
+
+            const url = isCareer
+                ? `${BACKEND_URL}/api/career`
+                : `${BACKEND_URL}/api/inquiry`;
+
+            // Submit to Render backend
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify(dataObj)
             });
 
             const result = await response.json();
 
-            console.log(result);
-            alert(JSON.stringify(result));
-        } catch (err) {
-            console.error(err);
-            alert("Server error.");
-        }
+            if (!response.ok || !result.success) {
+                throw new Error(
+                    result.error || "Submission failed."
+                );
+            }
 
+            feedback.className =
+                "form-feedback mt-3 alert alert-success";
+            feedback.innerText =
+                "Success! Your submission has been recorded.";
+
+            form.reset();
+
+            console.log("Form submitted successfully:", result);
+
+        } catch (err) {
+            console.error("Form submission error:", err);
+
+            feedback.className =
+                "form-feedback mt-3 alert alert-danger";
+
+            feedback.innerText =
+                "Error submitting form. Please try again.";
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
+        }
     });
 });
