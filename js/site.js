@@ -199,100 +199,100 @@ document.addEventListener("DOMContentLoaded", () => {
     // }
 
     // 5. FORM SUBMISSION
-const forms = document.querySelectorAll(".sheet-form");
-
-forms.forEach(form => {
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalBtnText = submitBtn.innerHTML;
-
-        submitBtn.disabled = true;
-        submitBtn.innerHTML =
-            `<span class="spinner-border spinner-border-sm me-2" role="status"></span>Saving...`;
-
-        let feedback = form.querySelector(".form-feedback");
-
-        if (!feedback) {
-            feedback = document.createElement("div");
-            feedback.className = "form-feedback mt-3 alert d-none";
-            form.appendChild(feedback);
-        }
-
-        feedback.className = "form-feedback mt-3 alert alert-info";
-        feedback.innerText = "Submitting...";
-
-        try {
-            const formData = new FormData(form);
-            const dataObj = {};
-
-            formData.forEach((value, key) => {
-                // Don't send the actual file object as JSON
-                if (!(value instanceof File)) {
-                    dataObj[key] = value;
+    const forms = document.querySelectorAll(".sheet-form");
+    
+    forms.forEach(form => {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+    
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+    
+            submitBtn.disabled = true;
+            submitBtn.innerHTML =
+                `<span class="spinner-border spinner-border-sm me-2" role="status"></span>Saving...`;
+    
+            let feedback = form.querySelector(".form-feedback");
+    
+            if (!feedback) {
+                feedback = document.createElement("div");
+                feedback.className = "form-feedback mt-3 alert d-none";
+                form.appendChild(feedback);
+            }
+    
+            feedback.className = "form-feedback mt-3 alert alert-info";
+            feedback.innerText = "Submitting...";
+    
+            try {
+                const formData = new FormData(form);
+                const dataObj = {};
+    
+                formData.forEach((value, key) => {
+                    // Don't send the actual file object as JSON
+                    if (!(value instanceof File)) {
+                        dataObj[key] = value;
+                    }
+                });
+    
+                // Add project name if present on the page
+                if (document.body.getAttribute("data-project-name")) {
+                    dataObj.projectName =
+                        document.body.getAttribute("data-project-name");
                 }
-            });
-
-            // Add project name if present on the page
-            if (document.body.getAttribute("data-project-name")) {
-                dataObj.projectName =
-                    document.body.getAttribute("data-project-name");
+    
+                // Add source page
+                dataObj.sourcePage =
+                    window.location.pathname.split("/").pop() || "index.html";
+    
+                // Render backend URL
+                const BACKEND_URL =
+                    "https://raj-real-estate.onrender.com";
+    
+                // Decide whether this is a career or inquiry form
+                const isCareer =
+                    window.location.pathname.toLowerCase().includes("career");
+    
+                const url = isCareer
+                    ? `${BACKEND_URL}/api/career`
+                    : `${BACKEND_URL}/api/inquiry`;
+    
+                // Submit to Render backend
+                const response = await fetch(url, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(dataObj)
+                });
+    
+                const result = await response.json();
+    
+                if (!response.ok || !result.success) {
+                    throw new Error(
+                        result.error || "Submission failed."
+                    );
+                }
+    
+                feedback.className =
+                    "form-feedback mt-3 alert alert-success";
+                feedback.innerText =
+                    "Success! Your submission has been recorded.";
+    
+                form.reset();
+    
+                console.log("Form submitted successfully:", result);
+    
+            } catch (err) {
+                console.error("Form submission error:", err);
+    
+                feedback.className =
+                    "form-feedback mt-3 alert alert-danger";
+    
+                feedback.innerText =
+                    "Error submitting form. Please try again.";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
             }
-
-            // Add source page
-            dataObj.sourcePage =
-                window.location.pathname.split("/").pop() || "index.html";
-
-            // Render backend URL
-            const BACKEND_URL =
-                "https://raj-real-estate.onrender.com";
-
-            // Decide whether this is a career or inquiry form
-            const isCareer =
-                window.location.pathname.toLowerCase().includes("career");
-
-            const url = isCareer
-                ? `${BACKEND_URL}/api/career`
-                : `${BACKEND_URL}/api/inquiry`;
-
-            // Submit to Render backend
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(dataObj)
-            });
-
-            const result = await response.json();
-
-            if (!response.ok || !result.success) {
-                throw new Error(
-                    result.error || "Submission failed."
-                );
-            }
-
-            feedback.className =
-                "form-feedback mt-3 alert alert-success";
-            feedback.innerText =
-                "Success! Your submission has been recorded.";
-
-            form.reset();
-
-            console.log("Form submitted successfully:", result);
-
-        } catch (err) {
-            console.error("Form submission error:", err);
-
-            feedback.className =
-                "form-feedback mt-3 alert alert-danger";
-
-            feedback.innerText =
-                "Error submitting form. Please try again.";
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalBtnText;
-        }
+        });
     });
-});
