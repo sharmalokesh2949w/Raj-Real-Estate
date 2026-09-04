@@ -518,7 +518,7 @@ h1, h2, h3, h4, h5, h6 {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background-color: rgba(17, 22, 37, 0.6);
     backdrop-filter: blur(4px);
@@ -560,3 +560,19 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+/* Prevent horizontal scrolling on mobile */
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
