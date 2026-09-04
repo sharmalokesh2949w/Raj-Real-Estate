@@ -139,64 +139,64 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // 4. IMPROVED POPUP ADVERTISEMENT
-    const popupOverlay = document.getElementById("adPopupOverlay");
-    const popupContent = document.querySelector(".ad-popup-content");
-    if (popupOverlay && popupContent) {
-        const adShown = sessionStorage.getItem("adShown");
-        if (!adShown) {
-            popupOverlay.style.display = "flex";
+    // const popupOverlay = document.getElementById("adPopupOverlay");
+    // const popupContent = document.querySelector(".ad-popup-content");
+    // if (popupOverlay && popupContent) {
+    //     const adShown = sessionStorage.getItem("adShown");
+    //     if (!adShown) {
+    //         popupOverlay.style.display = "flex";
 
-            // Slideshow setup
-            const slides = document.querySelectorAll(".popup-slide");
-            const projects = [
-                "projects/neelkanth-nagar.html",
-                "projects/riyasat-bliss.html",
-                "projects/aerocrystal.html",
-                "projects/riyasat-paradise-ii.html",
-                "projects/riyasat-ecopark.html",
-                "projects/happy-aerocity.html",
-                "projects/heritage.html",
-                "projects/the-riyasat-sankalp.html",
-                "projects/riyasat-royalcrest.html",
-                "projects/riyasat-montera.html"
-            ];
+    //         // Slideshow setup
+    //         const slides = document.querySelectorAll(".popup-slide");
+    //         const projects = [
+    //             "projects/neelkanth-nagar.html",
+    //             "projects/riyasat-bliss.html",
+    //             "projects/aerocrystal.html",
+    //             "projects/riyasat-paradise-ii.html",
+    //             "projects/riyasat-ecopark.html",
+    //             "projects/happy-aerocity.html",
+    //             "projects/heritage.html",
+    //             "projects/the-riyasat-sankalp.html",
+    //             "projects/riyasat-royalcrest.html",
+    //             "projects/riyasat-montera.html"
+    //         ];
 
-            let activeIndex = 0;
+    //         let activeIndex = 0;
 
-            if (slides.length > 1) {
-                setInterval(() => {
-                    slides[activeIndex].classList.remove("active");
-                    activeIndex = (activeIndex + 1) % slides.length;
-                    slides[activeIndex].classList.add("active");
-                }, 2000);
-            }
+    //         if (slides.length > 1) {
+    //             setInterval(() => {
+    //                 slides[activeIndex].classList.remove("active");
+    //                 activeIndex = (activeIndex + 1) % slides.length;
+    //                 slides[activeIndex].classList.add("active");
+    //             }, 2000);
+    //         }
 
-            // Close button 5s delay
-            setTimeout(() => {
-                const closeBtn = document.getElementById("adPopupClose");
-                if (closeBtn) {
-                    closeBtn.style.display = "flex";
-                }
-            }, 5000);
+    //         // Close button 5s delay
+    //         setTimeout(() => {
+    //             const closeBtn = document.getElementById("adPopupClose");
+    //             if (closeBtn) {
+    //                 closeBtn.style.display = "flex";
+    //             }
+    //         }, 5000);
 
-            // One-click redirect on the entire popup (excluding close button)
-            popupContent.addEventListener("click", (e) => {
-                if (e.target.id === "adPopupClose") return;
+    //         // One-click redirect on the entire popup (excluding close button)
+    //         popupContent.addEventListener("click", (e) => {
+    //             if (e.target.id === "adPopupClose") return;
 
-                // Open the page of the currently visible project
-                window.location.href = projects[activeIndex];
-            });
-        }
+    //             // Open the page of the currently visible project
+    //             window.location.href = projects[activeIndex];
+    //         });
+    //     }
 
-        const closeBtn = document.getElementById("adPopupClose");
-        if (closeBtn) {
-            closeBtn.addEventListener("click", (e) => {
-                e.stopPropagation(); // Stop click from bubbling to popupContent redirect
-                popupOverlay.style.display = "none";
-                sessionStorage.setItem("adShown", "true");
-            });
-        }
-    }
+    //     const closeBtn = document.getElementById("adPopupClose");
+    //     if (closeBtn) {
+    //         closeBtn.addEventListener("click", (e) => {
+    //             e.stopPropagation(); // Stop click from bubbling to popupContent redirect
+    //             popupOverlay.style.display = "none";
+    //             sessionStorage.setItem("adShown", "true");
+    //         });
+    //     }
+    // }
 
     // 5. GOOGLE SHEETS AJAX FORM SUBMISSION
     const forms = document.querySelectorAll(".sheet-form");
