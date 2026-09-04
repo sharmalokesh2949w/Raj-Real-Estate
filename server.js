@@ -21,6 +21,6 @@ console.log("PORT =", process.env.PORT);
 console.log("GOOGLE_SCRIPT_URL =", process.env.GOOGLE_SCRIPT_URL);
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
 });
