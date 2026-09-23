@@ -1,1449 +1,446 @@
 <!DOCTYPE html>
 <html lang="en">
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '1845197563413180');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1845197563413180&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy Policy | RAJ Real Estate</title>
 
-    <meta
-        name="description"
-        content="Read the RAJ Real Estate Privacy Policy to understand how we collect, use, protect and manage personal information submitted through property enquiries and our website."
-    >
+    <!-- Meta SEO configurations -->
+    <meta name="description" content="Read the RAJ Real Estate Privacy Policy to understand how we collect, use, protect and manage personal information submitted through property enquiries and our website." />
+    <link rel="canonical" href="https://rajrealestate.co/privacy-policy" />
+    <meta property="og:title" content="Privacy Policy | RAJ Real Estate" />
+    <meta property="og:description" content="How RAJ Real Estate collects, uses and protects personal information shared through property enquiries and our website." />
+    <meta property="og:image" content="images/logo.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="robots" content="index, follow" />
 
-    <link
-        rel="canonical"
-        href="https://rajrealestate.co/privacy-policy"
-    >
+    <!-- Google Fonts & Bootstrap Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
-    <meta name="robots" content="index, follow">
+    <!-- Style Assets -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/custom.css" />
 
-    <meta name="theme-color" content="#111625">
-
+    <!-- Page-scoped styles for Privacy Policy only (does not touch global tokens) -->
     <style>
-        /* =========================================
-           PRIVACY POLICY PAGE
-           RAJ REAL ESTATE
-           ========================================= */
-
-        :root {
-            --privacy-gold: #D4AF37;
-            --privacy-navy: #111625;
-            --privacy-white: #FFFFFF;
-            --privacy-background: #FAFAFA;
-            --privacy-text: #222222;
-            --privacy-muted: #666666;
-            --privacy-border: #E8E8E8;
-
-            --privacy-content-width: 1100px;
-        }
-
-        /* Reset */
-
-        .privacy-page,
-        .privacy-page * {
-            box-sizing: border-box;
-        }
-
-        .privacy-page {
-            margin: 0;
-            padding: 0;
-            color: var(--privacy-text);
-            background: var(--privacy-white);
-            font-family: inherit;
-            font-size: 16px;
-            line-height: 1.8;
-        }
-
-        .privacy-page a {
-            color: inherit;
-        }
-
-        .privacy-page a:focus-visible,
-        .privacy-page button:focus-visible {
-            outline: 3px solid var(--privacy-gold);
-            outline-offset: 4px;
-        }
-
-        .privacy-container {
-            width: min(
-                calc(100% - 40px),
-                var(--privacy-content-width)
-            );
-            margin: 0 auto;
-        }
-
-        /* =========================================
-           HERO
-           ========================================= */
-
         .privacy-hero {
+            background: #111625;
+            padding: 160px 0 70px;
             position: relative;
-            overflow: hidden;
-            padding: 85px 20px 80px;
-            background: var(--privacy-navy);
-            color: var(--privacy-white);
-            text-align: center;
         }
-
         .privacy-hero::after {
             content: "";
             position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 90px;
+            left: 0; right: 0; bottom: 0;
             height: 3px;
-            background: var(--privacy-gold);
-            transform: translateX(-50%);
+            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
         }
-
         .privacy-eyebrow {
-            display: inline-block;
-            margin: 0 0 16px;
-            color: var(--privacy-gold);
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            color: #D4AF37;
             text-transform: uppercase;
+            font-weight: 600;
         }
-
-        .privacy-hero h1 {
-            margin: 0 0 14px;
-            color: var(--privacy-white);
-            font-size: clamp(34px, 5vw, 52px);
-            font-weight: 700;
-            line-height: 1.2;
+        .privacy-body {
+            max-width: 880px;
         }
-
-        .privacy-hero-subtitle {
-            margin: 0 0 14px;
-            color: var(--privacy-white);
-            font-size: clamp(18px, 2.5vw, 22px);
-            font-weight: 500;
+        .privacy-body h2 {
+            font-size: 1.35rem;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            color: #111625;
+            scroll-margin-top: 110px;
         }
-
-        .privacy-hero-description {
-            max-width: 760px;
-            margin: 0 auto;
-            color: rgba(255, 255, 255, 0.82);
-            font-size: 16px;
+        .privacy-body h2:first-of-type { margin-top: 0; }
+        .privacy-body p, .privacy-body li {
+            color: #666666;
             line-height: 1.8;
+            font-size: 0.98rem;
         }
-
-        .privacy-last-updated {
-            margin: 25px 0 0;
-            color: rgba(255, 255, 255, 0.72);
-            font-size: 14px;
+        .privacy-body strong { color: #222222; }
+        .privacy-body ul { padding-left: 1.2rem; }
+        .privacy-body ul li { margin-bottom: 8px; }
+        .privacy-divider {
+            border: none;
+            border-top: 1px solid #E8E8E8;
+            margin: 44px 0;
         }
-
-        .privacy-last-updated strong {
-            color: var(--privacy-gold);
-        }
-
-        /* =========================================
-           BREADCRUMB
-           ========================================= */
-
-        .privacy-breadcrumb {
-            padding: 16px 0;
-            background: var(--privacy-background);
-            border-bottom: 1px solid var(--privacy-border);
-        }
-
-        .privacy-breadcrumb ol {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-            font-size: 13px;
-        }
-
-        .privacy-breadcrumb li {
-            color: var(--privacy-muted);
-        }
-
-        .privacy-breadcrumb li + li::before {
-            content: "/";
-            margin-right: 8px;
-            color: #999999;
-        }
-
-        .privacy-breadcrumb a {
-            color: var(--privacy-muted);
-            text-decoration: none;
-        }
-
-        .privacy-breadcrumb a:hover {
-            color: var(--privacy-gold);
-        }
-
-        /* =========================================
-           MAIN LAYOUT
-           ========================================= */
-
-        .privacy-main {
-            padding: 65px 0 85px;
-        }
-
-        .privacy-layout {
-            display: grid;
-            grid-template-columns: 260px minmax(0, 1fr);
-            gap: 55px;
-            align-items: start;
-        }
-
-        /* =========================================
-           TABLE OF CONTENTS
-           ========================================= */
-
-        .privacy-toc {
-            position: sticky;
-            top: 25px;
-            padding: 24px 20px;
-            background: var(--privacy-background);
-            border: 1px solid var(--privacy-border);
-            border-top: 3px solid var(--privacy-gold);
-        }
-
-        .privacy-toc h2 {
-            margin: 0 0 16px;
-            color: var(--privacy-navy);
-            font-size: 18px;
-            line-height: 1.4;
-        }
-
-        .privacy-toc ol {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .privacy-toc li {
-            margin: 0;
-            padding: 0;
-        }
-
-        .privacy-toc a {
-            display: block;
-            padding: 7px 0;
-            color: var(--privacy-muted);
-            font-size: 13px;
-            line-height: 1.5;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .privacy-toc a:hover {
-            color: var(--privacy-navy);
-        }
-
-        .privacy-toc a:active {
-            color: var(--privacy-gold);
-        }
-
-        /* =========================================
-           POLICY CONTENT
-           ========================================= */
-
-        .privacy-content {
-            min-width: 0;
-        }
-
-        .privacy-intro-note {
-            margin: 0 0 35px;
-            padding: 22px 25px;
-            background: var(--privacy-background);
-            border-left: 4px solid var(--privacy-gold);
-            color: var(--privacy-muted);
-        }
-
-        .privacy-section {
-            margin: 0 0 38px;
-            padding: 0 0 32px;
-            border-bottom: 1px solid var(--privacy-border);
-            scroll-margin-top: 30px;
-        }
-
-        .privacy-section:last-child {
-            border-bottom: none;
-        }
-
-        .privacy-section h2 {
-            position: relative;
-            margin: 0 0 18px;
-            padding-left: 17px;
-            color: var(--privacy-navy);
-            font-size: clamp(21px, 3vw, 27px);
-            font-weight: 700;
-            line-height: 1.4;
-        }
-
-        .privacy-section h2::before {
-            content: "";
-            position: absolute;
-            top: 5px;
-            bottom: 5px;
-            left: 0;
-            width: 4px;
-            background: var(--privacy-gold);
-        }
-
-        .privacy-section h3 {
-            margin: 24px 0 10px;
-            color: var(--privacy-navy);
-            font-size: 18px;
-            font-weight: 600;
-            line-height: 1.5;
-        }
-
-        .privacy-section p {
-            margin: 0 0 16px;
-            color: var(--privacy-muted);
-        }
-
-        .privacy-section ul {
-            margin: 12px 0 20px;
-            padding-left: 24px;
-            color: var(--privacy-muted);
-        }
-
-        .privacy-section li {
-            margin-bottom: 9px;
-            padding-left: 4px;
-        }
-
-        .privacy-section li::marker {
-            color: var(--privacy-gold);
-        }
-
-        .privacy-section strong {
-            color: var(--privacy-text);
-        }
-
-        .privacy-section a {
-            color: #8A6B10;
-            text-decoration: underline;
-            text-decoration-thickness: 1px;
-            text-underline-offset: 3px;
-            overflow-wrap: anywhere;
-        }
-
-        .privacy-section a:hover {
-            color: var(--privacy-navy);
-        }
-
-        /* =========================================
-           CONTACT BOX
-           ========================================= */
-
-        .privacy-contact-box {
-            margin-top: 20px;
-            padding: 25px;
-            background: var(--privacy-background);
-            border: 1px solid var(--privacy-border);
-        }
-
-        .privacy-contact-box p {
-            margin-bottom: 12px;
-        }
-
-        .privacy-contact-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        .privacy-contact-label {
-            display: inline-block;
-            min-width: 110px;
-            color: var(--privacy-navy);
-            font-weight: 700;
-        }
-
         .privacy-placeholder {
-            color: #8A6B10;
-            font-weight: 600;
-            overflow-wrap: anywhere;
+            background: #FAFAFA;
+            border: 1px dashed #D4AF37;
+            color: #8a6d1a;
+            padding: 2px 6px;
+            border-radius: 2px;
+            font-size: 0.9em;
         }
-
-        /* =========================================
-           BACK TO TOP
-           ========================================= */
-
-        .privacy-back-top {
-            display: inline-flex;
+        .privacy-contact-box {
+            background: #FAFAFA;
+            border: 1px solid #E8E8E8;
+            border-left: 3px solid #D4AF37;
+            padding: 28px;
+        }
+        .privacy-contact-box p { margin-bottom: 6px; }
+        #backToTop {
+            position: fixed;
+            right: 24px;
+            bottom: 90px;
+            width: 44px;
+            height: 44px;
+            background: #111625;
+            color: #D4AF37;
+            border: 1px solid #D4AF37;
+            display: none;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            margin-top: 10px;
-            padding: 12px 20px;
-            border: 1px solid var(--privacy-gold);
-            background: var(--privacy-white);
-            color: var(--privacy-navy);
-            font: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition:
-                background 0.2s ease,
-                color 0.2s ease;
+            text-decoration: none;
+            z-index: 999;
+            transition: opacity 0.2s ease;
         }
-
-        .privacy-back-top:hover {
-            background: var(--privacy-gold);
-            color: var(--privacy-navy);
-        }
-
-        /* =========================================
-           RESPONSIVE
-           ========================================= */
-
-        @media (max-width: 900px) {
-            .privacy-layout {
-                grid-template-columns: 1fr;
-                gap: 35px;
-            }
-
-            .privacy-toc {
-                position: static;
-            }
-
-            .privacy-toc ol {
-                display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                column-gap: 25px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .privacy-container {
-                width: min(calc(100% - 32px), var(--privacy-content-width));
-            }
-
-            .privacy-hero {
-                padding: 60px 16px 55px;
-            }
-
-            .privacy-hero-description {
-                font-size: 15px;
-            }
-
-            .privacy-main {
-                padding: 40px 0 55px;
-            }
-
-            .privacy-toc {
-                padding: 20px 16px;
-            }
-
-            .privacy-toc ol {
-                grid-template-columns: 1fr;
-            }
-
-            .privacy-section {
-                margin-bottom: 30px;
-                padding-bottom: 25px;
-            }
-
-            .privacy-section h2 {
-                font-size: 22px;
-            }
-
-            .privacy-intro-note {
-                padding: 18px;
-            }
-
-            .privacy-contact-box {
-                padding: 18px;
-            }
-
-            .privacy-contact-label {
-                min-width: 0;
-                display: block;
-                margin-bottom: 2px;
-            }
-        }
-
+        #backToTop:hover { background: #D4AF37; color: #111625; }
         @media (prefers-reduced-motion: reduce) {
-            .privacy-page *,
-            .privacy-page *::before,
-            .privacy-page *::after {
-                scroll-behavior: auto !important;
-                transition-duration: 0.01ms !important;
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-            }
+            #backToTop { transition: none; }
+        }
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid #D4AF37;
+            outline-offset: 2px;
         }
 
-        html {
-            scroll-behavior: smooth;
+        /* Fallback styling (used only if the site's own css/custom.css hasn't loaded yet) */
+        .navbar-custom { background: #111625; }
+        .navbar-custom .nav-link { color: rgba(255,255,255,0.8); }
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active { color: #D4AF37; }
+        .navbar-brand { color: #FFFFFF !important; }
+        .luxury-footer {
+            background: #111625;
+            color: rgba(255,255,255,0.75);
+            padding: 70px 0 30px;
         }
+        .luxury-footer h5 {
+            color: #FFFFFF;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .luxury-footer a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+        }
+        .luxury-footer a:hover { color: #D4AF37; }
+        .luxury-footer p { color: rgba(255,255,255,0.6); }
+        .btn-gold {
+            background: #D4AF37;
+            color: #111625;
+            border: 1px solid #D4AF37;
+        }
+        .btn-gold:hover { background: transparent; color: #D4AF37; }
+        .btn-luxury {
+            background: #111625;
+            color: #FFFFFF;
+            border: 1px solid #111625;
+        }
+        .btn-luxury:hover { background: transparent; color: #111625; }
+        .text-gold { color: #D4AF37 !important; }
+        .luxury-footer .form-control-sm {
+            background: #FFFFFF;
+            border: 1px solid #333c52;
+        }
+        .sticky-contact-bar {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 998;
+        }
+        .sticky-btn {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #FFFFFF;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .sticky-whatsapp { background: #25D366; }
+        .sticky-call { background: #111625; }
     </style>
 </head>
-
 <body>
 
-<main class="privacy-page" id="privacy-policy">
-
-    <!-- =====================================
-         PRIVACY HERO
-         ===================================== -->
-
-    <section class="privacy-hero" aria-labelledby="privacy-title">
-
-        <div class="privacy-container">
-
-            <p class="privacy-eyebrow">
+    <!-- Sticky White Header & Navbar (unchanged from index.html) -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
                 RAJ REAL ESTATE
-            </p>
-
-            <h1 id="privacy-title">
-                Privacy Policy
-            </h1>
-
-            <p class="privacy-hero-subtitle">
-                Your privacy matters to us.
-            </p>
-
-            <p class="privacy-hero-description">
-                At RAJ Real Estate, we respect your personal information
-                and aim to be transparent about how we collect, use and
-                protect information shared through our website and
-                property enquiry forms.
-            </p>
-
-            <p class="privacy-last-updated">
-                <strong>Last Updated:</strong>
-                <time datetime="[INSERT-YYYY-MM-DD]">
-                    [INSERT ACTUAL DATE]
-                </time>
-            </p>
-
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="why-us.html">Why Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="career.html">Career</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="privacypolicy.html">Privacy Policy</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-    </section>
-
-
-    <!-- =====================================
-         BREADCRUMB
-         ===================================== -->
-
-    <nav class="privacy-breadcrumb" aria-label="Breadcrumb">
-
-        <div class="privacy-container">
-
-            <ol>
-                <li>
-                    <a href="/">
-                        Home
-                    </a>
-                </li>
-
-                <li aria-current="page">
-                    Privacy Policy
-                </li>
-            </ol>
-
-        </div>
-
     </nav>
 
-
-    <!-- =====================================
-         MAIN POLICY CONTENT
-         ===================================== -->
-
-    <div class="privacy-main">
-
-        <div class="privacy-container">
-
-            <div class="privacy-layout">
-
-
-                <!-- TABLE OF CONTENTS -->
-
-                <aside class="privacy-toc" aria-label="Policy contents">
-
-                    <h2>On This Page</h2>
-
-                    <nav aria-label="Privacy Policy sections">
-
-                        <ol>
-                            <li><a href="#introduction">1. Introduction</a></li>
-
-                            <li><a href="#information-collected">2. Information We Collect</a></li>
-
-                            <li><a href="#information-provided">3. Information You Provide</a></li>
-
-                            <li><a href="#property-enquiries">4. Property Enquiry and Lead Generation</a></li>
-
-                            <li><a href="#how-we-use">5. How We Use Your Information</a></li>
-
-                            <li><a href="#contacting-you">6. How We Contact You</a></li>
-
-                            <li><a href="#sharing-information">7. Sharing of Information</a></li>
-
-                            <li><a href="#service-providers">8. Service Providers and Technology Partners</a></li>
-
-                            <li><a href="#cookies-analytics">9. Cookies and Analytics</a></li>
-
-                            <li><a href="#marketing">10. Marketing Communications</a></li>
-
-                            <li><a href="#retention">11. Data Retention</a></li>
-
-                            <li><a href="#security">12. Data Security</a></li>
-
-                            <li><a href="#privacy-rights">13. Your Privacy Choices and Rights</a></li>
-
-                            <li><a href="#third-party-links">14. Third-Party Websites and Links</a></li>
-
-                            <li><a href="#children">15. Children's Privacy</a></li>
-
-                            <li><a href="#policy-changes">16. Changes to This Privacy Policy</a></li>
-
-                            <li><a href="#contact-us">17. Contact Us</a></li>
-
-                            <li><a href="#grievance">18. Grievance / Privacy Contact</a></li>
-                        </ol>
-
-                    </nav>
-
-                </aside>
-
-
-                <!-- POLICY BODY -->
-
-                <article class="privacy-content">
-
-                    <div class="privacy-intro-note">
-                        When you submit your contact details through a
-                        property enquiry form, we use the information
-                        primarily to respond to your request and help
-                        you with the property or project you are
-                        interested in.
-                    </div>
-
-
-                    <!-- 1. INTRODUCTION -->
-
-                    <section class="privacy-section" id="introduction">
-
-                        <h2>1. Introduction</h2>
-
-                        <p>
-                            This Privacy Policy explains how RAJ Real
-                            Estate ("we", "us" or "our") collects,
-                            uses, stores and handles personal information
-                            when you visit our website, contact us or
-                            submit a property-related enquiry.
-                        </p>
-
-                        <p>
-                            We aim to handle personal information
-                            responsibly and transparently. This policy
-                            describes the types of information that may
-                            be collected, why it may be used, when it
-                            may be shared and the choices available to
-                            you, subject to applicable law.
-                        </p>
-
-                        <p>
-                            By using our website or voluntarily
-                            providing information to us, you acknowledge
-                            that you have had the opportunity to read
-                            this Privacy Policy. Where consent is
-                            required by applicable law, we will seek it
-                            as required.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 2. INFORMATION WE COLLECT -->
-
-                    <section class="privacy-section" id="information-collected">
-
-                        <h2>2. Information We Collect</h2>
-
-                        <p>
-                            The information we collect depends on how
-                            you interact with our website and services.
-                            It may include the following categories,
-                            where applicable:
-                        </p>
-
-                        <h3>Information you provide directly</h3>
-
-                        <ul>
-                            <li>Name and contact details.</li>
-                            <li>Property or project of interest.</li>
-                            <li>Preferred location or property requirements.</li>
-                            <li>Budget or other preferences you choose to share.</li>
-                            <li>Messages, questions and other details you voluntarily provide.</li>
-                            <li>Information submitted when requesting a callback or site visit.</li>
-                        </ul>
-
-                        <h3>Technical and usage information</h3>
-
-                        <p>
-                            When you access a website, certain technical
-                            information may be generated or recorded by
-                            the website or its hosting infrastructure.
-                            Depending on the systems actually in use,
-                            this may include:
-                        </p>
-
-                        <ul>
-                            <li>IP address and general device or browser information.</li>
-                            <li>Pages requested and basic website activity.</li>
-                            <li>Date, time and technical logs relating to website requests.</li>
-                            <li>Cookie or similar technology information, where such technologies are used.</li>
-                        </ul>
-
-                        <p>
-                            We do not intend to collect information
-                            that is unnecessary for the purposes
-                            described in this policy.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 3. INFORMATION YOU PROVIDE -->
-
-                    <section class="privacy-section" id="information-provided">
-
-                        <h2>3. Information You Provide</h2>
-
-                        <p>
-                            You may choose to provide personal
-                            information when you:
-                        </p>
-
-                        <ul>
-                            <li>Complete a website contact form.</li>
-                            <li>Submit a property or project enquiry.</li>
-                            <li>Request information about a property.</li>
-                            <li>Ask for a callback or site visit.</li>
-                            <li>Contact us by email, phone or another available contact method.</li>
-                            <li>Send us a message or provide additional details about your requirements.</li>
-                        </ul>
-
-                        <p>
-                            Please provide information that is accurate
-                            and relevant to your enquiry. Avoid sending
-                            sensitive personal information unless it is
-                            genuinely necessary and requested through
-                            an appropriate channel.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 4. PROPERTY ENQUIRIES -->
-
-                    <section class="privacy-section" id="property-enquiries">
-
-                        <h2>4. Property Enquiry and Lead Generation</h2>
-
-                        <p>
-                            RAJ Real Estate may use information
-                            submitted through property enquiry forms
-                            to understand your requirements and respond
-                            to your interest in a property or project.
-                        </p>
-
-                        <p>
-                            Depending on the information you provide,
-                            this may include your name, mobile number,
-                            email address, property or project of
-                            interest, preferred location, budget and
-                            message.
-                        </p>
-
-                        <p>
-                            When you submit an enquiry, the information
-                            may be used to:
-                        </p>
-
-                        <ul>
-                            <li>Respond to your enquiry.</li>
-                            <li>Provide information about the requested property or project.</li>
-                            <li>Arrange a callback.</li>
-                            <li>Schedule or coordinate a site visit.</li>
-                            <li>Share relevant property details.</li>
-                            <li>Assist with buying or investment enquiries.</li>
-                            <li>Follow up regarding the enquiry you submitted.</li>
-                        </ul>
-
-                        <p>
-                            We seek to use enquiry information for
-                            relevant property-related communication
-                            and service purposes, subject to applicable
-                            law and your choices.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 5. HOW WE USE INFORMATION -->
-
-                    <section class="privacy-section" id="how-we-use">
-
-                        <h2>5. How We Use Your Information</h2>
-
-                        <p>
-                            Subject to applicable law, we may use
-                            information collected through the website
-                            or other interactions for purposes such as:
-                        </p>
-
-                        <ul>
-                            <li>Responding to questions, requests and enquiries.</li>
-                            <li>Providing property, project or service information.</li>
-                            <li>Communicating about a requested callback or site visit.</li>
-                            <li>Understanding your stated property preferences.</li>
-                            <li>Managing and maintaining enquiry records.</li>
-                            <li>Operating, maintaining and improving the website.</li>
-                            <li>Protecting the website and helping prevent misuse or unauthorised activity.</li>
-                            <li>Meeting applicable legal obligations and addressing disputes.</li>
-                        </ul>
-
-                        <p>
-                            We will seek to use personal information
-                            in a manner relevant to the purposes for
-                            which it was collected, or as otherwise
-                            permitted or required by applicable law.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 6. HOW WE CONTACT YOU -->
-
-                    <section class="privacy-section" id="contacting-you">
-
-                        <h2>6. How We Contact You</h2>
-
-                        <p>
-                            If you submit an enquiry, we may contact
-                            you using the contact details you provide
-                            to respond to your request or discuss the
-                            property or project you asked about.
-                        </p>
-
-                        <p>
-                            Depending on the contact methods actually
-                            offered and used by RAJ Real Estate, this
-                            may include:
-                        </p>
-
-                        <ul>
-                            <li>Phone calls.</li>
-                            <li>SMS messages.</li>
-                            <li>Email communications.</li>
-                            <li>WhatsApp messages or calls.</li>
-                        </ul>
-
-                        <p>
-                            The channels listed above are possible
-                            methods of communication, not a statement
-                            that every channel is necessarily used.
-                            We will use only the channels applicable
-                            to our actual business processes and
-                            subject to applicable law.
-                        </p>
-
-                        <p>
-                            If you receive a follow-up communication
-                            and no longer wish to receive it, you may
-                            contact us using the privacy contact
-                            details provided below. We will consider
-                            your request in accordance with applicable
-                            law.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 7. SHARING OF INFORMATION -->
-
-                    <section class="privacy-section" id="sharing-information">
-
-                        <h2>7. Sharing of Information</h2>
-
-                        <p>
-                            We do not treat the information you submit
-                            as information that should be shared
-                            without a reason. Where necessary to
-                            respond to your enquiry or provide
-                            requested services, we may share relevant
-                            information with authorised employees,
-                            representatives, service providers, project
-                            partners or other parties involved in
-                            fulfilling your request, subject to
-                            applicable law.
-                        </p>
-
-                        <p>
-                            Information may also be disclosed where
-                            required or permitted by applicable law,
-                            such as to respond to lawful requests or
-                            protect relevant rights and interests.
-                        </p>
-
-                        <p>
-                            We do not intend to sell your personal
-                            information as a standalone commercial
-                            product.
-                        </p>
-
-                        <p>
-                            The actual recipients of information
-                            depend on the services and business
-                            processes involved in handling your
-                            enquiry.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 8. SERVICE PROVIDERS -->
-
-                    <section class="privacy-section" id="service-providers">
-
-                        <h2>8. Service Providers and Technology Partners</h2>
-
-                        <p>
-                            Our website or business operations may
-                            rely on service providers for functions
-                            such as website hosting, technical
-                            maintenance, communications or enquiry
-                            handling, where such providers are
-                            actually engaged.
-                        </p>
-
-                        <p>
-                            Where a service provider processes
-                            personal information on our behalf, we
-                            seek to ensure that the arrangement is
-                            appropriate for the relevant service and
-                            subject to applicable law.
-                        </p>
-
-                        <p>
-                            We do not identify any specific
-                            technology partner in this policy unless
-                            its use has been verified for the
-                            relevant website or business process.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 9. COOKIES AND ANALYTICS -->
-
-                    <section class="privacy-section" id="cookies-analytics">
-
-                        <h2>9. Cookies and Analytics</h2>
-
-                        <p>
-                            Cookies are small files that a website
-                            may store on your device. Similar
-                            technologies may also be used to support
-                            website functionality or understand
-                            how a website is used.
-                        </p>
-
-                        <p>
-                            Depending on the technologies actually
-                            implemented on our website, cookies
-                            or similar technologies may be used
-                            for purposes such as:
-                        </p>
-
-                        <ul>
-                            <li><strong>Essential functionality:</strong> Supporting features required for the website to operate.</li>
-                            <li><strong>Performance:</strong> Helping understand technical performance and reliability.</li>
-                            <li><strong>Analytics:</strong> Understanding website usage, where analytics tools are implemented.</li>
-                            <li><strong>Preferences:</strong> Remembering certain user choices, where supported.</li>
-                            <li><strong>Marketing or advertising:</strong> Supporting relevant activities, where such technologies are implemented and permitted.</li>
-                        </ul>
-
-                        <p>
-                            These categories describe possible uses
-                            of cookies and similar technologies.
-                            They are not confirmation that every
-                            category or any particular third-party
-                            analytics or advertising service is
-                            currently active on our website.
-                        </p>
-
-                        <p>
-                            You may be able to manage or delete
-                            cookies through your browser settings.
-                            Blocking certain cookies may affect
-                            some website features.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 10. MARKETING -->
-
-                    <section class="privacy-section" id="marketing">
-
-                        <h2>10. Marketing Communications</h2>
-
-                        <p>
-                            We may contact you about the property
-                            or project that you enquired about.
-                            Any additional marketing communication
-                            will be handled subject to applicable
-                            law and any consent or preferences
-                            that may be required.
-                        </p>
-
-                        <p>
-                            Submitting a property enquiry does
-                            not mean that you must agree to
-                            unrelated marketing communications.
-                        </p>
-
-                        <p>
-                            Where applicable, you may request
-                            that marketing communications be
-                            stopped by contacting us through
-                            the privacy contact details below.
-                        </p>
-
-                        <p>
-                            We will consider your request in
-                            accordance with applicable law.
-                            Communications necessary to address
-                            an existing enquiry, transaction,
-                            legal obligation or other permitted
-                            purpose may be treated separately
-                            where the law allows.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 11. DATA RETENTION -->
-
-                    <section class="privacy-section" id="retention">
-
-                        <h2>11. Data Retention</h2>
-
-                        <p>
-                            We may retain personal information
-                            only for as long as reasonably
-                            necessary for the purposes for
-                            which it was collected, subject
-                            to applicable law.
-                        </p>
-
-                        <p>
-                            The relevant period may depend
-                            on factors such as:
-                        </p>
-
-                        <ul>
-                            <li>Responding to enquiries.</li>
-                            <li>Providing requested services.</li>
-                            <li>Maintaining appropriate business records.</li>
-                            <li>Meeting legal or regulatory requirements.</li>
-                            <li>Resolving disputes and protecting relevant rights.</li>
-                        </ul>
-
-                        <p>
-                            We do not specify a fixed retention
-                            period here because the appropriate
-                            period may vary depending on the
-                            information and circumstances.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 12. DATA SECURITY -->
-
-                    <section class="privacy-section" id="security">
-
-                        <h2>12. Data Security</h2>
-
-                        <p>
-                            We seek to use reasonable technical
-                            and organisational measures to
-                            protect personal information
-                            against unauthorised access,
-                            misuse, loss, alteration or
-                            disclosure.
-                        </p>
-
-                        <p>
-                            Access to personal information
-                            should be limited to those who
-                            need it for relevant business
-                            or service purposes, where
-                            appropriate.
-                        </p>
-
-                        <p>
-                            However, no method of internet
-                            transmission or electronic storage
-                            can be guaranteed to be completely
-                            secure. We therefore cannot
-                            promise absolute security.
-                        </p>
-
-                        <p>
-                            You should also take care when
-                            sharing personal information
-                            online and avoid sending
-                            unnecessary sensitive details
-                            through general enquiry forms.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 13. PRIVACY RIGHTS -->
-
-                    <section class="privacy-section" id="privacy-rights">
-
-                        <h2>13. Your Privacy Choices and Rights</h2>
-
-                        <p>
-                            Depending on applicable law and
-                            the circumstances of the processing,
-                            you may have rights or choices
-                            relating to your personal
-                            information.
-                        </p>
-
-                        <p>
-                            These may include, where applicable:
-                        </p>
-
-                        <ul>
-                            <li>Requesting access to personal information relating to you.</li>
-                            <li>Requesting correction or updating of inaccurate information.</li>
-                            <li>Requesting deletion or erasure where applicable.</li>
-                            <li>Withdrawing consent where processing is based on consent and withdrawal is available under applicable law.</li>
-                            <li>Raising a concern or submitting a request about how your information is handled.</li>
-                            <li>Requesting that certain marketing communications be stopped, where applicable.</li>
-                        </ul>
-
-                        <p>
-                            These rights are subject to
-                            applicable legal requirements,
-                            exceptions and limitations.
-                            We may need to verify your
-                            identity or request additional
-                            information before acting on
-                            a request.
-                        </p>
-
-                        <p>
-                            To make a privacy-related request,
-                            please use the contact details
-                            in the Contact Us or Grievance /
-                            Privacy Contact sections below.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 14. THIRD-PARTY LINKS -->
-
-                    <section class="privacy-section" id="third-party-links">
-
-                        <h2>14. Third-Party Websites and Links</h2>
-
-                        <p>
-                            Our website may contain links
-                            to websites or services operated
-                            by third parties.
-                        </p>
-
-                        <p>
-                            If you follow a third-party link,
-                            you will be subject to the
-                            privacy practices and terms
-                            of that third party.
-                        </p>
-
-                        <p>
-                            We encourage you to review
-                            the relevant privacy policy
-                            before providing personal
-                            information to another website
-                            or service.
-                        </p>
-
-                        <p>
-                            The inclusion of a link does
-                            not, by itself, mean that we
-                            control or endorse the privacy
-                            practices of the linked service.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 15. CHILDREN'S PRIVACY -->
-
-                    <section class="privacy-section" id="children">
-
-                        <h2>15. Children's Privacy</h2>
-
-                        <p>
-                            Our website and property
-                            enquiry services are intended
-                            for people who are legally
-                            able to use the relevant
-                            services.
-                        </p>
-
-                        <p>
-                            We do not knowingly seek to
-                            collect personal information
-                            from children in circumstances
-                            where such collection is
-                            not permitted by applicable
-                            law.
-                        </p>
-
-                        <p>
-                            If you believe that a child
-                            has provided personal
-                            information to us in
-                            circumstances that raise
-                            a privacy concern, please
-                            contact us using the details
-                            provided below so that the
-                            matter can be reviewed.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 16. POLICY CHANGES -->
-
-                    <section class="privacy-section" id="policy-changes">
-
-                        <h2>16. Changes to This Privacy Policy</h2>
-
-                        <p>
-                            We may update this Privacy
-                            Policy from time to time
-                            to reflect changes in our
-                            website, business processes
-                            or applicable legal
-                            requirements.
-                        </p>
-
-                        <p>
-                            When we make changes, we
-                            will update the "Last Updated"
-                            date shown at the top of
-                            this page.
-                        </p>
-
-                        <p>
-                            We encourage you to review
-                            this page periodically
-                            so that you remain informed
-                            about how personal
-                            information is handled.
-                        </p>
-
-                    </section>
-
-
-                    <!-- 17. CONTACT US -->
-
-                    <section class="privacy-section" id="contact-us">
-
-                        <h2>17. Contact Us</h2>
-
-                        <p>
-                            If you have a question about
-                            this Privacy Policy or how
-                            your personal information
-                            is handled, you may contact
-                            RAJ Real Estate using the
-                            details below.
-                        </p>
-
-                        <div class="privacy-contact-box">
-
-                            <p>
-                                <span class="privacy-contact-label">
-                                    Organisation:
-                                </span>
-
-                                <span class="privacy-placeholder">
-                                    [RAJ REAL ESTATE LEGAL ENTITY NAME]
-                                </span>
-                            </p>
-
-                            <p>
-                                <span class="privacy-contact-label">
-                                    Privacy Email:
-                                </span>
-
-                                <span class="privacy-placeholder">
-                                    [PRIVACY EMAIL ADDRESS]
-                                </span>
-                            </p>
-
-                            <p>
-                                <span class="privacy-contact-label">
-                                    Phone:
-                                </span>
-
-                                <span class="privacy-placeholder">
-                                    [PHONE NUMBER]
-                                </span>
-                            </p>
-
-                            <p>
-                                <span class="privacy-contact-label">
-                                    Address:
-                                </span>
-
-                                <span class="privacy-placeholder">
-                                    [OFFICE ADDRESS]
-                                </span>
-                            </p>
-
-                        </div>
-
-                    </section>
-
-
-                    <!-- 18. GRIEVANCE / PRIVACY CONTACT -->
-
-                    <section class="privacy-section" id="grievance">
-
-                        <h2>18. Grievance / Privacy Contact</h2>
-
-                        <p>
-                            If you have a concern, complaint
-                            or grievance relating to the
-                            processing of your personal
-                            information, you may contact
-                            us using the privacy contact
-                            details below.
-                        </p>
-
-                        <p>
-                            Please describe your concern
-                            clearly and include sufficient
-                            information for us to understand
-                            and review your request.
-                            Avoid including unnecessary
-                            sensitive personal information.
-                        </p>
-
-                        <p>
-                            We will review and respond
-                            to privacy-related requests
-                            in accordance with applicable
-                            law and any requirements
-                            that apply to the relevant
-                            request.
-                        </p>
-
-                        <div class="privacy-contact-box">
-
-                            <p>
-                                <span class="privacy-contact-label">
-                                    Privacy Contact:
-                                </span>
-
-                                <span class="privacy-placeholder">
-                                    [PRIVACY EMAIL ADDRESS]
-                                </span>
-                            </p>
-
-                            <p>
-                                <span class="privacy-contact-label">
-                                    Phone:
-                                </span>
-
-                                <span class="privacy-placeholder">
-                                    [PHONE NUMBER]
-                                </span>
-                            </p>
-
-                            <p>
-                                <span class="privacy-contact-label">
-                                    Address:
-                                </span>
-
-                                <span class="privacy-placeholder">
-                                    [OFFICE ADDRESS]
-                                </span>
-                            </p>
-
-                        </div>
-
-                    </section>
-
-
-                    <!-- BACK TO TOP -->
-
-                    <button
-                        class="privacy-back-top"
-                        type="button"
-                        id="privacy-back-to-top"
-                        aria-label="Back to top of Privacy Policy"
-                    >
-                        <span aria-hidden="true">↑</span>
-                        Back to Top
-                    </button>
-
-                </article>
-
-            </div>
-
+    <!-- Privacy Hero -->
+    <section class="privacy-hero">
+        <div class="container text-light">
+            <span class="privacy-eyebrow">Raj Real Estate</span>
+            <h1 class="display-5 text-white mt-3 mb-3">Privacy Policy</h1>
+            <p class="lead text-white-50 mb-0" style="max-width:640px;">Your privacy matters to us. At RAJ Real Estate, we respect your personal information and aim to be transparent about how we collect, use and protect information shared through our website and property enquiry forms.</p>
         </div>
+    </section>
 
+    <!-- Main Content -->
+    <section class="py-5">
+        <div class="container py-4">
+            <div class="row g-5 justify-content-center">
+
+                <!-- Body -->
+                <div class="col-lg-9">
+                    <div class="privacy-body">
+
+                        <h2 id="introduction">1. Introduction</h2>
+                        <p>RAJ Real Estate ("we", "us", "our") operates the website <strong>rajrealestate.co</strong> and offers information about residential and commercial plots and townships in Jaipur, Ajmer and Navi Mumbai. This Privacy Policy explains what personal information we collect when you visit our website or submit a property enquiry, how we use it, who we may share it with, and the choices available to you. By using our website or submitting your details through any form on this site, you agree to the practices described in this Privacy Policy.</p>
+
+                        <h2 id="info-we-collect">2. Information We Collect</h2>
+                        <p>We may collect information through the following channels:</p>
+                        <ul>
+                            <li>Website enquiry and contact forms</li>
+                            <li>Property/project-specific enquiry forms</li>
+                            <li>Phone calls made to our listed numbers</li>
+                            <li>WhatsApp conversations initiated through the website's WhatsApp button</li>
+                            <li>Email communications</li>
+                            <li>Site visit requests</li>
+                            <li>Basic technical/browser information collected automatically while you browse the website</li>
+                        </ul>
+
+                        <h2 id="info-you-provide">3. Information You Provide</h2>
+                        <p>When you fill out a form on our website (for example, a "Request Callback" or "Quick Inquiry" form), we may collect:</p>
+                        <ul>
+                            <li>Your full name</li>
+                            <li>Mobile/contact number</li>
+                            <li>Email address</li>
+                            <li>The project or property you are interested in</li>
+                            <li>Location preference and budget, where provided</li>
+                            <li>Any message or additional information you choose to share with us</li>
+                        </ul>
+
+                        <h2 id="lead-generation">4. Property Enquiry and Lead Generation</h2>
+                        <p>When you submit a property enquiry, we use the information primarily to respond to your request and help you with the property or project you are interested in. This may include using your information to:</p>
+                        <ul>
+                            <li>Respond to your enquiry</li>
+                            <li>Share details about the requested property or project</li>
+                            <li>Arrange a callback</li>
+                            <li>Schedule a site visit</li>
+                            <li>Assist with buying or investment-related queries</li>
+                            <li>Follow up regarding the enquiry you submitted</li>
+                        </ul>
+                        <p>We do not intend to sell your personal information as a standalone commercial product.</p>
+
+                        <h2 id="how-we-use">5. How We Use Your Information</h2>
+                        <p>In addition to responding to enquiries, we may use the information we collect to maintain internal enquiry records, improve our website and services, understand which projects visitors are interested in, and comply with applicable legal or regulatory requirements.</p>
+
+                        <h2 id="how-we-contact">6. How We Contact You</h2>
+                        <p>Where you provide your contact details, we may reach out to you by phone call, SMS, email or WhatsApp to respond to your enquiry, share requested property information, or follow up on a site visit or callback request.</p>
+
+                        <h2 id="sharing">7. Sharing of Information</h2>
+                        <p>We do not sell your personal information. Where necessary to respond to your enquiry or provide requested services, we may share relevant information with authorised employees, representatives, service providers, project partners or other parties involved in fulfilling your request, subject to applicable law. We may also disclose information where required to comply with a legal obligation, court order or governmental request.</p>
+
+                        <h2 id="service-providers">8. Service Providers and Technology Partners</h2>
+                        <p>Our website uses Meta Pixel, a technology that helps us understand website visits and measure the effectiveness of our online presence. We have not identified any other third-party analytics, CRM or lead-management tools integrated into this website at this time. If additional service providers are engaged in the future, this Privacy Policy will be updated accordingly.</p>
+
+                        <h2 id="cookies">9. Cookies and Analytics</h2>
+                        <p>Our website may use cookies and similar technologies to support core website functionality, remember your preferences, and understand how visitors use our website (including through the Meta Pixel referenced above). Cookies generally fall into categories such as:</p>
+                        <ul>
+                            <li><strong>Essential cookies</strong> — required for the website to function correctly</li>
+                            <li><strong>Performance cookies</strong> — help us understand how the site is used</li>
+                            <li><strong>Preference cookies</strong> — remember choices you make on the site</li>
+                            <li><strong>Marketing/advertising cookies</strong> — used by tools such as Meta Pixel to measure engagement with our content</li>
+                        </ul>
+                        <p>You can control or disable cookies through your browser settings, though some parts of the website may not function as intended if cookies are disabled.</p>
+
+                        <h2 id="marketing">10. Marketing Communications</h2>
+                        <p>Submitting an enquiry through our website may result in follow-up communication through phone, SMS, email or WhatsApp regarding the property or project you enquired about. If you no longer wish to receive such communications, you may request that we stop contacting you by reaching out through the contact details listed below, subject to applicable law.</p>
+
+                        <h2 id="retention">11. Data Retention</h2>
+                        <p>We retain personal information only for as long as reasonably necessary to respond to your enquiry, provide the services you have requested, meet our business and legal record-keeping requirements, and resolve any disputes that may arise.</p>
+
+                        <h2 id="security">12. Data Security</h2>
+                        <p>We use reasonable technical and organisational measures designed to protect personal information against unauthorised access, misuse, loss, alteration or disclosure. However, no method of transmission over the internet or electronic storage is completely secure, and we cannot guarantee absolute security of information you share with us.</p>
+
+                        <h2 id="your-rights">13. Your Privacy Choices and Rights</h2>
+                        <p>Depending on applicable law, including the Digital Personal Data Protection Act, 2023, you may have rights relating to your personal data, including the right to request access to the information we hold about you, request correction of inaccurate information, request deletion or erasure of your information where applicable, withdraw consent where processing is based on consent, and raise concerns about how your information is processed.</p>
+                        <p>To exercise any of these choices, please contact us using the details in the "Contact Us" section below, subject to applicable law.</p>
+
+                        <h2 id="third-party-links">14. Third-Party Websites and Links</h2>
+                        <p>Our website may contain links to third-party websites or social media pages (such as Facebook, Instagram or X). We are not responsible for the privacy practices or content of such third-party websites, and we encourage you to review their respective privacy policies.</p>
+
+                        <h2 id="children">15. Children's Privacy</h2>
+                        <p>Our website and services are intended for adults seeking information about real estate investments. We do not knowingly collect personal information from children. If you believe a child has provided us with personal information, please contact us so we can take appropriate action.</p>
+
+                        <h2 id="changes">16. Changes to This Privacy Policy</h2>
+                        <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for legal, operational or regulatory reasons. The updated version will be posted on this page along with a revised "Last Updated" date. We encourage you to review this page periodically.</p>
+
+                        <h2 id="contact-us">17. Contact Us</h2>
+                        <p>If you have any questions about this Privacy Policy or how your information is handled, please reach out to us:</p>
+                        <div class="privacy-contact-box mb-2">
+                            <p><i class="bi bi-building text-gold me-2"></i><strong>RAJ Real Estate</strong> — <span class="privacy-placeholder">[RAJ REAL ESTATE LEGAL ENTITY NAME]</span></p>
+                            <p><i class="bi bi-geo-alt text-gold me-2"></i>Riyasat Tower, Near Kirti Heights, Behind Iskcon Temple, Kharbas Circle, Vill. Sukhiya, Teh. Sanganer, Jaipur-302020</p>
+                            <p><i class="bi bi-telephone text-gold me-2"></i>+91 7878859894</p>
+                            <p><i class="bi bi-whatsapp text-gold me-2"></i>+91 7878859894</p>
+                            <p><i class="bi bi-envelope text-gold me-2"></i>rajrealestate2005@gmail.com</p>
+                        </div>
+
+                        <h2 id="grievance">18. Grievance / Privacy Contact</h2>
+                        <p>If you have concerns about how your personal information has been processed, you may write to our privacy contact below. We will make reasonable efforts to address your concern in a timely manner, subject to applicable law.</p>
+                        <div class="privacy-contact-box">
+                            <p><strong>Grievance / Privacy Officer:</strong> <span class="privacy-placeholder">[PRIVACY OFFICER NAME]</span></p>
+                            <p><strong>Email:</strong> <span class="privacy-placeholder">[PRIVACY EMAIL ADDRESS]</span> (or rajrealestate2005@gmail.com)</p>
+                            <p><strong>Phone:</strong> +91 7878859894</p>
+                            <p><strong>Address:</strong> Riyasat Tower, Near Kirti Heights, Behind Iskcon Temple, Kharbas Circle, Vill. Sukhiya, Teh. Sanganer, Jaipur-302020</p>
+                        </div>
+
+                        <hr class="privacy-divider" />
+                        <p class="small" style="color:#999;">This Privacy Policy is provided for general informational purposes and does not constitute legal advice. It is subject to applicable Indian law, including the Digital Personal Data Protection Act, 2023, and may be updated as our practices or legal requirements evolve.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to top -->
+    <a href="#" id="backToTop" aria-label="Back to top"><i class="bi bi-arrow-up"></i></a>
+
+    <!-- Bottom Contact Widget (unchanged) -->
+    <div class="sticky-contact-bar">
+        <a href="https://wa.me/917878859894?text=Hello%2C%20I%20am%20interested%20in%20your%20properties." target="_blank" class="sticky-btn sticky-whatsapp" title="Chat on WhatsApp">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+        <a href="tel:+917878859894" class="sticky-btn sticky-call" title="Call Us Now">
+            <i class="bi bi-telephone-outbound"></i>
+        </a>
     </div>
 
-</main>
+    <!-- Luxury Footer (unchanged, Privacy Policy already linked in "Contact Information" area via nav) -->
+    <footer class="luxury-footer text-light">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Ongoing Projects</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="projects/heritage.html"><i class="bi bi-chevron-right me-2 text-gold"></i>Heritage - Jaipur</a></li>
+                        <li><a href="projects/neelkanth-nagar.html"><i class="bi bi-chevron-right me-2 text-gold"></i>Neelkanth Nagar - Jaipur</a></li>
+                        <li><a href="projects/happy-aerocity.html"><i class="bi bi-chevron-right me-2 text-gold"></i>Happy Aerocity - Ajmer</a></li>
+                        <li><a href="projects/riyasat-royalcrest.html"><i class="bi bi-chevron-right me-2 text-gold"></i>Riyasat Royalcrest - Navi Mumbai</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5>Contact Information</h5>
+                    <p class="small mb-2"><i class="bi bi-geo-alt text-gold me-2"></i> Riyasat Tower, Near Kirti Heights, Behind Iskcon Temple, Kharbas Circle, Vill. Sukhiya, Teh. Sanganer, Jaipur-302020</p>
+                    <p class="small mb-2"><i class="bi bi-telephone text-gold me-2"></i> Phone: +91 7878859894</p>
+                    <p class="small mb-2"><i class="bi bi-whatsapp text-gold me-2"></i> WhatsApp: +91 7878859894</p>
+                    <p class="small mb-2"><i class="bi bi-envelope text-gold me-2"></i> Email: rajrealestate2005@gmail.com</p>
+                    <p class="small mb-0 mt-3"><a href="privacypolicy.html" class="text-white-50"><i class="bi bi-chevron-right me-2 text-gold"></i>Privacy Policy</a></p>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5>Quick Inquiry</h5>
+                    <form class="sheet-form">
+                        <input type="hidden" name="formType" value="Contact Us" />
+                        <div class="mb-2">
+                            <input type="text" name="name" class="form-control form-control-sm rounded-0" placeholder="Full Name" required />
+                        </div>
+                        <div class="mb-2">
+                            <input type="tel" name="phone" class="form-control form-control-sm rounded-0" placeholder="Contact No." required />
+                        </div>
+                        <div class="mb-2">
+                            <input type="email" name="email" class="form-control form-control-sm rounded-0" placeholder="Email Address" required />
+                        </div>
+                        <button type="submit" class="btn btn-gold btn-sm w-100 rounded-0 text-uppercase">Submit Inquiry</button>
+                    </form>
+                </div>
+            </div>
+            <hr class="border-secondary mt-5" />
+            <div class="d-flex flex-wrap justify-content-between align-items-center small text-white-50">
+                <p class="mb-0">&copy; 2026 RAJ REAL ESTATE. All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/people/Raj-real-estate/61592731174081/?rdid=ngmwz7PfbQpEtuHl&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1GheZsG4bk%2F" class="text-white-50 me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="https://www.instagram.com/rajrealestate__/" class="text-white-50 me-3"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.threads.com/@rajrealestate__" class="text-white-50 me-3"><i class="bi bi-threads"></i></a>
+                    <a href="https://x.com/@rajrealestate01" class="text-white-50 me-3" target="_blank"><i class="bi bi-twitter-x"></i></a>
+                    <a href="https://www.pinterest.com/rajrealestate2005/" class="text-white-50" target="_blank"><i class="bi bi-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
+    <!-- Bootstrap scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/site.js"></script>
 
-<script>
-    /* =========================================
-       PRIVACY POLICY PAGE INTERACTIONS
-       ========================================= */
-
-    (function () {
-        "use strict";
-
-        const backToTopButton = document.getElementById(
-            "privacy-back-to-top"
-        );
-
-        if (backToTopButton) {
-            backToTopButton.addEventListener("click", function () {
-                document.getElementById("privacy-policy").scrollIntoView({
-                    behavior: window.matchMedia(
-                        "(prefers-reduced-motion: reduce)"
-                    ).matches ? "auto" : "smooth",
-
-                    block: "start"
-                });
+    <!-- Back-to-top behaviour (page-scoped, does not touch site.js) -->
+    <script>
+        (function () {
+            var btn = document.getElementById('backToTop');
+            if (!btn) return;
+            window.addEventListener('scroll', function () {
+                btn.style.display = window.scrollY > 400 ? 'flex' : 'none';
             });
-        }
-    })();
-</script>
-
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        })();
+    </script>
 </body>
 </html>
