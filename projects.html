@@ -469,29 +469,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    const path = window.location.pathname;
+    const params = new URLSearchParams(window.location.search);
+const cityFromQuery = params.get("city");
 
-    if (path === "/projects/jaipur") {
+const path = window.location.pathname;
 
-        applyFilter("jaipur");
+let initialCity = "all";
 
-    } else if (path === "/projects/ajmer") {
+if (cityFromQuery === "jaipur") {
 
-        applyFilter("ajmer");
+    initialCity = "jaipur";
 
-    } else if (path === "/projects/mumbai") {
+} else if (cityFromQuery === "ajmer") {
 
-        applyFilter("mumbai");
+    initialCity = "ajmer";
 
-    } else if (path === "/projects/villasinmumbai") {
+} else if (cityFromQuery === "mumbai") {
 
-        applyFilter("villasinmumbai");
+    initialCity = "mumbai";
 
-    } else {
+} else if (cityFromQuery === "villasinmumbai") {
 
-        applyFilter("all");
+    initialCity = "villasinmumbai";
 
-    }
+} else if (path === "/projects/jaipur") {
+
+    initialCity = "jaipur";
+
+} else if (path === "/projects/ajmer") {
+
+    initialCity = "ajmer";
+
+} else if (path === "/projects/mumbai") {
+
+    initialCity = "mumbai";
+
+} else if (path === "/projects/villasinmumbai") {
+
+    initialCity = "villasinmumbai";
+
+}
+
+applyFilter(initialCity);
+
+if (cityFromQuery) {
+
+    history.replaceState(
+        { city: cityFromQuery },
+        "",
+        `/projects/${cityFromQuery}`
+    );
+
+}
 
 });
 </script>
