@@ -200,15 +200,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 5. GOOGLE SHEETS AJAX FORM SUBMISSION
     const forms = document.querySelectorAll(".sheet-form");
-    forms.forEach(form => {
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            console.log("Submitting form...");
-            console.log(url);
-            console.log(formData);
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalBtnText = submitBtn.innerHTML;
-            
+
+forms.forEach(form => {
+
+    // This handler is ONLY for the Careers form
+    if (!form.querySelector('input[name="resumeFile"]')) {
+        return;
+    }
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        console.log("Submitting form...");
+
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        
             submitBtn.disabled = true;
             submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Saving...`;
 
@@ -294,8 +301,13 @@ if (thankYou) {
     });
 });
 document.querySelectorAll(".sheet-form").forEach(form => {
-    form.addEventListener("submit", async function (e) {
 
+    // Quick Inquiry handler — skip Careers form
+    if (form.querySelector('input[name="resumeFile"]')) {
+        return;
+    }
+
+    form.addEventListener("submit", async function (e) {
         e.preventDefault();
 
 
@@ -343,7 +355,7 @@ document.querySelectorAll(".sheet-form").forEach(form => {
                 : ""
         };
 
-     try {
+    try {
     const response = await fetch(url, {
         method: "POST",
         headers: {
