@@ -343,24 +343,31 @@ document.querySelectorAll(".sheet-form").forEach(form => {
                 : ""
         };
 
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(formData)
-            });
+     try {
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+    });
 
-            const result = await response.json();
+    const result = await response.json();
 
-            console.log(result);
-            alert(JSON.stringify(result));
+    console.log(result);
 
-        } catch (err) {
-            console.error(err);
-            alert("Server error.");
-        }
+    form.reset();
+
+    const thankYou = form.querySelector(".thank-you-message");
+
+    if (thankYou) {
+        thankYou.style.display = "block";
+    }
+
+} catch (err) {
+    console.error(err);
+    alert("Server error.");
+}
     });
 });
 
