@@ -283,11 +283,20 @@ feedback.classList.add("d-none");
 form.reset();
 
 // Show the new Thank You message
-const thankYou = form.querySelector(".thank-you-message");
+let thankYou = form.querySelector(".thank-you-message");
 
-if (thankYou) {
-    thankYou.style.display = "block";
+if (!thankYou) {
+    thankYou = document.createElement("div");
+    thankYou.className = "thank-you-message";
+    thankYou.innerHTML = `
+        <strong>Thank you!</strong>
+        <span>Your inquiry has been submitted successfully.</span>
+    `;
+
+    form.appendChild(thankYou);
 }
+
+thankYou.style.display = "block";
 
             } catch (err) {
                 console.error(err);
