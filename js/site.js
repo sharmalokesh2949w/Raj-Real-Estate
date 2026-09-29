@@ -317,11 +317,9 @@ document.querySelectorAll(".sheet-form").forEach(form => {
     }
 
     form.addEventListener("submit", async function (e) {
+
         e.preventDefault();
 
-
-
-        // Decide which backend route to use
         const BACKEND_URL = "https://raj-real-estate.onrender.com";
 
         const url = window.location.pathname.includes("career")
@@ -332,6 +330,7 @@ document.querySelectorAll(".sheet-form").forEach(form => {
             name: form.querySelector('[name="name"]').value,
             phone: form.querySelector('[name="phone"]').value,
             email: form.querySelector('[name="email"]').value,
+
             formType: form.querySelector('[name="formType"]')
                 ? form.querySelector('[name="formType"]').value
                 : "",
@@ -339,6 +338,7 @@ document.querySelectorAll(".sheet-form").forEach(form => {
             projectName: form.querySelector('[name="projectName"]')
                 ? form.querySelector('[name="projectName"]').value
                 : "",
+
             message: form.querySelector('[name="message"]')
                 ? form.querySelector('[name="message"]').value
                 : "",
@@ -364,41 +364,56 @@ document.querySelectorAll(".sheet-form").forEach(form => {
                 : ""
         };
 
-    try {
-    const response = await fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
+        try {
+
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            });
+
+            if (!response.ok) {
+                throw new Error("Server error");
+            }
+
+            const result = await response.json();
+
+            console.log(result);
+
+            // 1. Blank the form
+            form.reset();
+
+            // 2. Find Thank You message
+            let thankYou = form.querySelector(".thank-you-message");
+
+            // 3. If it doesn't exist, create it
+            if (!thankYou) {
+
+                thankYou = document.createElement("div");
+
+                thankYou.className = "thank-you-message";
+
+                thankYou.innerHTML = `
+                    <strong>Thank you!</strong>
+                    <span>Your inquiry has been submitted successfully.</span>
+                `;
+
+                form.appendChild(thankYou);
+            }
+
+            // 4. Show it
+            thankYou.style.display = "block";
+
+        } catch (error) {
+
+            console.error(error);
+
+            alert("Server error. Please try again.");
+
+        }
+
     });
 
-    const result = await response.json();
-
-    console.log(result);
-
-    form.reset();
-
-    let thankYou = form.querySelector(".thank-you-message");
-
-if (!thankYou) {
-    thankYou = document.createElement("div");
-    thankYou.className = "thank-you-message";
-    thankYou.innerHTML = `
-        <strong>Thank you!</strong>
-        <span>Your inquiry has been submitted successfully.</span>
-    `;
-
-    form.appendChild(thankYou);
-}
-
-thankYou.style.display = "block";
-
-} catch (err) {
-    console.error(err);
-    alert("Server error.");
-}
-    });
 });
-
-
