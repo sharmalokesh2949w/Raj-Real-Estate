@@ -269,9 +269,18 @@ document.addEventListener("DOMContentLoaded", () => {
                     body: JSON.stringify(dataObj)
                 });
 
-                feedback.className = "form-feedback mt-3 alert alert-success";
-                feedback.innerText = "Success! Your submission has been securely recorded.";
-                form.reset();
+               // Hide the old success message
+feedback.classList.add("d-none");
+
+// Clear the form fields
+form.reset();
+
+// Show the new Thank You message
+const thankYou = form.querySelector(".thank-you-message");
+
+if (thankYou) {
+    thankYou.style.display = "block";
+}
 
             } catch (err) {
                 console.error(err);
