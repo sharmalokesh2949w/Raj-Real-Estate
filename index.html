@@ -241,23 +241,36 @@
                     <p class="text-muted">Please submit your details below. Your request will be directly updated in the owner's Google Sheets ledger.</p>
                 </div>
                 <div class="col-lg-6">
-                    <form class="sheet-form">
-                        <input type="hidden" name="formType" value="General Enquiry" />
-                        <div class="row g-3">
-                            <div class="col-12">
-                                <input type="text" name="name" class="form-control rounded-0 p-3" placeholder="Full Name" required />
-                            </div>
-                            <div class="col-12">
-                                <input type="tel" name="phone" class="form-control rounded-0 p-3" placeholder="Phone Number / Contact No." required />
-                            </div>
-                            <div class="col-12">
-                                <input type="email" name="email" class="form-control rounded-0 p-3" placeholder="Email Address" required />
-                            </div>
-                            <div class="col-12">
-                                <button type="submit" class="btn btn-luxury w-100 py-3 text-uppercase">Request Callback</button>
-                            </div>
-                        </div>
-                    </form>
+                   <form class="sheet-form">
+    <input type="hidden" name="formType" value="General Enquiry" />
+
+    <div class="row g-3">
+        <div class="col-12">
+            <input type="text" name="name" class="form-control rounded-0 p-3" placeholder="Full Name" required />
+        </div>
+
+        <div class="col-12">
+            <input type="tel" name="phone" class="form-control rounded-0 p-3" placeholder="Phone Number / Contact No." required />
+        </div>
+
+        <div class="col-12">
+            <input type="email" name="email" class="form-control rounded-0 p-3" placeholder="Email Address" required />
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-luxury w-100 py-3 text-uppercase">
+                Request Callback
+            </button>
+        </div>
+    </div>
+
+    <!-- Thank You message -->
+    <div class="thank-you-message" style="display: none;">
+        <strong>Thank you!</strong>
+        <span>Your inquiry has been submitted successfully.</span>
+    </div>
+
+</form>
                 </div>
             </div>
         </div>
