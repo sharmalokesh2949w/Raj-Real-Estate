@@ -351,18 +351,34 @@
                 <div class="col-lg-4 col-md-6">
                     <h5>Quick Inquiry</h5>
                     <form class="sheet-form">
-                        <input type="hidden" name="formType" value="Contact Us" />
-                        <div class="mb-2">
-                            <input type="text" name="name" class="form-control form-control-sm rounded-0" placeholder="Full Name" required />
-                        </div>
-                        <div class="mb-2">
-                            <input type="tel" name="phone" class="form-control form-control-sm rounded-0" placeholder="Contact No." required />
-                        </div>
-                        <div class="mb-2">
-                            <input type="email" name="email" class="form-control form-control-sm rounded-0" placeholder="Email Address" required />
-                        </div>
-                        <button type="submit" class="btn btn-gold btn-sm w-100 rounded-0 text-uppercase">Submit Inquiry</button>
-                    </form>
+    <input type="hidden" name="formType" value="Contact Us" />
+
+    <div class="mb-2">
+        <input type="text" name="name" class="form-control form-control-sm rounded-0"
+            placeholder="Full Name" required />
+    </div>
+
+    <div class="mb-2">
+        <input type="tel" name="phone" class="form-control form-control-sm rounded-0"
+            placeholder="Contact No." required />
+    </div>
+
+    <div class="mb-2">
+        <input type="email" name="email" class="form-control form-control-sm rounded-0"
+            placeholder="Email Address" required />
+    </div>
+
+    <button type="submit"
+        class="btn btn-gold btn-sm w-100 rounded-0 text-uppercase">
+        Submit Inquiry
+    </button>
+
+    <!-- Thank You Message -->
+    <div class="thank-you-message" style="display: none;">
+        <strong>Thank you!</strong>
+        <span>Your inquiry has been submitted successfully.</span>
+    </div>
+</form>
                 </div>
             </div>
             <hr class="border-secondary mt-5" />
