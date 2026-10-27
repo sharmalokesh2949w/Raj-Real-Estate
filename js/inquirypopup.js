@@ -299,42 +299,56 @@ document.addEventListener("DOMContentLoaded", () => {
     submit.disabled = true;
     status.textContent = "Submitting your enquiry...";
 
-    try {
-      const response = await fetch(API_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name: name,
-          phone: phone,
-          email: "",
-          message: "Budget: " + budget,
-          projectName: "Website Popup Inquiry"
-        })
-      });
+try {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: name,
+      phone: phone,
+      email: "",
+      message: "Budget: " + budget,
+      projectName: "Website Popup Inquiry"
+    })
+  });
 
-      const result = await response.json();
+  const responseText = await response.text();
 
-      if (!response.ok || result.success !== true) {
-      throw new Error(
-  result.error || `Submission failed: ${response.status}`
-);
-      }
+  console.log("HTTP status:", response.status);
+  console.log("Server response:", responseText);
 
-      status.textContent =
-        "Thank you! Your enquiry has been submitted.";
+  let result;
 
-      form.reset();
+  try {
+    result = JSON.parse(responseText);
+  } catch {
+    throw new Error(
+      "Invalid server response. HTTP " + response.status
+    );
+  }
 
-      setTimeout(closePopup, 1800);
+  if (!response.ok || result.success !== true) {
+    throw new Error(
+      result.error || "Submission failed: " + response.status
+    );
+  }
 
-    } catch (error) {
-      console.error("Inquiry error:", error);
+  status.textContent =
+    "Thank you! Your enquiry has been submitted.";
 
-   status.textContent = error.message;
-    } finally {
-      submit.disabled = false;
-    }
+  form.reset();
+
+  // Popup 2 minute baad close hoga
+  setTimeout(closePopup, 2000);
+
+} catch (error) {
+  console.error("Inquiry error:", error);
+  status.textContent = "Error: " + error.message;
+
+} finally {
+  submit.disabled = false;
+}
   });
 });
