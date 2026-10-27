@@ -4,9 +4,7 @@ require("dotenv").config();
 
 const inquiryRoute = require("./routes/inquiry");
 const careerRoute = require("./routes/career");
-
 const popupInquiryRoute = require("./routes/popup-inquiry");
-app.use("/api/popup-inquiry", popupInquiryRoute);
 
 const app = express();
 
@@ -15,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/inquiry", inquiryRoute);
+app.use("/api/popup-inquiry", popupInquiryRoute);
 app.use("/api/career", careerRoute);
 
 app.get("/", (req, res) => {
