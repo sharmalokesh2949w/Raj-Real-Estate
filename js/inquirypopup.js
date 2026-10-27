@@ -1,8 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   // Backend API URL
-  const API_URL = "/api/inquiry";
-
+  const API_URL = "https://raj-real-estate.onrender.com/api/inquiry";
   // Add popup styles
   const styles = `
     #inquiry-popup-overlay {
@@ -318,7 +317,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = await response.json();
 
       if (!response.ok || result.success !== true) {
-        throw new Error("Submission failed");
+      throw new Error(
+  result.error || `Submission failed: ${response.status}`
+);
       }
 
       status.textContent =
@@ -331,8 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.error("Inquiry error:", error);
 
-      status.textContent =
-        "Unable to submit. Please try again later.";
+   status.textContent = error.message;
     } finally {
       submit.disabled = false;
     }
