@@ -5,6 +5,9 @@ require("dotenv").config();
 const inquiryRoute = require("./routes/inquiry");
 const careerRoute = require("./routes/career");
 
+const popupInquiryRoute = require("./routes/popup-inquiry");
+app.use("/api/popup-inquiry", popupInquiryRoute);
+
 const app = express();
 
 app.use(cors());
