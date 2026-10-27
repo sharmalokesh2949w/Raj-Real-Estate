@@ -15,27 +15,22 @@ router.post("/", async (req, res) => {
             });
         }
 
-        const scriptUrl = process.env.GOOGLE_SCRIPT_URL;
-
-        if (!scriptUrl) {
-            return res.status(500).json({
-                success: false,
-                error: "Google Script URL is not configured."
-            });
-        }
-
         const params = new URLSearchParams();
-        params.append("sheet", "Popup Inquiries");
+        params.append("sheet", "Inquiries");
         params.append("name", name);
         params.append("phone", phone);
         params.append("email", "");
         params.append("message", "Budget: " + budget);
-        params.append("projectName", "Website Popup Inquiry");
+        params.append("projectName", "General form");
 
-        const response = await axios.post(scriptUrl, params);
+        const response = await axios.post(
+            process.env.GOOGLE_SCRIPT_URL,
+            params
+        );
 
         return res.json({
             success: true,
+            source: "Popup Form",
             response: response.data
         });
 
