@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/inquiry", inquiryRoute);
-app.use("/api/popup-inquiry", popupInquiryRoute);
+app.use("/api/popupinquiry", popupInquiryRoute);
 app.use("/api/career", careerRoute);
 
 app.get("/", (req, res) => {
