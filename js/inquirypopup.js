@@ -191,14 +191,21 @@ document.addEventListener("DOMContentLoaded", () => {
             required
           >
 
-          <input
-            class="popup-field"
-            name="budget"
-            type="text"
-            placeholder="Your Budget (e.g. 30 Lakhs)"
-            maxlength="50"
-            required
-          >
+
+
+<select
+  class="popup-field"
+  name="budget"
+  required
+>
+  <option value="" disabled selected>
+    Select Your Budget
+  </option>
+  <option value="20-40 Lakhs">20–40 Lakhs</option>
+  <option value="40-60 Lakhs">40–60 Lakhs</option>
+  <option value="60-80 Lakhs">60–80 Lakhs</option>
+  <option value="80 Lakhs and Above">80 Lakhs and Above</option>
+</select>
 
           <button class="popup-submit" type="submit">
             Submit
