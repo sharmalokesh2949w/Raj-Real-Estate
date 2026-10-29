@@ -310,7 +310,7 @@ try {
       phone: phone,
       email: "",
       message: "Budget: " + budget,
-      projectName: "Website Popup Inquiry"
+      projectName: "General Inquiry Form"
     })
   });
 
