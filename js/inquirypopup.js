@@ -191,16 +191,8 @@ document.addEventListener("DOMContentLoaded", () => {
             required
           >
 
-
-
-<select
-  class="popup-field"
-  name="budget"
-  required
->
-  <option value="" disabled selected>
-    Select Your Budget
-  </option>
+<select class="popup-field" name="budget" required>
+  <option value="" disabled selected>Select Your Budget</option>
   <option value="20-40 Lakhs">20–40 Lakhs</option>
   <option value="40-60 Lakhs">40–60 Lakhs</option>
   <option value="60-80 Lakhs">60–80 Lakhs</option>
