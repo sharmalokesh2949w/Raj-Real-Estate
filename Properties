@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riyasat Properties by Raj Real Estate | Sankalp, Bliss, Royalcrest, Montera</title>
+<meta name="description" content="Explore four Riyasat projects by Raj Real Estate: Sankalp, Bliss, Royalcrest and Montera. Download brochures and book a site visit.">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="googlebot" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Riyasat Properties by Raj Real Estate">
+<meta property="og:description" content="Explore Riyasat Sankalp, Bliss, Royalcrest and Montera. Book a site visit today.">
+<meta property="og:url" content="https://rajrealestate.co/propertys">
+<meta property="og:image" content="https://rajrealestate.co/propertys/images/hero.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b1f3f;--navy-2:#13294f;--blue:#1f4a8f;--blue-d:#173a72;--gold:#b8913a;--gold-l:#e2c47e;--ivory:#fbf9f4;--ivory-2:#f1ede3;--ink:#16202e;--muted:#5b6574;
+--serif:"Cormorant Garamond",Georgia,serif;--sans:"Manrope",system-ui,sans-serif;--r:14px;--shadow:0 18px 50px -20px rgba(11,31,63,.35)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:400 1rem/1.7 var(--sans);color:var(--ink);background:var(--ivory);padding-bottom:64px}
+img{max-width:100%;height:auto;display:block}a{color:var(--blue)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.sec{padding:88px 22px}.alt{background:var(--ivory-2)}
+h1,h2,h3{font-family:var(--serif);line-height:1.05;margin:0 0 .45em;color:var(--navy);font-weight:600}
+h2{font-size:clamp(2.2rem,5vw,3.4rem)}h3{font-size:1.7rem}
+.eyebrow{display:flex;align-items:center;gap:12px;font:700 .75rem var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:0 0 14px}
+.eyebrow:before{content:"";width:36px;height:1px;background:var(--gold)}
+.lead{max-width:60ch;color:var(--muted)}
+
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;color:#fff;background:var(--navy);overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:zoom 22s ease-out both}
+@keyframes zoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,31,63,.55) 0%,rgba(11,31,63,.15) 35%,rgba(11,31,63,.92) 100%)}
+.hero-body{position:relative;width:100%;padding-top:130px;padding-bottom:170px}
+.brand{font:700 .8rem var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--gold-l);margin:0 0 22px}
+.hero h1{color:#fff;font-size:clamp(3rem,9vw,6.4rem);max-width:13ch;font-weight:500}
+.hero h1 em{color:var(--gold-l);font-style:italic}
+.hero-sub{max-width:54ch;font-size:1.12rem;margin:0 0 34px;opacity:.92}
+.stats{position:absolute;left:0;right:0;bottom:0;background:rgba(11,31,63,.78);backdrop-filter:blur(10px);border-top:1px solid rgba(226,196,126,.35)}
+.stats .wrap{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
+.stats div{padding:16px 10px;text-align:center;border-right:1px solid rgba(255,255,255,.12)}
+.stats strong{display:block;font:600 1.9rem var(--serif);color:var(--gold-l);line-height:1}
+.stats span{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;opacity:.8}
+@media(min-width:760px){.stats .wrap{grid-template-columns:repeat(4,1fr)}}
+
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.btn{font:700 .95rem var(--sans);padding:14px 26px;border:2px solid transparent;border-radius:999px;cursor:pointer;text-decoration:none;display:inline-block;text-align:center;transition:.25s}
+.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold-l));color:var(--navy)}.btn.gold:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(184,145,58,.8)}
+.btn.red{background:var(--blue);color:#fff}.btn.red:hover{background:var(--blue-d);transform:translateY(-2px)}
+.btn.ghost{border-color:rgba(255,255,255,.7);color:#fff}.btn.ghost:hover{background:#fff;color:var(--navy)}
+.btn.out{border-color:var(--navy);color:var(--navy);background:transparent}.btn.out:hover{background:var(--navy);color:#fff}
+
+/* about */
+.intro{display:grid;gap:30px}.intro p{color:var(--muted);max-width:62ch}
+.usp{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:34px}
+.usp div{background:#fff;border-radius:var(--r);padding:22px;box-shadow:var(--shadow);border-top:3px solid var(--gold)}
+.usp b{display:block;font:600 1.35rem var(--serif);color:var(--navy)}.usp span{font-size:.92rem;color:var(--muted)}
+
+/* cards */
+.cards{display:grid;gap:26px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column;transition:.35s}
+.card:hover{transform:translateY(-8px)}
+.card .ph,.ph{aspect-ratio:4/3;background:linear-gradient(135deg,var(--navy),var(--blue));color:var(--gold-l);display:grid;place-items:center;font:600 1.3rem var(--serif);overflow:hidden;text-align:center;padding:10px}
+.card img,.ph img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .7s}
+.card:hover img{transform:scale(1.06)}
+.card-img{overflow:hidden;position:relative}
+.tag{position:absolute;top:12px;left:12px;background:var(--navy);color:var(--gold-l);font:700 .7rem var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:999px;z-index:2}
+.card-b{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card-b p{margin:0;color:var(--muted);font-size:.93rem}.card-b .btn{margin-top:auto}.card-b .btn+.btn{margin-top:0}
+
+/* details */
+.detail{padding:88px 22px}.detail:nth-of-type(even){background:var(--ivory-2)}
+.d-grid{display:grid;gap:44px;grid-template-columns:1fr}
+@media(min-width:900px){.d-grid{grid-template-columns:1.05fr 1fr;align-items:start}.d-cover{position:sticky;top:90px}}
+.d-cover>img,.d-cover>.ph{border-radius:var(--r);box-shadow:var(--shadow);width:100%}
+.facts{display:grid;margin:18px 0 26px}
+.facts div{display:grid;grid-template-columns:140px 1fr;gap:14px;padding:12px 0;border-bottom:1px solid rgba(11,31,63,.12)}
+.facts dt{font:700 .78rem var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}.facts dd{margin:0;font-size:.96rem}
+.tbc{color:#8a6d1f;font-style:italic}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{background:#fff;border:1px solid rgba(184,145,58,.5);border-radius:999px;padding:4px 12px;font-size:.84rem}
+.gallery{display:grid;gap:10px;margin-top:12px;grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+.gallery img,.gallery .ph{aspect-ratio:1;border-radius:10px;object-fit:cover;width:100%}
+.gallery img,.d-cover>img{cursor:zoom-in}
+.offer{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;border-left:4px solid var(--gold);border-radius:10px;padding:14px 18px;margin:14px 0}
+.note{font-size:.82rem;color:var(--muted);margin:12px 0 0}
+
+.table-scroll{overflow-x:auto;border-radius:var(--r);box-shadow:var(--shadow)}
+table{border-collapse:collapse;min-width:720px;width:100%;background:#fff}
+th,td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--ivory-2);vertical-align:top;font-size:.93rem}
+thead th{background:var(--navy);color:#fff;font-family:var(--serif);font-size:1.15rem;font-weight:600}tbody th{color:var(--navy);background:var(--ivory)}
+.loc-grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.loc-grid>div{background:#fff;padding:24px;border-radius:var(--r);box-shadow:var(--shadow);border-top:3px solid var(--blue)}
+.loc-grid h3{font-size:1.45rem}.loc-grid ul{margin:0;padding-left:18px;color:var(--muted);font-size:.93rem}
+.bro{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.bro .btn:before{content:"↓ "}
+details{border-bottom:1px solid rgba(184,145,58,.6);padding:18px 0}
+summary{cursor:pointer;font:600 1.3rem var(--serif);color:var(--navy)}details p{margin:.6em 0 0;color:var(--muted)}
+
+/* bottom action bar: Call | WhatsApp | Enquire | Book Visit */
+.bar{position:fixed;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,1fr);z-index:40;padding-bottom:env(safe-area-inset-bottom)}
+.bar a{background:var(--navy);color:#fff;border-right:1px solid var(--gold);padding:17px 8px;text-align:center;font:700 .95rem var(--sans);text-decoration:none;cursor:pointer}
+.bar a.b{background:var(--blue)}.bar a:last-child{border-right:0}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(5,12,25,.96);z-index:60;display:grid;grid-template-columns:56px 1fr 56px;align-items:center}
+.lb[hidden]{display:none}.lb img{max-width:100%;max-height:88vh;margin:auto;object-fit:contain}
+.lb button{background:none;border:0;color:#fff;font-size:2.4rem;cursor:pointer;height:100%}
+.lb .lb-x{position:absolute;right:8px;top:0;height:56px;width:56px}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}.reveal.in{opacity:1;transform:none}
+.hero-body>*{animation:rise .8s both}.hero-body>*:nth-child(2){animation-delay:.1s}.hero-body>*:nth-child(3){animation-delay:.2s}.hero-body>*:nth-child(4){animation-delay:.3s}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <img class="hero-img" src="images/hero.webp" alt="Raj Real Estate township developments" width="1920" height="1080" fetchpriority="high">
+  <div class="hero-shade"></div>
+  <div class="wrap hero-body">
+    <p class="brand">Raj Real Estate presents · Riyasat Townships</p>
+    <h1>Discover a place that feels like <em>your future.</em></h1>
+    <p class="hero-sub">Explore four distinctive township developments by Raj Real Estate. Discover thoughtfully planned spaces, project features and locations that match your aspirations.</p>
+    <div class="cta-row">
+      <a class="btn gold" href="#projects">Explore all properties</a>
+      <a class="btn red" href="https://wa.me/917878859894?text=Hi%2C%20I%20want%20to%20book%20a%20site%20visit%20for%20Riyasat%20properties." target="_blank" rel="noopener">Book your site visit</a>
+      <a class="btn ghost" href="https://wa.me/917878859894" target="_blank" rel="noopener">WhatsApp us</a>
+    </div>
+  </div>
+  <div class="stats"><div class="wrap"><div><strong>4</strong><span>Townships</span></div><div><strong>92</strong><span>Acres combined</span></div><div><strong>RERA</strong><span>Registered projects</span></div><div><strong>Raigad</strong><span>Near Mumbai · Pune</span></div></div></div>
+</header>
+
+<main>
+  <section class="wrap sec reveal" id="about" aria-labelledby="h-about">
+    <p class="eyebrow">Who we are</p><h2 id="h-about">About Raj Real Estate</h2>
+    <div class="intro"><p>Raj Real Estate presents four Riyasat township projects in Raigad and Panvel, with parks, clubhouse-style amenities and planned infrastructure. Details are taken from the developer's brochures and marketing maps.</p></div>
+    <div class="usp"><div><b>Plotted townships</b><span>Residential and commercial plots</span></div><div><b>Planned amenities</b><span>Gardens, courts, clubhouses and more</span></div><div><b>Site visits</b><span>Book a guided visit with our team</span></div><div><b>Brochures</b><span>Download full project details</span></div></div>
+  </section>
+
+  <section class="wrap sec" id="projects" aria-labelledby="h-projects">
+    <p class="eyebrow">Our portfolio</p><h2 id="h-projects">Four Riyasat projects</h2>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <div id="details"></div>
+
+  <section class="sec alt" id="compare-s" aria-labelledby="h-compare">
+    <div class="wrap">
+      <h2 id="h-compare">Compare projects</h2>
+      <div class="table-scroll"><table id="compare"></table></div>
+    </div>
+  </section>
+
+  <section class="wrap sec" id="loc-s" aria-labelledby="h-loc">
+    <h2 id="h-loc">Location and connectivity</h2>
+    <p class="lead">Drive times as stated in the developer brochures. Confirm exact routes with our team.</p>
+    <div class="loc-grid" id="loc"></div>
+  </section>
+
+  <section class="sec alt" id="bro-s" aria-labelledby="h-bro">
+    <div class="wrap">
+      <h2 id="h-bro">Download brochures</h2>
+      <div class="bro" id="bro"></div>
+    </div>
+  </section>
+
+  <section class="wrap sec" aria-labelledby="h-faq">
+    <h2 id="h-faq">Buyer FAQs</h2>
+    <div id="faq"></div>
+  </section>
+</main>
+
+<nav class="bar" aria-label="Quick actions">
+  <a href="tel:+917878859894">Call</a>
+  <a href="https://wa.me/917878859894?text=Hi%2C%20I%20am%20interested%20in%20Riyasat%20properties." target="_blank" rel="noopener">WhatsApp</a>
+  <a class="b" href="https://wa.me/917878859894?text=Hi%2C%20I%20want%20to%20enquire%20about%20Riyasat%20properties." target="_blank" rel="noopener">Enquire</a>
+  <a class="b" href="https://wa.me/917878859894?text=Hi%2C%20I%20want%20to%20book%20a%20site%20visit%20for%20Riyasat%20properties." target="_blank" rel="noopener">Book Visit</a>
+</nav>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image gallery"><button class="lb-x" id="lb-x" aria-label="Close">×</button><button id="lb-p" aria-label="Previous">‹</button><img id="lb-i" alt=""><button id="lb-n" aria-label="Next">›</button></div>
+
+<script>
+(function () {
+  'use strict';
+  var TBC = 'To be confirmed from verified documents';
+  var IMGS = {
+    "sankalp/cover.webp": "images/sankalp/cover.webp",
+    "sankalp/layout.webp": "images/sankalp/layout.webp",
+    "sankalp/1.webp": "images/sankalp/1.webp",
+    "sankalp/2.webp": "images/sankalp/2.webp",
+    "bliss/layout.webp": "images/bliss/layout.webp",
+    "royalcrest/cover.webp": "images/royalcrest/cover.webp",
+    "royalcrest/layout.webp": "images/royalcrest/layout.webp",
+    "montera/plaza.webp": "images/montera/plaza.webp",
+    "montera/layout.webp": "images/montera/layout.webp"
+  };
+
+  var PROJECTS = [
+    {
+      slug: "sankalp", name: "Riyasat Sankalp",
+      location: "Nadhal, Khalapur, Raigad (Mumbai-Pune Highway area)",
+      size: "37 acres",
+      types: "Residential and commercial plots; plot sizes starting from 1,100 sq. ft.; 1.5 FSI (G+1) facility",
+      amenities: ["Vasundhara Park (with Hindu temple)", "Jeevan Park", "Hill watch tower", "Pawan Park: kids play area, flower bed zone, open-air gym, gazebo", "Shopping centre", "Entrance gazebo"],
+      infra: "Roads of 9 m, 12 m and 30 m widths",
+      advantages: "Plotted township with parks, shopping centre and a hill watch tower",
+      landmarks: null,
+      connectivity: ["Airport: 20 mins", "Trans Harbour Link: 30 mins", "Navi Mumbai: 15 mins", "Chowk Station: 5 mins"],
+      approvals: "MahaRERA No. P52000054353",
+      images: [["cover.webp", "Riyasat Sankalp entrance gate (artistic impression)"], ["1.webp", "Riyasat Sankalp park aerial view (artistic impression)"], ["2.webp", "Riyasat Sankalp round building and gardens (artistic impression)"], ["layout.webp", "Riyasat Sankalp layout plan"]],
+      tag: "37 acres"
+    },
+    {
+      slug: "bliss", name: "Riyasat Bliss",
+      location: "Panshil, Panvel (Panshil Talegaon Road, Tal. Khalapur, Dist. Raigad)",
+      size: "23 acres",
+      types: "Residential and commercial plots",
+      amenities: ["Trishul sculpture, entry gate with water body", "Temple, landscape garden with seating", "Gazebo with water body, open gym", "Amphitheatre, Shivji statue with artificial water wall", "Swimming pool and kids pool, open kids play area", "Sports complex (club house), basketball court, shopping centre", "Open fire pit, pergola, multipurpose court, open stage", "Box cricket pitch, kids play school / day care"],
+      infra: ["Outer boundary with wire fencing", "Entry gate with boom barriers", "24x7 CCTV at entry and junctions", "Underground water, sewerage, harvesting and electrification networks", "CC roads, street lights", "Solar plant for common area", "Underground and overhead tanks, sewage treatment plant"],
+      advantages: null, landmarks: null, connectivity: null,
+      approvals: "MahaRERA No. P52000079379",
+      images: [["layout.webp", "Riyasat Bliss layout plan"]],
+      tag: "23 acres"
+    },
+    {
+      slug: "royalcrest", name: "Riyasat Royalcrest",
+      location: "Vavandhal, Mumbai 3.0, Khalapur, Raigad",
+      size: "15 acres; 206 plots",
+      types: "Premium residential plots with a dedicated commercial space",
+      amenities: ["Convenience shopping plaza", "Jogging track, open gym", "Multipurpose club house, swimming pool", "Multipurpose court, cricket turf", "Yoga and meditation area", "Kids play area", "Temple, pergola"],
+      infra: ["Outer boundary with wire fencing", "Entry gate with boom barrier", "CCTV cameras at gate", "Sewerage, harvesting and water line networks", "Underground electrification with substation", "Street lights, CC roads, kerb stone work", "Overhead water storage tank / CWR, rainwater harvesting tank", "Sewage treatment plant"],
+      advantages: ["Nestled in the lap of mountains", "European-inspired township design", "Low-density premium plotting"],
+      landmarks: null,
+      connectivity: ["Navi Mumbai International Airport: 40 mins drive", "Atal Setu: 45 mins drive", "South Mumbai: 70 mins drive", "Pune: 1 hour drive", "Karjat Railway Station: 24 mins drive"],
+      approvals: "MahaRERA No. PP1270002600401",
+      offer: "Price hike alert: offer extended until 8 November 2026. Confirm current pricing and plot availability with our team.",
+      images: [["cover.webp", "Riyasat Royalcrest entrance arch (artistic impression)"], ["layout.webp", "Riyasat Royalcrest site layout"]],
+      tag: "15 acres"
+    },
+    {
+      slug: "montera", name: "Riyasat Montera",
+      location: "Ambivali, near Magic Hills, Majgaon, Tal. Khalapur, Dist. Raigad",
+      size: "17 acres; 206 residential and commercial plots; 10+ lifestyle amenities",
+      types: "Residential, commercial and hold plots (as marked on the marketing map)",
+      amenities: ["Grand entrance gate", "Convenience shopping plaza", "Nature trail walk, jogging track", "Sit-out garden, water feature fountain", "Kids play area, multipurpose lawn, multipurpose court", "Yoga and meditation zone", "Temple"],
+      infra: ["Outer boundaries with wire fencing", "Entry gate with boom barrier, CCTV at gate", "Water, sewerage and harvesting line networks", "Underground electrification with substation", "Street lights, CC roads, kerb stone work", "Overhead water storage tank / CWR, rainwater harvesting", "Sewage treatment plant"],
+      advantages: ["Modern contemporary township", "Scenic mountain living", "Expressway touch connectivity"],
+      landmarks: ["Education: Pillai University 15 mins, Vishwaniketan Institute 15 mins, Chhatrapati Shivaji Maharaj University 30 mins", "Weekend: Imagica 15 mins, Lonavala 35 mins, Matheran 1 hour"],
+      connectivity: ["Mumbai-Pune Expressway: 15 mins", "Chowk Railway Station: 23 mins", "Rasayani Railway Station: 24 mins", "Panvel Junction: 40 mins", "Atal Setu: 50 mins", "Navi Mumbai International Airport: 50 mins", "Pune City: 1 hour"],
+      approvals: "MahaRERA No. PP1270002600684",
+      images: [["plaza.webp", "Riyasat Montera shopping complex (artistic impression)"], ["layout.webp", "Riyasat Montera marketing map"]],
+      tag: "17 acres"
+    }
+  ];
+
+  var FAQS = [
+    ['How do I book a site visit?', 'Tap any "Book a site visit" button. It opens WhatsApp with your project name filled in, and our team will confirm a date with you.'],
+    ['Can I download project brochures?', 'Yes. Each project has its own brochure in the Download brochures section.'],
+    ['Where can I check approvals and RERA details?', 'Verified approval and RERA details are listed in each project section and in its brochure. Ask our team for copies of documents.'],
+    ['How do I confirm current pricing?', 'Pricing and plot availability are confirmed by our team on enquiry or during a site visit. Call or WhatsApp +91 78788 59894.']
+  ];
+
+  var WA = 'https://wa.me/917878859894?text=';
+  var wa = function (t) { return WA + encodeURIComponent(t); };
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var esc = function (s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); };
+  var val = function (v) { return v ? esc(Array.isArray(v) ? v.join(', ') : v) : '<span class="tbc">' + TBC + '</span>'; };
+  var chips = function (v) { return Array.isArray(v) && v.length ? '<ul class="chips">' + v.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : val(v); };
+  var list = function (v) { return Array.isArray(v) && v.length ? '<ul>' + v.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '<span class="tbc">' + TBC + '</span>'; };
+  var img = function (p, file, alt, lazy) {
+    return '<img src="' + IMGS[p.slug + '/' + file] + '" alt="' + esc(alt) + '" width="800" height="600"' + (lazy ? ' loading="lazy" decoding="async"' : '') +
+      ' onerror="var d=document.createElement(\'div\');d.className=\'ph\';d.textContent=\'' + esc(p.name) + '\';this.replaceWith(d)">';
+  };
+
+  function render() {
+    $('#cards').innerHTML = PROJECTS.map(function (p) {
+      return '<article class="card reveal"><div class="card-img"><span class="tag">' + esc(p.tag) + '</span>' + img(p, p.images[0][0], p.images[0][1], true) + '</div><div class="card-b"><h3>' + esc(p.name) + '</h3><p>' + esc(p.location) + '</p>' +
+        '<a class="btn out" href="#' + p.slug + '">Know more</a>' +
+        '<a class="btn red" href="' + wa('Hi, I want to book a site visit for ' + p.name + '.') + '" target="_blank" rel="noopener">Book a site visit</a></div></article>';
+    }).join('');
+
+    $('#details').innerHTML = PROJECTS.map(function (p) {
+      var rows = [['Location', val(p.location)], ['Project size', val(p.size)], ['Property types', val(p.types)], ['Amenities', chips(p.amenities)], ['Infrastructure', chips(p.infra)],
+        ['Advantages', chips(p.advantages)], ['Landmarks', chips(p.landmarks)], ['Connectivity', chips(p.connectivity)], ['Approvals', val(p.approvals)]];
+      return '<section class="detail" id="' + p.slug + '" aria-labelledby="h-' + p.slug + '"><div class="wrap d-grid"><div class="reveal">' +
+        '<p class="eyebrow">' + esc(p.tag) + '</p><h2 id="h-' + p.slug + '">' + esc(p.name) + '</h2>' +
+        (p.offer ? '<p class="offer">' + esc(p.offer) + '</p>' : '') + '<dl class="facts">' + rows.map(function (r) { return '<div><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl>' +
+        '<div class="cta-row"><a class="btn red" href="' + wa('Hi, I want to book a site visit for ' + p.name + '.') + '" target="_blank" rel="noopener">Book a site visit</a>' +
+        '<a class="btn out" href="' + wa('Hi, I want to enquire about ' + p.name + '.') + '" target="_blank" rel="noopener">Enquire</a>' +
+        '<a class="btn out" href="/brochures/riyasat-' + p.slug + '.pdf" download>Brochure</a>' +
+        '<a class="btn out" href="' + wa('Hi, I am interested in ' + p.name) + '" target="_blank" rel="noopener">WhatsApp</a>' +
+        '<a class="btn out" href="tel:+917878859894">Call</a></div></div>' +
+        '<div class="d-cover reveal">' + img(p, p.images[0][0], p.images[0][1], true) +
+        (p.images.length > 1 ? '<div class="gallery">' + p.images.slice(1).map(function (m) { return img(p, m[0], m[1], true); }).join('') + '</div>' : '') +
+        '<p class="note">Images are artistic impressions. As stated by the developer, designs, facilities and amenities are for representation and may change as per developer requirements.</p></div></div></section>';
+    }).join('');
+
+    var cols = [['Location', 'location'], ['Project size', 'size'], ['Property types', 'types'], ['Approvals and RERA', 'approvals']];
+    $('#compare').innerHTML = '<thead><tr><th scope="col">Detail</th>' + PROJECTS.map(function (p) { return '<th scope="col">' + esc(p.name) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+      cols.map(function (c) { return '<tr><th scope="row">' + c[0] + '</th>' + PROJECTS.map(function (p) { return '<td>' + val(p[c[1]]) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody>';
+
+    $('#loc').innerHTML = PROJECTS.map(function (p) {
+      return '<div class="reveal"><h3>' + esc(p.name) + '</h3>' + list(p.connectivity) + '</div>';
+    }).join('');
+
+    $('#bro').innerHTML = PROJECTS.map(function (p) {
+      return '<a class="btn out" href="/brochures/riyasat-' + p.slug + '.pdf" download>' + esc(p.name) + '</a>';
+    }).join('');
+
+    $('#faq').innerHTML = FAQS.map(function (f) { return '<details><summary>' + esc(f[0]) + '</summary><p>' + esc(f[1]) + '</p></details>'; }).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    render();
+
+    // scroll reveal
+    var els = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (en) { en.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add('in'); io.unobserve(x.target); } }); }, { threshold: .12 });
+      els.forEach(function (el) { io.observe(el); });
+    } else { els.forEach(function (el) { el.classList.add('in'); }); }
+
+    // lightbox
+    var lb = $('#lb'), li = $('#lb-i'), set = [], idx = 0;
+    function show(i) { idx = (i + set.length) % set.length; li.src = set[idx].src; li.alt = set[idx].alt; }
+    document.addEventListener('click', function (e) {
+      var im = e.target.closest('.detail img');
+      if (!im) return;
+      set = [].slice.call(im.closest('.detail').querySelectorAll('img'));
+      lb.hidden = false; show(set.indexOf(im));
+    });
+    $('#lb-x').addEventListener('click', function () { lb.hidden = true; });
+    $('#lb-p').addEventListener('click', function () { show(idx - 1); });
+    $('#lb-n').addEventListener('click', function () { show(idx + 1); });
+    document.addEventListener('keydown', function (e) {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') lb.hidden = true; else if (e.key === 'ArrowLeft') show(idx - 1); else if (e.key === 'ArrowRight') show(idx + 1);
+    });
+  });
+})();
+</script>
+</body>
+</html>
