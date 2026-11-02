@@ -1,14 +1,350 @@
-// CONFIGURATIONS - REPLACE THESE WITH YOUR OWN API ENDPOINTS
-const CONFIG = {
-    // 1. Google Sheets Web App URL (Deploy google-apps-script.js as a Web App in script.google.com and paste URL here)
-    GOOGLE_SHEET_API_URL: "https://script.google.com/macros/s/AKfycbzXXXXXXXXXXXXX/exec",
-    
-    // 2. Cloudinary Unsigned Upload Configuration for Career page resume uploads
-    CLOUDINARY_URL: "https://api.cloudinary.com/v1_1/YOUR_CLOUD_NAME/upload",
-    CLOUDINARY_UPLOAD_PRESET: "YOUR_UNSIGNED_PRESET"
-};
+const CMS_API_BASE_URL = window.RAJ_API_BASE_URL ||
+    (["localhost", "127.0.0.1"].includes(window.location.hostname)
+        ? window.location.origin
+        : "https://raj-real-estate.onrender.com");
+
+function cmsApiUrl(path) {
+    return `${CMS_API_BASE_URL.replace(/\/$/, "")}/api/cms${path}`;
+}
+
+function cmsElement(tagName, className, text) {
+    const element = document.createElement(tagName);
+    if (className) element.className = className;
+    if (text) element.textContent = text;
+    return element;
+}
+
+function projectCard(project, featured) {
+    const column = cmsElement("div", featured ? "col-lg-4 col-md-6" : "col-lg-4 col-md-6 project-card animate-card");
+    if (!featured) column.dataset.city = project.category;
+
+    const card = cmsElement("div", "luxury-card");
+    if (project.card_image) {
+        const imageWrapper = cmsElement("div", "card-img-wrapper");
+        const image = cmsElement("img");
+        image.src = project.card_image;
+        image.alt = project.name;
+        imageWrapper.append(image);
+        card.append(imageWrapper);
+    }
+
+    const content = cmsElement("div", "p-4");
+    const labels = cmsElement("div", "d-flex justify-content-between align-items-center mb-3");
+    labels.append(
+        cmsElement("span", "badge bg-light text-dark text-uppercase", project.location_label),
+        cmsElement("span", "text-gold small", project.location)
+    );
+    const heading = cmsElement("h4", "mb-3", project.name);
+    const action = cmsElement("div", "d-flex justify-content-end align-items-center");
+    const link = cmsElement("a", featured ? "btn btn-sm btn-luxury" : "btn btn-luxury btn-sm", featured ? "Know More" : "Explore");
+    link.href = project.page_path;
+    action.append(link);
+
+    content.append(labels, heading);
+    if (project.summary) content.append(cmsElement("p", featured ? "text-muted small mb-4" : "text-muted small mb-4", project.summary));
+    if (!featured) content.append(cmsElement("hr", "border-light"));
+    content.append(action);
+    card.append(content);
+    column.append(card);
+    return column;
+}
+
+function updateProjectDetail(project) {
+    document.title = project.page_title || `${project.name} | RAJ REAL ESTATE`;
+    const description = document.querySelector('meta[name="description"]');
+    if (description && project.seo_description) description.content = project.seo_description;
+    document.body.dataset.projectName = project.name;
+
+    const title = document.querySelector("main h1, body > section h1");
+    if (title) title.textContent = project.name;
+    const banner = title?.closest("section");
+    const locationLabel = banner?.querySelector(".text-gold");
+    if (locationLabel && (project.banner_label || project.location_label)) {
+        locationLabel.textContent = project.banner_label || project.location_label;
+    }
+
+    const descriptionHeading = [...document.querySelectorAll("h3")].find(element =>
+        element.textContent.trim().toLowerCase() === "project description"
+    ) || document.querySelector("#villa h3");
+    const descriptionText = descriptionHeading?.nextElementSibling;
+    if (descriptionText?.tagName === "P" && project.description) {
+        descriptionText.textContent = project.description;
+    }
+
+    const galleryHeading = [...document.querySelectorAll("h3, h4")].find(element =>
+        element.textContent.trim().toLowerCase().includes("gallery")
+    );
+    const galleryGrid = galleryHeading?.nextElementSibling;
+    if (galleryGrid?.classList.contains("row") &&
+        document.body.dataset.cmsDynamicProject !== "true") {
+        const columns = [...galleryGrid.children];
+        project.gallery.forEach((imagePath, index) => {
+            let column = columns[index];
+            if (!column) {
+                column = cmsElement("div", "col-md-3 col-6");
+                const wrapper = cmsElement("div", "gallery-wrapper border");
+                wrapper.style.cursor = "pointer";
+                wrapper.style.overflow = "hidden";
+                wrapper.style.height = "120px";
+                wrapper.dataset.bsToggle = "modal";
+                wrapper.dataset.bsTarget = "#galleryModal";
+                const image = cmsElement("img", "w-100 h-100");
+                image.style.objectFit = "cover";
+                wrapper.append(image);
+                column.append(wrapper);
+                galleryGrid.append(column);
+                columns.push(column);
+            }
+
+            const image = column.querySelector("img");
+            if (!image) return;
+            image.src = imagePath;
+            image.alt = `${project.name} gallery image ${index + 1}`;
+            const wrapper = image.closest(".gallery-wrapper");
+            if (wrapper) wrapper.onclick = () => window.setModalImage?.(imagePath);
+        });
+        columns.slice(project.gallery.length).forEach(column => column.remove());
+        if (galleryHeading) galleryHeading.hidden = project.gallery.length === 0;
+        galleryGrid.hidden = project.gallery.length === 0;
+    }
+
+    const layoutImage = [...document.querySelectorAll("img")].find(image =>
+        image.alt.toLowerCase().includes("layout map")
+    );
+    if (layoutImage && project.layout_image) {
+        layoutImage.src = project.layout_image;
+        const wrapper = layoutImage.closest(".gallery-wrapper");
+        if (wrapper) wrapper.setAttribute("onclick", `setModalImage('${project.layout_image}')`);
+    }
+
+    const amenitiesHeading = [...document.querySelectorAll("h3, h4")].find(element =>
+        /amenit/i.test(element.textContent)
+    );
+    const amenitiesGrid = amenitiesHeading?.nextElementSibling;
+    if (amenitiesGrid?.classList.contains("row") && project.amenities.length) {
+        amenitiesGrid.replaceChildren(...project.amenities.map(amenity => {
+            const column = cmsElement("div", "col-md-4 col-6");
+            const card = cmsElement("div", "amenity-card");
+            const icon = cmsElement("i");
+            icon.className = `bi ${amenity.icon}`;
+            card.append(icon, cmsElement("h6", "mb-0", amenity.label));
+            column.append(card);
+            return column;
+        }));
+    }
+
+    const videoLink = [...document.querySelectorAll('a[href*="youtube.com"], a[href*="youtu.be"]')][0];
+    if (videoLink && project.video_url) videoLink.href = project.video_url;
+
+    document.querySelectorAll('input[name="projectName"]').forEach(input => {
+        input.value = project.name;
+    });
+}
+
+function applyPageMetadata(page) {
+    document.title = page.seo_title || page.title;
+    const description = document.querySelector('meta[name="description"]');
+    if (description && page.seo_description) description.content = page.seo_description;
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.content = page.seo_title || page.title;
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription && page.seo_description) ogDescription.content = page.seo_description;
+
+    Object.entries(page.content || {}).forEach(([key, value]) => {
+        document.querySelectorAll(`[data-cms-field="${CSS.escape(key)}"]`).forEach(element => {
+            element.textContent = value;
+        });
+        document.querySelectorAll(`img[data-cms-image="${CSS.escape(key)}"]`).forEach(image => {
+            if (value) image.src = value;
+        });
+    });
+}
+
+function applySharedContactSettings(settings) {
+    const labels = {
+        officeAddress: "",
+        phone: "Office Desk: ",
+        whatsapp: "WhatsApp: ",
+        email: "",
+        businessHours: ""
+    };
+    document.querySelectorAll("[data-cms-setting]").forEach(element => {
+        const key = element.dataset.cmsSetting;
+        if (settings[key]) element.textContent = `${labels[key] || ""}${settings[key]}`;
+    });
+
+    document.querySelectorAll(".luxury-footer p").forEach(paragraph => {
+        const icon = paragraph.querySelector("i");
+        const iconClass = icon?.className || "";
+        let value = "";
+        let label = "";
+        if (iconClass.includes("bi-geo-alt")) value = settings.officeAddress || "";
+        else if (iconClass.includes("bi-telephone")) {
+            value = settings.phone || "";
+            label = "Phone: ";
+        } else if (iconClass.includes("bi-whatsapp")) {
+            value = settings.whatsapp || "";
+            label = "WhatsApp: ";
+        } else if (iconClass.includes("bi-envelope")) {
+            value = settings.email || "";
+            label = "Email: ";
+        }
+        if (!value) return;
+        paragraph.replaceChildren(icon, document.createTextNode(` ${label}${value}`));
+    });
+
+    const phone = (settings.phone || "").replace(/[^\d+]/g, "");
+    const whatsapp = (settings.whatsapp || "").replace(/\D/g, "");
+    document.querySelectorAll('.sticky-contact-bar a[href^="tel:"]').forEach(link => {
+        if (phone) link.href = `tel:${phone}`;
+    });
+    document.querySelectorAll(".sticky-contact-bar .sticky-whatsapp").forEach(link => {
+        if (whatsapp) link.href = `https://wa.me/${whatsapp}`;
+    });
+}
+
+async function initializeCmsPublicContent() {
+    const isDynamicProject = document.body.dataset.cmsDynamicProject === "true";
+    const isProjectsPage = ["/projects", "/projects/jaipur", "/projects/navi-mumbai"]
+        .includes(window.location.pathname);
+    const projectPath = isProjectsPage
+        ? null
+        : window.location.pathname.match(/^\/projects\/([a-z0-9-]+)(?:\.html)?$/i);
+
+    if (isDynamicProject && projectPath) {
+        const response = await fetch(cmsApiUrl(`/public/projects/${encodeURIComponent(projectPath[1])}`));
+        if (!response.ok) throw new Error("Project content is unavailable.");
+        const { project } = await response.json();
+        const container = document.getElementById("cmsProjectContent");
+        container.replaceChildren();
+
+        const hero = cmsElement("section", "py-5 bg-dark text-light");
+        const heroContent = cmsElement("div", "container py-5 text-center");
+        heroContent.append(
+            cmsElement("span", "text-gold text-uppercase fw-bold mb-3 d-inline-block", project.banner_label || project.location_label),
+            cmsElement("h1", "display-4 text-uppercase text-white mb-3", project.name),
+            cmsElement("p", "lead text-light", project.summary)
+        );
+        hero.append(heroContent);
+
+        const details = cmsElement("section", "py-5");
+        const content = cmsElement("div", "container");
+        content.append(cmsElement("p", "text-muted", project.location));
+        content.append(cmsElement("p", "lead", project.description));
+        if (project.card_image) {
+            const cover = cmsElement("img", "img-fluid mb-4");
+            cover.src = project.card_image;
+            cover.alt = project.name;
+            content.append(cover);
+        }
+        if (project.gallery.length) {
+            content.append(cmsElement("h2", "text-uppercase mb-4", "Project Gallery"));
+            const gallery = cmsElement("div", "row g-3 mb-5");
+            project.gallery.forEach((source, index) => {
+                const column = cmsElement("div", "col-md-3 col-6");
+                const image = cmsElement("img", "img-fluid w-100");
+                image.src = source;
+                image.alt = `${project.name} gallery image ${index + 1}`;
+                column.append(image);
+                gallery.append(column);
+            });
+            content.append(gallery);
+        }
+        if (project.layout_image || project.map_image) {
+            const layout = cmsElement("img", "img-fluid d-block mx-auto mb-5");
+            layout.src = project.layout_image || project.map_image;
+            layout.alt = "Project layout";
+            content.append(cmsElement("h2", "text-uppercase mb-4", "Site Layout"), layout);
+        }
+        if (project.amenities.length) {
+            content.append(cmsElement("h2", "text-uppercase mb-4", "Amenities"));
+            const amenities = cmsElement("div", "row g-3 mb-5");
+            project.amenities.forEach(amenity => {
+                const column = cmsElement("div", "col-md-4 col-6");
+                const card = cmsElement("div", "amenity-card");
+                const icon = cmsElement("i");
+                icon.className = `bi ${amenity.icon}`;
+                card.append(icon, cmsElement("h6", "mb-0", amenity.label));
+                column.append(card);
+                amenities.append(column);
+            });
+            content.append(amenities);
+        }
+        if (project.video_url) {
+            const videoLink = cmsElement("a", "btn btn-luxury", "Watch project tour");
+            videoLink.href = project.video_url;
+            videoLink.target = "_blank";
+            videoLink.rel = "noopener noreferrer";
+            content.append(videoLink);
+        }
+        details.append(content);
+        container.append(hero, details);
+        updateProjectDetail(project);
+        return;
+    }
+
+    const isBlogPage = window.location.pathname === "/blog.html" ||
+        window.location.pathname === "/blog-post.html" ||
+        window.location.pathname === "/blog" ||
+        window.location.pathname === "/blog/" ||
+        /^\/blog\/[a-z0-9-]+$/i.test(window.location.pathname);
+    const isProjectDetail = Boolean(projectPath);
+    const pageSlug = isProjectsPage
+        ? "projects"
+        : window.location.pathname.replace(/^\/|\.html$/g, "") || "index";
+    const [pageResponse, settingsResponse] = await Promise.all([
+        isBlogPage || isProjectDetail ? Promise.resolve(null) :
+            fetch(cmsApiUrl(`/public/pages/${encodeURIComponent(pageSlug)}`)),
+        fetch(cmsApiUrl("/public/settings"))
+    ]);
+
+    if (pageResponse?.ok) {
+        const { page } = await pageResponse.json();
+        applyPageMetadata(page);
+    }
+    if (settingsResponse.ok) {
+        const { settings } = await settingsResponse.json();
+        applySharedContactSettings(settings);
+    }
+
+    const projectsResponse = await fetch(cmsApiUrl("/public/projects"));
+    if (!projectsResponse.ok) throw new Error("Published projects are unavailable.");
+    const { projects } = await projectsResponse.json();
+
+    if (isProjectsPage) {
+        const grid = document.getElementById("projectsGrid");
+        if (grid) {
+            grid.replaceChildren(...projects.map(project => projectCard(project, false)));
+            window.dispatchEvent(new Event("cms:projects-updated"));
+        }
+    }
+
+    const featuredHeading = [...document.querySelectorAll("h2")].find(element =>
+        element.textContent.trim() === "Featured Listings"
+    );
+    const featuredRow = featuredHeading?.closest("section")?.querySelector(".row.g-4");
+    if (featuredRow) {
+        featuredRow.replaceChildren(...projects.filter(project => project.featured)
+            .map(project => projectCard(project, true)));
+    }
+
+    if (projectPath) {
+        const response = await fetch(cmsApiUrl(`/public/projects/${encodeURIComponent(projectPath[1])}`));
+        if (!response.ok) {
+            document.body.replaceChildren(cmsElement("main", "container py-5", "This project is not available."));
+            return;
+        }
+        const { project } = await response.json();
+        updateProjectDetail(project);
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
+    initializeCmsPublicContent().catch(error => {
+        console.error("CMS content could not be loaded; the static page content remains visible.", error);
+    });
+
     // 1. STICKY NAVBAR SCROLL
     const navbar = document.querySelector(".navbar-custom");
     if (navbar) {
@@ -49,7 +385,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const closeBtn = drawer.querySelector(".mobile-sidebar-close");
         
         // Clone links from navbar to mobile sidebar
-        const navLinks = navbar.querySelectorAll(".navbar-nav .nav-link");
+        const navLinks = navbar.querySelectorAll(".navbar-nav .nav-link, .navbar-nav .dropdown-item");
         navLinks.forEach(link => {
             const li = document.createElement("li");
             const clonedLink = link.cloneNode(true);
@@ -198,222 +534,149 @@ document.addEventListener("DOMContentLoaded", () => {
     //     }
     // }
 
-    // 5. GOOGLE SHEETS AJAX FORM SUBMISSION
-    const forms = document.querySelectorAll(".sheet-form");
+    const careerForm = document.getElementById("careerForm");
+    if (careerForm) {
+        careerForm.addEventListener("submit", async event => {
+            event.preventDefault();
+            if (careerForm.dataset.submitting === "true" || !careerForm.reportValidity()) return;
 
-forms.forEach(form => {
-
-    // This handler is ONLY for the Careers form
-    if (!form.querySelector('input[name="resumeFile"]')) {
-        return;
-    }
-
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        console.log("Submitting form...");
-
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalBtnText = submitBtn.innerHTML;
-        
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Saving...`;
-
-            let feedback = form.querySelector(".form-feedback");
+            const submitButton = careerForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            let feedback = careerForm.querySelector(".form-feedback");
             if (!feedback) {
                 feedback = document.createElement("div");
-                feedback.className = "form-feedback mt-3 alert d-none";
-                form.appendChild(feedback);
+                feedback.className = "form-feedback mt-3 alert";
+                feedback.setAttribute("role", "status");
+                feedback.setAttribute("aria-live", "polite");
+                careerForm.append(feedback);
             }
-            feedback.classList.add("d-none");
+
+            const fieldValue = name =>
+                careerForm.querySelector(`[name="${name}"]`)?.value?.trim() || "";
+            const payload = {
+                name: fieldValue("name"),
+                phone: fieldValue("phone"),
+                email: fieldValue("email"),
+                address: fieldValue("address"),
+                qualification: fieldValue("qualification"),
+                experience: fieldValue("experience"),
+                appliedPosition: fieldValue("appliedPosition"),
+                resumeUrl: fieldValue("resumeUrl"),
+                coverLetter: fieldValue("coverLetter")
+            };
+
+            careerForm.dataset.submitting = "true";
+            submitButton.disabled = true;
+            submitButton.textContent = "Submitting...";
+            feedback.className = "form-feedback mt-3 alert alert-info";
+            feedback.textContent = "Submitting your application...";
 
             try {
-                const formData = new FormData(form);
-                const dataObj = {};
-                formData.forEach((value, key) => {
-                    dataObj[key] = value;
-                });
-
-                if (document.body.getAttribute("data-project-name")) {
-                    dataObj["projectName"] = document.body.getAttribute("data-project-name");
-                }
-                dataObj["sourcePage"] = window.location.pathname.split("/").pop() || "index.html";
-
-                // Handle Resume file uploads in Careers
-                const resumeFileInput = form.querySelector('input[type="file"][name="resumeFile"]');
-                if (resumeFileInput && resumeFileInput.files.length > 0) {
-                    const file = resumeFileInput.files[0];
-                    const cloudinaryData = new FormData();
-                    cloudinaryData.append("file", file);
-                    cloudinaryData.append("upload_preset", CONFIG.CLOUDINARY_UPLOAD_PRESET);
-
-                    feedback.classList.remove("d-none");
-                    feedback.className = "form-feedback mt-3 alert alert-info";
-                    feedback.innerText = "Uploading resume file to Cloudinary...";
-
-                    const uploadRes = await fetch(CONFIG.CLOUDINARY_URL, {
-                        method: "POST",
-                        body: cloudinaryData
-                    });
-
-                    if (!uploadRes.ok) {
-                        throw new Error("Cloudinary file upload failed. Please verify credentials.");
-                    }
-
-                    const uploadJson = await uploadRes.json();
-                    dataObj["resumeUrl"] = uploadJson.secure_url;
-                }
-                feedback.classList.remove("d-none");
-                feedback.className = "form-feedback mt-3 alert alert-info";
-                feedback.innerText = "Recording submission to Sheets...";
-
-                const response = await fetch(CONFIG.GOOGLE_SHEET_API_URL, {
+                const response = await fetch(`${CMS_API_BASE_URL.replace(/\/$/, "")}/api/career`, {
                     method: "POST",
-                    mode: "cors",
-                    headers: {
-                        "Content-Type": "text/plain;charset=utf-8"
-                    },
-                    body: JSON.stringify(dataObj)
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
                 });
+                let result;
+                try {
+                    result = await response.json();
+                } catch {
+                    throw new Error(`The server returned an invalid response (HTTP ${response.status}).`);
+                }
+                if (!response.ok || result.success !== true) {
+                    throw new Error(result.error || `The application could not be submitted (HTTP ${response.status}).`);
+                }
 
-               // Hide the old success message
-feedback.classList.add("d-none");
-
-// Clear the form fields
-form.reset();
-
-// Show the new Thank You message
-let thankYou = form.querySelector(".thank-you-message");
-
-if (!thankYou) {
-    thankYou = document.createElement("div");
-    thankYou.className = "thank-you-message";
-    thankYou.innerHTML = `
-        <strong>Thank you!</strong>
-        <span>Your inquiry has been submitted successfully.</span>
-    `;
-
-    form.appendChild(thankYou);
-}
-
-thankYou.style.display = "block";
-
-            } catch (err) {
-                console.error(err);
+                careerForm.reset();
+                feedback.className = "form-feedback mt-3 alert alert-success";
+                feedback.textContent = "Thank you. Your application has been submitted successfully.";
+            } catch (error) {
                 feedback.className = "form-feedback mt-3 alert alert-danger";
-                feedback.innerText = "Error: " + err.message + ". Please verify configuration URLs.";
+                feedback.textContent = error instanceof TypeError
+                    ? "We could not reach the server. Check your connection and try again."
+                    : error.message;
             } finally {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnText;
+                careerForm.dataset.submitting = "false";
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
             }
         });
-    });
-});
-document.querySelectorAll(".sheet-form").forEach(form => {
+    }
 
-    // Quick Inquiry handler — skip Careers form
-    if (form.querySelector('input[name="resumeFile"]')) {
+document.querySelectorAll(".sheet-form").forEach(form => {
+    if (form.id === "careerForm" ||
+        !form.querySelector('[name="name"]') ||
+        !form.querySelector('[name="phone"]')) {
         return;
     }
 
-    form.addEventListener("submit", async function (e) {
+    form.addEventListener("submit", async event => {
+        event.preventDefault();
+        if (form.dataset.submitting === "true") return;
+        if (!form.reportValidity()) return;
 
-        e.preventDefault();
+        const submitButtons = [...form.querySelectorAll('button[type="submit"], input[type="submit"]')];
+        const originalButtonContent = submitButtons.map(button => button.innerHTML);
+        const thankYou = form.querySelector(".thank-you-message");
+        if (thankYou) thankYou.style.display = "none";
+        let feedback = form.querySelector(".form-feedback");
+        if (!feedback) {
+            feedback = document.createElement("div");
+            feedback.className = "form-feedback mt-3 alert";
+            feedback.setAttribute("role", "status");
+            feedback.setAttribute("aria-live", "polite");
+            form.append(feedback);
+        }
+        feedback.className = "form-feedback mt-3 alert alert-info";
+        feedback.textContent = "Submitting your enquiry...";
+        form.dataset.submitting = "true";
+        submitButtons.forEach(button => {
+            button.disabled = true;
+            if (button.tagName === "BUTTON") button.textContent = "Submitting...";
+        });
 
-        const BACKEND_URL = "https://raj-real-estate.onrender.com";
-
-        const url = window.location.pathname.includes("career")
-            ? `${BACKEND_URL}/api/career`
-            : `${BACKEND_URL}/api/inquiry`;
-
-        const formData = {
-            name: form.querySelector('[name="name"]').value,
-            phone: form.querySelector('[name="phone"]').value,
-            email: form.querySelector('[name="email"]').value,
-
-            formType: form.querySelector('[name="formType"]')
-                ? form.querySelector('[name="formType"]').value
-                : "",
-
-            projectName: form.querySelector('[name="projectName"]')
-                ? form.querySelector('[name="projectName"]').value
-                : "",
-
-            message: form.querySelector('[name="message"]')
-                ? form.querySelector('[name="message"]').value
-                : "",
-
-            address: form.querySelector('[name="address"]')
-                ? form.querySelector('[name="address"]').value
-                : "",
-
-            qualification: form.querySelector('[name="qualification"]')
-                ? form.querySelector('[name="qualification"]').value
-                : "",
-
-            experience: form.querySelector('[name="experience"]')
-                ? form.querySelector('[name="experience"]').value
-                : "",
-
-            appliedPosition: form.querySelector('[name="appliedPosition"]')
-                ? form.querySelector('[name="appliedPosition"]').value
-                : "",
-
-            coverLetter: form.querySelector('[name="coverLetter"]')
-                ? form.querySelector('[name="coverLetter"]').value
-                : ""
+        const value = name => form.querySelector(`[name="${name}"]`)?.value?.trim() || "";
+        const payload = {
+            name: value("name"),
+            phone: value("phone"),
+            email: value("email"),
+            message: value("message"),
+            projectName: value("projectName") || document.body.dataset.projectName || "",
+            sourceForm: value("formType") || form.dataset.sourceForm || "Website enquiry",
+            sourcePage: window.location.pathname
         };
 
         try {
-
-            const response = await fetch(url, {
+            const response = await fetch(`${CMS_API_BASE_URL.replace(/\/$/, "")}/api/inquiry`, {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(formData)
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
             });
-
-            if (!response.ok) {
-                throw new Error("Server error");
+            let result;
+            try {
+                result = await response.json();
+            } catch {
+                throw new Error(`The server returned an invalid response (HTTP ${response.status}).`);
+            }
+            if (!response.ok || result.success !== true) {
+                throw new Error(result.error || `The enquiry could not be saved (HTTP ${response.status}).`);
             }
 
-            const result = await response.json();
-
-            console.log(result);
-
-            // 1. Blank the form
             form.reset();
-
-            // 2. Find Thank You message
-            let thankYou = form.querySelector(".thank-you-message");
-
-            // 3. If it doesn't exist, create it
-            if (!thankYou) {
-
-                thankYou = document.createElement("div");
-
-                thankYou.className = "thank-you-message";
-
-                thankYou.innerHTML = `
-                    <strong>Thank you!</strong>
-                    <span>Your inquiry has been submitted successfully.</span>
-                `;
-
-                form.appendChild(thankYou);
-            }
-
-            // 4. Show it
-            thankYou.style.display = "block";
-
+            feedback.className = "form-feedback mt-3 alert alert-success";
+            feedback.textContent = "Thank you. Your enquiry has been saved successfully.";
         } catch (error) {
-
-            console.error(error);
-
-            alert("Server error. Please try again.");
-
+            feedback.className = "form-feedback mt-3 alert alert-danger";
+            feedback.textContent = error instanceof TypeError
+                ? "We could not reach the server. Check your connection and try again."
+                : error.message;
+        } finally {
+            form.dataset.submitting = "false";
+            submitButtons.forEach((button, index) => {
+                button.disabled = false;
+                button.innerHTML = originalButtonContent[index];
+            });
         }
-
     });
-
+});
 });

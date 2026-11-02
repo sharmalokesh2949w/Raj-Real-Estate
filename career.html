@@ -28,7 +28,9 @@
     <!-- End Google Tag Manager -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/images/logo.png" />
     <title>Career Opportunities - RAJ REAL ESTATE</title>
+    <meta name="description" content="Explore career opportunities at Raj Real Estate and submit an application to join the property advisory team." />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="css/custom.css" />
@@ -41,7 +43,7 @@
     <!-- Header Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <a class="navbar-brand d-flex align-items-center" href="/">
                 <img src="images/logo.png" alt="Raj Real Estate Logo" style="height: 60px;" />
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -49,13 +51,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="why-us.html">Why Us</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="career.html">Career</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="privacypolicy.html">Privacy Policy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="/projects" role="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="/projects/navi-mumbai">Navi Mumbai</a></li><li><a class="dropdown-item" href="/projects/jaipur">Jaipur</a></li></ul></li>
+                    <li class="nav-item"><a class="nav-link" href="/why-us">Why Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/blog">Blog</a></li>
                 </ul>
         </div>
     </nav>
@@ -63,8 +63,8 @@
     <!-- Header Banner -->
     <section class="py-5 bg-dark text-light text-center" style="background: linear-gradient(rgba(17,22,37,0.85), rgba(17,22,37,0.85)), url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200') center/cover; margin-top: 80px;">
         <div class="container py-4">
-            <h1 class="display-4 text-uppercase text-white mb-3">Build Your Career With Us</h1>
-            <p class="lead text-gold max-width-600 mx-auto">High earning potential, luxury lifestyle, attractive incentives, domestic & international tours.</p>
+            <h1 data-cms-field="heroTitle" class="display-4 text-uppercase text-white mb-3">Build Your Career With Us</h1>
+            <p data-cms-field="heroSubtitle" class="lead text-gold max-width-600 mx-auto">High earning potential, luxury lifestyle, attractive incentives, domestic & international tours.</p>
         </div>
     </section>
 
@@ -74,8 +74,8 @@
             <div class="row g-5 align-items-center mb-5">
                 <div class="col-lg-6">
                     <span class="text-gold text-uppercase fw-bold mb-3 d-inline-block">Life at Raj Real Estate</span>
-                    <h2 class="display-6 mb-4">Grow Faster. Dream Bigger. Achieve More.</h2>
-                    <p class="text-muted mb-4">At Raj Real Estate, we believe that success comes from the people who work with us. We are looking for motivated, honest, and enthusiastic individuals who want to build a rewarding career in the real estate industry. Whether you are starting your career or have previous experience, we provide the right environment to learn, grow, and achieve your goals while working with a supportive and professional team.</p>
+                    <h2 data-cms-field="careerTitle" class="display-6 mb-4">Grow Faster. Dream Bigger. Achieve More.</h2>
+                    <p data-cms-field="careerDescription" class="text-muted mb-4">At Raj Real Estate, we believe that success comes from the people who work with us. We are looking for motivated, honest, and enthusiastic individuals who want to build a rewarding career in the real estate industry. Whether you are starting your career or have previous experience, we provide the right environment to learn, grow, and achieve your goals while working with a supportive and professional team.</p>
                     <p class="text-muted mb-5">Under the guidance of Satish Kumar Sharma, you'll receive practical training in client communication, property consulting, real estate sales, legal documentation, and registration procedures. Our experienced team will help you develop the skills and confidence needed to succeed.</p>
                     <p class="text-muted mb-5">We value dedication and reward performance with attractive incentives, career growth opportunities, professional training, and recognition programs. Top performers may also earn domestic and international tour opportunities based on company policies, making Raj Real Estate a great place to learn, grow, and succeed.</p>
                     <div class="row g-4">
@@ -118,15 +118,13 @@
                     </div>
                 </div>
 
-                <!-- Google Sheets Recruitment Application Form -->
+                <!-- Recruitment Application Form -->
                 <div class="col-lg-6">
                     <div class="bg-light p-5 border shadow-sm">
                         <h3 class="text-uppercase mb-4">Apply Online</h3>
                         <p class="text-muted small mb-4">Join our growing team of real estate professionals. Fill out the application form with your details, and we'll get in touch with you.</p>
                         
                         <form id="careerForm" class="sheet-form">
-                            <!-- Identifies the destination Sheet name in Apps Script -->
-                            <input type="hidden" name="formType" value="Career Applications" />
                             <div class="mb-3">
                                 <input type="text" name="name" class="form-control rounded-0" placeholder="Full Name" required />
                             </div>
@@ -164,13 +162,12 @@
                                     <option value="Digital Marketer">Digital Marketer</option>
                                 </select>
                             </div>
-                            <!-- <div class="mb-3">
-                                <label class="form-label small text-muted">Upload Resume (PDF format preferred)</label>
-                                <input type="file" name="resumeFile" class="form-control rounded-0" accept=".pdf,.doc,.docx" required />
-                            </div> -->
-                            <!-- <div class="mb-4">
+                            <div class="mb-3">
+                                <input type="url" name="resumeUrl" class="form-control rounded-0" placeholder="Resume link (optional, HTTPS)" />
+                            </div>
+                            <div class="mb-4">
                                 <textarea name="coverLetter" rows="3" class="form-control rounded-0" placeholder="Tell us briefly why you want to join Raj Real Estate..."></textarea>
-                            </div> -->
+                            </div>
                             <button type="submit" class="btn btn-luxury w-100 py-3 text-uppercase">Submit Application</button>
                         </form>
                     </div>
@@ -192,10 +189,10 @@
                 <div class="col-lg-4 col-md-6">
                     <h5>Ongoing Projects</h5>
                     <ul class="list-unstyled d-flex flex-column gap-2">
-                        <li><a href="projects/heritage.html"><i class="bi bi-chevron-right me-2 text-gold"></i>Heritage - Jaipur</a></li>
-                        <li><a href="projects/neelkanth-nagar.html"><i class="bi bi-chevron-right me-2 text-gold"></i>Neelkanth Nagar - Jaipur</a></li>
-                        <li><a href="projects/happy-aerocity.html"><i class="bi bi-chevron-right me-2 text-gold"></i>Happy Aerocity - Ajmer</a></li>
-                        <li><a href="projects/riyasat-royalcrest.html"><i class="bi bi-chevron-right me-2 text-gold"></i>Riyasat Royalcrest - Navi Mumbai</a></li>
+                        <li><a href="/projects/heritage"><i class="bi bi-chevron-right me-2 text-gold"></i>Heritage - Jaipur</a></li>
+                        <li><a href="/projects/neelkanth-nagar"><i class="bi bi-chevron-right me-2 text-gold"></i>Neelkanth Nagar - Jaipur</a></li>
+                        <li><a href="/projects/happy-aerocity"><i class="bi bi-chevron-right me-2 text-gold"></i>Happy Aerocity - Ajmer</a></li>
+                        <li><a href="/projects/riyasat-royalcrest"><i class="bi bi-chevron-right me-2 text-gold"></i>Riyasat Royalcrest - Navi Mumbai</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 col-md-6">
@@ -222,6 +219,7 @@
                     </form>
                 </div>
             </div>
+            <div class="footer-page-links d-flex flex-wrap gap-3 mt-4" aria-label="Additional pages"><a href="/career">Career</a><a href="/contact">Contact</a><a href="/privacypolicy">Privacy Policy</a></div>
             <hr class="border-secondary mt-5" />
             <div class="d-flex flex-wrap justify-content-between align-items-center small text-white-50">
                 <p class="mb-0">&copy; 2026 RAJ REAL ESTATE. All Rights Reserved.</p>

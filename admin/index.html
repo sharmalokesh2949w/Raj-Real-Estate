@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="/images/logo.png">
+    <title>Website CMS | Raj Real Estate</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+    <div id="loginScreen" class="login-screen">
+        <form id="loginForm" class="login-card">
+            <img src="/images/logo.png" alt="Raj Real Estate" class="login-logo">
+            <p class="eyebrow mb-2">RAJ REAL ESTATE</p>
+            <h1 class="h3 mb-2">Website administration</h1>
+            <p class="text-secondary mb-4">Sign in with an administrator account.</p>
+            <label class="form-label" for="loginEmail">Email address</label>
+            <input id="loginEmail" name="email" type="email" class="form-control mb-3" autocomplete="username" required>
+            <label class="form-label" for="loginPassword">Password</label>
+            <input id="loginPassword" name="password" type="password" class="form-control mb-4" autocomplete="current-password" required>
+            <button class="btn btn-primary w-100" type="submit">Sign in</button>
+            <p id="loginError" class="form-error mt-3 mb-0" role="alert"></p>
+        </form>
+    </div>
+
+    <div id="adminApp" class="admin-app d-none">
+        <aside id="sidebar" class="sidebar">
+            <a class="brand" href="/admin/" aria-label="Raj Real Estate CMS home">
+                <img src="/images/logo.png" alt="">
+                <span>Content studio</span>
+            </a>
+            <div class="sidebar-label">WORKSPACE</div>
+            <nav class="nav flex-column" aria-label="CMS navigation">
+                <button class="nav-link active" type="button" data-view="dashboard"><i class="bi bi-grid-1x2"></i> Dashboard</button>
+                <button class="nav-link" type="button" data-view="inquiries"><i class="bi bi-inbox"></i> Enquiries</button>
+                <button class="nav-link" type="button" data-view="projects"><i class="bi bi-buildings"></i> Projects</button>
+                <button class="nav-link" type="button" data-view="blog"><i class="bi bi-journal-text"></i> Blog</button>
+                <button class="nav-link" type="button" data-view="pages"><i class="bi bi-file-earmark-text"></i> Page SEO</button>
+                <button class="nav-link" type="button" data-view="settings"><i class="bi bi-gear"></i> Contact settings</button>
+            </nav>
+            <div class="sidebar-bottom">
+                <a class="public-link" href="/" target="_blank" rel="noopener noreferrer"><i class="bi bi-box-arrow-up-right"></i> View website</a>
+                <button id="logoutButton" class="nav-link" type="button"><i class="bi bi-box-arrow-left"></i> Sign out</button>
+            </div>
+        </aside>
+
+        <main class="workspace">
+            <header class="topbar">
+                <button id="sidebarToggle" class="btn btn-outline-secondary d-lg-none" type="button" aria-label="Toggle navigation">
+                    <i class="bi bi-list"></i>
+                </button>
+                <div>
+                    <p class="eyebrow mb-0">RAJ REAL ESTATE</p>
+                    <h1 id="pageHeading" class="h4 mb-0">Dashboard</h1>
+                </div>
+                <div id="adminEmail" class="admin-email"></div>
+            </header>
+
+            <div id="notification" class="notification d-none" role="status" aria-live="polite"></div>
+
+            <section id="view-dashboard" class="view-section">
+                <div class="page-intro">
+                    <div><p class="eyebrow">OVERVIEW</p><h2 class="h3">Website content</h2><p class="text-secondary mb-0">Manage the published project portfolio and website metadata.</p></div>
+                </div>
+                <div id="dashboardCards" class="row g-3">
+                    <div class="col-md-4"><div class="stat-card loading-placeholder">Loading content summary...</div></div>
+                </div>
+                <div class="panel mt-4">
+                    <div class="panel-heading"><div><h3 class="h5 mb-1">Content modules</h3><p class="text-secondary mb-0">Only sections connected to the public website are listed.</p></div></div>
+                    <div class="module-links">
+                        <button class="module-link" type="button" data-view="projects"><i class="bi bi-buildings"></i><span><strong>Projects</strong><small>Listings, detail pages, galleries and amenities</small></span><i class="bi bi-arrow-right"></i></button>
+                        <button class="module-link" type="button" data-view="inquiries"><i class="bi bi-inbox"></i><span><strong>Enquiries</strong><small>Customer submissions saved by the website</small></span><i class="bi bi-arrow-right"></i></button>
+                        <button class="module-link" type="button" data-view="blog"><i class="bi bi-journal-text"></i><span><strong>Blog</strong><small>Articles, featured images, and publishing status</small></span><i class="bi bi-arrow-right"></i></button>
+                        <button class="module-link" type="button" data-view="pages"><i class="bi bi-file-earmark-text"></i><span><strong>Page SEO</strong><small>Titles, descriptions and page publishing state</small></span><i class="bi bi-arrow-right"></i></button>
+                        <button class="module-link" type="button" data-view="settings"><i class="bi bi-telephone"></i><span><strong>Contact settings</strong><small>Shared office address and contact information</small></span><i class="bi bi-arrow-right"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-inquiries" class="view-section d-none">
+                <div class="page-intro">
+                    <div><p class="eyebrow">CUSTOMER MESSAGES</p><h2 class="h3">Enquiries</h2><p class="text-secondary mb-0">Website enquiries saved in the CMS database.</p></div>
+                </div>
+                <div class="panel">
+                    <div class="toolbar">
+                        <label class="search-control"><i class="bi bi-search"></i><input id="inquirySearch" type="search" class="form-control" placeholder="Search name, phone, email or project" aria-label="Search enquiries"></label>
+                        <label class="visually-hidden" for="inquiryStatusFilter">Filter by enquiry status</label>
+                        <select id="inquiryStatusFilter" class="form-select status-select">
+                            <option value="all">All statuses</option>
+                            <option value="new">New</option>
+                            <option value="contacted">Contacted</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead><tr><th>Enquiry</th><th>Project / source</th><th>Received</th><th>Status</th></tr></thead>
+                            <tbody id="inquiryRows"><tr><td colspan="4" class="empty-state">Enquiries have not been loaded yet.</td></tr></tbody>
+                        </table>
+                    </div>
+                    <div class="table-footer">
+                        <span id="inquiryPaginationLabel" class="text-secondary">Enquiry count not loaded.</span>
+                        <div class="d-flex gap-2"><button id="inquiriesPrevious" class="btn btn-sm btn-outline-secondary" type="button">Previous</button><button id="inquiriesNext" class="btn btn-sm btn-outline-secondary" type="button">Next</button></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-projects" class="view-section d-none">
+                <div class="page-intro">
+                    <div><p class="eyebrow">PORTFOLIO</p><h2 class="h3">Projects</h2><p class="text-secondary mb-0">Manage the existing project pages and the project listing.</p></div>
+                    <button id="newProjectButton" class="btn btn-primary" type="button"><i class="bi bi-plus-lg me-2"></i>New project</button>
+                </div>
+                <div class="panel">
+                    <div class="toolbar">
+                        <label class="search-control"><i class="bi bi-search"></i><input id="projectSearch" type="search" class="form-control" placeholder="Search projects" aria-label="Search projects"></label>
+                        <label class="visually-hidden" for="projectStatus">Filter by publishing status</label>
+                        <select id="projectStatus" class="form-select status-select">
+                            <option value="all">Active projects</option>
+                            <option value="published">Published</option>
+                            <option value="draft">Draft</option>
+                            <option value="deleted">Deleted</option>
+                        </select>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead><tr><th>Project</th><th>Location</th><th>Status</th><th>Updated</th><th><span class="visually-hidden">Actions</span></th></tr></thead>
+                            <tbody id="projectRows"><tr><td colspan="5" class="empty-state">Loading projects...</td></tr></tbody>
+                        </table>
+                    </div>
+                    <div class="table-footer">
+                        <span id="projectPaginationLabel" class="text-secondary"></span>
+                        <div class="d-flex gap-2"><button id="projectsPrevious" class="btn btn-sm btn-outline-secondary" type="button">Previous</button><button id="projectsNext" class="btn btn-sm btn-outline-secondary" type="button">Next</button></div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-blog" class="view-section d-none">
+                <div class="page-intro">
+                    <div><p class="eyebrow">EDITORIAL</p><h2 class="h3">Blog posts</h2><p class="text-secondary mb-0">Manage drafts and published articles shown on the public blog.</p></div>
+                    <button id="newBlogPostButton" class="btn btn-primary" type="button"><i class="bi bi-plus-lg me-2"></i>New post</button>
+                </div>
+                <div class="panel">
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0 blog-table">
+                            <thead><tr><th>Article</th><th>Category</th><th>Publication date</th><th>Status</th><th class="blog-actions-heading">Actions</th></tr></thead>
+                            <tbody id="blogRows"><tr><td colspan="5" class="empty-state">Loading posts...</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+                <form id="blogForm" class="panel mt-4 d-none">
+                    <div class="panel-heading"><div><p class="eyebrow mb-1">BLOG CONTENT</p><h3 id="blogFormHeading" class="h5 mb-0">New post</h3></div></div>
+                    <input id="blogOriginalSlug" type="hidden">
+                    <div class="row g-3">
+                        <div class="col-md-8"><label class="form-label" for="blogTitle">Title</label><input id="blogTitle" class="form-control" maxlength="180" required></div>
+                        <div class="col-md-4"><label class="form-label" for="blogSlug">URL slug</label><input id="blogSlug" class="form-control" maxlength="100" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" required><div class="form-text">Use lowercase letters, numbers, and hyphens.</div></div>
+                        <div class="col-md-6"><label class="form-label" for="blogCategory">Category</label><input id="blogCategory" class="form-control" maxlength="80" required></div>
+                        <div class="col-md-6"><label class="form-label" for="blogPublishedAt">Publication date</label><input id="blogPublishedAt" type="date" class="form-control" required></div>
+                        <div class="col-12"><label class="form-label" for="blogExcerpt">Short excerpt</label><textarea id="blogExcerpt" class="form-control" rows="2" maxlength="600" required></textarea></div>
+                        <div class="col-12"><label class="form-label" for="blogContent">Article content</label><textarea id="blogContent" class="form-control" rows="10" maxlength="30000" required></textarea><div class="form-text">Plain text only. Separate paragraphs with a blank line; HTML is displayed as text.</div></div>
+                        <div class="col-md-8"><label class="form-label" for="blogFeaturedImage">Featured image path</label><input id="blogFeaturedImage" class="form-control" maxlength="500" placeholder="/images/example.png" required><div class="form-text">Use an existing /images/... path, a /uploads/... path, or upload an image below.</div></div>
+                        <div class="col-md-4"><label class="form-label" for="blogUpload">Upload featured image</label><div class="d-flex gap-2"><input id="blogUpload" type="file" class="form-control" accept="image/png,image/jpeg,image/webp,image/gif"><button id="uploadBlogImageButton" class="btn btn-outline-secondary" type="button">Upload</button></div></div>
+                        <div class="col-md-4"><label class="form-label" for="blogStatus">Publishing status</label><select id="blogStatus" class="form-select"><option value="draft">Unpublished</option><option value="published">Published</option></select></div>
+                    </div>
+                    <div class="form-actions">
+                        <button id="cancelBlogEditButton" class="btn btn-outline-secondary" type="button">Cancel</button>
+                        <button id="saveBlogPostButton" class="btn btn-primary" type="submit">Save post</button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="view-pages" class="view-section d-none">
+                <div class="page-intro"><div><p class="eyebrow">SEARCH VISIBILITY</p><h2 class="h3">Page SEO</h2><p class="text-secondary mb-0">Edit page titles and descriptions; existing public paths remain unchanged.</p></div></div>
+                <div class="panel">
+                    <div class="table-responsive">
+                        <table class="table align-middle mb-0">
+                            <thead><tr><th>Page</th><th>Public URL</th><th>Status</th><th></th></tr></thead>
+                            <tbody id="pageRows"><tr><td colspan="4" class="empty-state">Loading pages...</td></tr></tbody>
+                        </table>
+                    </div>
+                </div>
+                <form id="pageForm" class="panel mt-4 d-none">
+                    <input id="pageSlug" type="hidden">
+                    <div class="panel-heading"><div><p class="eyebrow mb-1">PAGE METADATA</p><h3 id="pageFormHeading" class="h5 mb-0"></h3></div></div>
+                    <div class="row g-3">
+                        <div class="col-12"><label class="form-label" for="pageSeoTitle">SEO title</label><input id="pageSeoTitle" class="form-control" maxlength="200" required></div>
+                        <div class="col-12"><label class="form-label" for="pageSeoDescription">Search description</label><textarea id="pageSeoDescription" class="form-control" rows="3" maxlength="320"></textarea></div>
+                        <div class="col-md-6"><label class="form-label" for="pageStatus">Publishing status</label><select id="pageStatus" class="form-select"><option value="published">Published</option><option value="draft">Unpublished</option></select></div>
+                        <div id="pageContentFields" class="col-12 row g-3 mt-2"></div>
+                    </div>
+                    <div class="form-actions"><button class="btn btn-primary" type="submit">Save page settings</button></div>
+                </form>
+            </section>
+
+            <section id="view-settings" class="view-section d-none">
+                <div class="page-intro"><div><p class="eyebrow">SHARED WEBSITE CONTENT</p><h2 class="h3">Contact settings</h2><p class="text-secondary mb-0">These values are reused in the site footer and contact links.</p></div></div>
+                <form id="settingsForm" class="panel settings-form">
+                    <div class="row g-3">
+                        <div class="col-12"><label class="form-label" for="officeAddress">Office address</label><textarea id="officeAddress" class="form-control" rows="3" maxlength="500"></textarea></div>
+                        <div class="col-md-6"><label class="form-label" for="contactPhone">Phone number</label><input id="contactPhone" class="form-control" maxlength="40"></div>
+                        <div class="col-md-6"><label class="form-label" for="contactWhatsapp">WhatsApp number</label><input id="contactWhatsapp" class="form-control" maxlength="40"></div>
+                        <div class="col-md-6"><label class="form-label" for="contactEmail">Contact email</label><input id="contactEmail" type="email" class="form-control" maxlength="160"></div>
+                        <div class="col-md-6"><label class="form-label" for="businessHours">Business hours</label><input id="businessHours" class="form-control" maxlength="160"></div>
+                    </div>
+                    <div class="form-actions"><button class="btn btn-primary" type="submit">Save contact details</button></div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <div id="projectModal" class="modal fade" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <form id="projectForm">
+                    <div class="modal-header">
+                        <div><p class="eyebrow mb-1">PROJECT CONTENT</p><h2 id="projectModalTitle" class="modal-title h5">New project</h2></div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input id="projectSlug" type="hidden">
+                        <div class="row g-3">
+                            <div class="col-md-8"><label class="form-label" for="projectName">Project name</label><input id="projectName" class="form-control" maxlength="120" required></div>
+                            <div class="col-md-4"><label class="form-label" for="projectUrl">URL slug</label><input id="projectUrl" class="form-control" maxlength="80" required></div>
+                            <div class="col-md-4"><label class="form-label" for="projectCategory">Listing category</label><select id="projectCategory" class="form-select"><option value="jaipur">Jaipur</option><option value="ajmer">Ajmer</option><option value="mumbai">Navi Mumbai</option><option value="villasinmumbai">Villas in Mumbai</option></select></div>
+                            <div class="col-md-4"><label class="form-label" for="projectLocationLabel">Card label</label><input id="projectLocationLabel" class="form-control" maxlength="120"></div>
+                            <div class="col-md-4"><label class="form-label" for="projectBannerLabel">Detail-page banner location</label><input id="projectBannerLabel" class="form-control" maxlength="160"></div>
+                            <div class="col-md-4"><label class="form-label" for="projectLocation">Location</label><input id="projectLocation" class="form-control" maxlength="240"></div>
+                            <div class="col-12"><label class="form-label" for="projectSummary">Listing summary</label><textarea id="projectSummary" class="form-control" rows="2" maxlength="600"></textarea></div>
+                            <div class="col-12"><label class="form-label" for="projectDescription">Project description</label><textarea id="projectDescription" class="form-control" rows="4" maxlength="10000"></textarea></div>
+                            <div class="col-md-6"><label class="form-label" for="projectPageTitle">Page title</label><input id="projectPageTitle" class="form-control" maxlength="200"></div>
+                            <div class="col-md-6"><label class="form-label" for="projectSeoDescription">Search description</label><input id="projectSeoDescription" class="form-control" maxlength="320"></div>
+                            <div class="col-12">
+                                <label class="form-label" for="projectCardImage">Listing image path</label>
+                                <input id="projectCardImage" class="form-control" maxlength="500" placeholder="/images/projects/example.jpg">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label" for="projectGallery">Gallery image paths (one per line)</label>
+                                <textarea id="projectGallery" class="form-control font-monospace" rows="4" maxlength="16000"></textarea>
+                                <div class="form-text">Use existing /images/... paths or images uploaded below.</div>
+                            </div>
+                            <div class="col-md-6"><label class="form-label" for="projectLayout">Site layout image path</label><input id="projectLayout" class="form-control" maxlength="500"></div>
+                            <div class="col-md-6"><label class="form-label" for="projectMap">Map image path</label><input id="projectMap" class="form-control" maxlength="500"></div>
+                            <div class="col-12"><label class="form-label" for="projectAmenities">Amenities (one per line: label | Bootstrap icon)</label><textarea id="projectAmenities" class="form-control font-monospace" rows="5" maxlength="8000"></textarea><div class="form-text">Example format: Community Hall | bi-building</div></div>
+                            <div class="col-md-6"><label class="form-label" for="projectVideo">YouTube tour URL</label><input id="projectVideo" type="url" class="form-control" maxlength="500"></div>
+                            <div class="col-md-2"><label class="form-label" for="projectOrder">Display order</label><input id="projectOrder" type="number" min="0" max="10000" class="form-control"></div>
+                            <div class="col-md-4 d-flex align-items-end"><div class="form-check mb-2"><input id="projectFeatured" class="form-check-input" type="checkbox"><label class="form-check-label" for="projectFeatured">Show on homepage</label></div></div>
+                            <div class="col-md-6"><label class="form-label" for="projectPublishStatus">Publishing status</label><select id="projectPublishStatus" class="form-select"><option value="draft">Draft</option><option value="published">Published</option></select></div>
+                            <div class="col-12 upload-row">
+                                <label class="form-label" for="projectUpload">Upload a gallery or listing image (PNG, JPEG, GIF, WebP; up to 5 MB)</label>
+                                <div class="d-flex flex-wrap gap-2"><input id="projectUpload" type="file" class="form-control" accept="image/png,image/jpeg,image/gif,image/webp"><button id="uploadImageButton" class="btn btn-outline-secondary" type="button">Upload image</button></div>
+                                <div class="form-check mt-2"><input id="addUploadToGallery" class="form-check-input" type="checkbox" checked><label class="form-check-label" for="addUploadToGallery">Add uploaded image to gallery</label></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="deleteProjectButton" class="btn btn-outline-danger me-auto d-none" type="button">Delete project</button>
+                        <a id="previewProjectButton" class="btn btn-outline-secondary d-none" href="#" target="_blank" rel="noopener noreferrer">Preview published page</a>
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button id="saveProjectButton" class="btn btn-primary" type="submit">Save project</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/admin/admin.js"></script>
+</body>
+</html>

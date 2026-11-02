@@ -1,7 +1,10 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   // Backend API URL
-  const API_URL = "https://raj-real-estate.onrender.com/api/inquiry";
+  const API_ROOT = (window.RAJ_API_BASE_URL || (["localhost", "127.0.0.1"].includes(window.location.hostname)
+    ? window.location.origin
+    : "https://raj-real-estate.onrender.com")).replace(/\/$/, "");
+  const API_URL = `${API_ROOT}/api/inquiry`;
   // Add popup styles
   const styles = `
     #inquiry-popup-overlay {
@@ -160,6 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
           type="button"
           aria-label="Close enquiry form">&times;</button>
 
+        <div id="inquiry-popup-content">
         <h2 id="inquiry-popup-title">Send Enquiry</h2>
 
         <p class="popup-subtitle">
@@ -172,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
             class="popup-field"
             name="name"
             type="text"
-            placeholder="First name"
+            placeholder="Name"
             autocomplete="name"
             maxlength="100"
             required
@@ -182,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
             class="popup-field"
             name="phone"
             type="tel"
-            placeholder="10-digit Mobile Number"
+            placeholder="Phone Number"
             autocomplete="tel"
             inputmode="numeric"
             pattern="[6-9][0-9]{9}"
@@ -191,13 +195,17 @@ document.addEventListener("DOMContentLoaded", () => {
             required
           >
 
-<select class="popup-field" name="budget" required>
-  <option value="" disabled selected>Select Your Budget</option>
-  <option value="20-40 Lakhs">20–40 Lakhs</option>
-  <option value="40-60 Lakhs">40–60 Lakhs</option>
-  <option value="60-80 Lakhs">60–80 Lakhs</option>
-  <option value="80 Lakhs and Above">80 Lakhs and Above</option>
-</select>
+          <select
+            class="popup-field"
+            name="budget"
+            required
+            aria-label="Select Your Budget">
+            <option value="" selected disabled>Select Your Budget</option>
+            <option value="₹20–40 Lakh">₹20–40 Lakh</option>
+            <option value="₹40–60 Lakh">₹40–60 Lakh</option>
+            <option value="₹60–80 Lakh">₹60–80 Lakh</option>
+            <option value="₹80 Lakh and Above">₹80 Lakh and Above</option>
+          </select>
 
           <button class="popup-submit" type="submit">
             Submit
@@ -212,6 +220,13 @@ document.addEventListener("DOMContentLoaded", () => {
             Your details will be used to respond to your enquiry.
           </div>
         </form>
+        </div>
+
+        <div id="inquiry-popup-success" hidden>
+          <h2 id="inquiry-popup-success-title" tabindex="-1">Thank You!</h2>
+          <p class="popup-subtitle">Your enquiry has been submitted successfully. Our team will get in touch with you soon.</p>
+          <button class="popup-submit" id="inquiry-popup-another" type="button">Send another enquiry</button>
+        </div>
       </section>
     </div>
   `);
@@ -228,16 +243,30 @@ document.addEventListener("DOMContentLoaded", () => {
     "inquiry-popup-status"
   );
 
+  const popup = document.getElementById("inquiry-popup");
+  const content = document.getElementById("inquiry-popup-content");
+  const success = document.getElementById("inquiry-popup-success");
+  const anotherButton = document.getElementById("inquiry-popup-another");
   const submit = form.querySelector(".popup-submit");
   const closeButton = overlay.querySelector(".popup-close");
 
   let previousFocus = null;
 
   function openPopup() {
+    if (overlay.style.display === "flex") return;
+    if (form.dataset.submitting !== "true") resetPopup();
     previousFocus = document.activeElement;
     overlay.style.display = "flex";
     document.body.style.overflow = "hidden";
     closeButton.focus();
+  }
+
+  function resetPopup() {
+    form.reset();
+    status.textContent = "";
+    content.hidden = false;
+    success.hidden = true;
+    popup.setAttribute("aria-labelledby", "inquiry-popup-title");
   }
 
   function closePopup() {
@@ -249,8 +278,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  window.openInquiryPopup = openPopup;
+
   // Close button
   closeButton.addEventListener("click", closePopup);
+  anotherButton.addEventListener("click", () => {
+    resetPopup();
+    form.querySelector("input[name='name']").focus();
+  });
 
   // Close when clicking outside the form
   overlay.addEventListener("click", (event) => {
@@ -275,6 +310,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Submit inquiry to backend
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (form.dataset.submitting === "true") return;
+    if (!form.reportValidity()) return;
 
     const data = Object.fromEntries(
       new FormData(form).entries()
@@ -284,8 +321,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const phone = data.phone.trim();
     const budget = data.budget.trim();
 
-    if (!name || !budget) {
-      status.textContent = "Please fill in all fields.";
+    if (!name || !budget || !phone) {
+      status.textContent = "Please complete all required fields.";
       return;
     }
 
@@ -296,58 +333,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     submit.disabled = true;
+    form.dataset.submitting = "true";
     status.textContent = "Submitting your enquiry...";
 
-try {
-  const response = await fetch(API_URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      name: name,
-      phone: phone,
-      email: "",
-      message: "Budget: " + budget,
-      projectName: "General Inquiry Form"
-    })
-  });
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          phone,
+          message: `Budget: ${budget}`,
+          budget,
+          projectName: "Website Popup Inquiry",
+          sourceForm: "Homepage popup",
+          sourcePage: window.location.pathname
+        })
+      });
+      let result;
+      try {
+        result = await response.json();
+      } catch {
+        throw new Error(`The server returned an invalid response (HTTP ${response.status}).`);
+      }
+      if (!response.ok || result.success !== true) {
+        throw new Error(result.error || `The enquiry could not be saved (HTTP ${response.status}).`);
+      }
 
-  const responseText = await response.text();
-
-  console.log("HTTP status:", response.status);
-  console.log("Server response:", responseText);
-
-  let result;
-
-  try {
-    result = JSON.parse(responseText);
-  } catch {
-    throw new Error(
-      "Invalid server response. HTTP " + response.status
-    );
-  }
-
-  if (!response.ok || result.success !== true) {
-    throw new Error(
-      result.error || "Submission failed: " + response.status
-    );
-  }
-
-  status.textContent =
-    "Thank you! Your enquiry has been submitted.";
-
-  form.reset();
-
-  // Popup 2 minute baad close hoga
-  setTimeout(closePopup, 2000);
-
-} catch (error) {
-  console.error("Inquiry error:", error);
-  status.textContent = "Error: " + error.message;
-
-} finally {
-  submit.disabled = false;
-}
+      form.reset();
+      content.hidden = true;
+      success.hidden = false;
+      popup.setAttribute("aria-labelledby", "inquiry-popup-success-title");
+      document.getElementById("inquiry-popup-success-title").focus();
+    } catch (error) {
+      status.textContent = error instanceof TypeError
+        ? "We could not reach the server. Check your connection and try again."
+        : error.message;
+    } finally {
+      form.dataset.submitting = "false";
+      submit.disabled = false;
+    }
   });
 });

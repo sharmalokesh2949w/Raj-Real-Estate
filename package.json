@@ -2,9 +2,11 @@
   "name": "rre-final",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-   "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "admin:create": "node scripts/create-admin.js",
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
@@ -14,6 +16,9 @@
   "author": "",
   "license": "ISC",
   "type": "commonjs",
+  "engines": {
+    "node": ">=22.13.0"
+  },
   "bugs": {
     "url": "https://github.com/sharmalokesh2949w/rajrealestate/issues"
   },
