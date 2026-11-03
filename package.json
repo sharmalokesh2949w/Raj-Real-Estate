@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "admin:create": "node scripts/create-admin.js",
+    "build:pages": "node scripts/build-pages.js",
     "test": "node --test"
   },
   "repository": {
