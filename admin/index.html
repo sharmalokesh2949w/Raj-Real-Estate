@@ -159,8 +159,8 @@
                         <div class="col-md-6"><label class="form-label" for="blogPublishedAt">Publication date</label><input id="blogPublishedAt" type="date" class="form-control" required></div>
                         <div class="col-12"><label class="form-label" for="blogExcerpt">Short excerpt</label><textarea id="blogExcerpt" class="form-control" rows="2" maxlength="600" required></textarea></div>
                         <div class="col-12"><label class="form-label" for="blogContent">Article content</label><textarea id="blogContent" class="form-control" rows="10" maxlength="30000" required></textarea><div class="form-text">Plain text only. Separate paragraphs with a blank line; HTML is displayed as text.</div></div>
-                        <div class="col-md-8"><label class="form-label" for="blogFeaturedImage">Featured image path</label><input id="blogFeaturedImage" class="form-control" maxlength="500" placeholder="/images/example.png" required><div class="form-text">Use an existing /images/... path, a /uploads/... path, or upload an image below.</div></div>
-                        <div class="col-md-4"><label class="form-label" for="blogUpload">Upload featured image</label><div class="d-flex gap-2"><input id="blogUpload" type="file" class="form-control" accept="image/png,image/jpeg,image/webp,image/gif"><button id="uploadBlogImageButton" class="btn btn-outline-secondary" type="button">Upload</button></div></div>
+                        <div class="col-md-8"><label class="form-label" for="blogFeaturedImage">Featured image URL or site path</label><input id="blogFeaturedImage" class="form-control" maxlength="500" placeholder="/images/example.png" required><div class="form-text">Use an existing site image or upload a JPEG, PNG, or WebP image to Cloudinary.</div><img id="blogImagePreview" class="img-fluid rounded mt-2" alt="Blog featured image preview" hidden style="max-height: 220px"></div>
+                        <div class="col-md-4"><label class="form-label" for="blogUpload">Upload featured image</label><input id="blogUpload" type="file" class="form-control" accept="image/png,image/jpeg,image/webp"><button id="uploadBlogImageButton" class="btn btn-outline-secondary mt-2" type="button">Upload image</button><div id="blogUploadStatus" class="form-text mt-2" role="status" aria-live="polite"></div></div>
                         <div class="col-md-4"><label class="form-label" for="blogStatus">Publishing status</label><select id="blogStatus" class="form-select"><option value="draft">Unpublished</option><option value="published">Published</option></select></div>
                     </div>
                     <div class="form-actions">
@@ -231,8 +231,10 @@
                             <div class="col-md-6"><label class="form-label" for="projectPageTitle">Page title</label><input id="projectPageTitle" class="form-control" maxlength="200"></div>
                             <div class="col-md-6"><label class="form-label" for="projectSeoDescription">Search description</label><input id="projectSeoDescription" class="form-control" maxlength="320"></div>
                             <div class="col-12">
-                                <label class="form-label" for="projectCardImage">Listing image path</label>
+                                <label class="form-label" for="projectCardImage">Listing image URL or site path</label>
                                 <input id="projectCardImage" class="form-control" maxlength="500" placeholder="/images/projects/example.jpg">
+                                <div class="form-text">Use an existing site image or upload a JPEG, PNG, or WebP image below.</div>
+                                <img id="projectImagePreview" class="img-fluid rounded mt-2" alt="Project listing image preview" hidden style="max-height: 220px">
                             </div>
                             <div class="col-12">
                                 <label class="form-label" for="projectGallery">Gallery image paths (one per line)</label>
@@ -246,11 +248,7 @@
                             <div class="col-md-2"><label class="form-label" for="projectOrder">Display order</label><input id="projectOrder" type="number" min="0" max="10000" class="form-control"></div>
                             <div class="col-md-4 d-flex align-items-end"><div class="form-check mb-2"><input id="projectFeatured" class="form-check-input" type="checkbox"><label class="form-check-label" for="projectFeatured">Show on homepage</label></div></div>
                             <div class="col-md-6"><label class="form-label" for="projectPublishStatus">Publishing status</label><select id="projectPublishStatus" class="form-select"><option value="draft">Draft</option><option value="published">Published</option></select></div>
-                            <div class="col-12 upload-row">
-                                <label class="form-label" for="projectUpload">Upload a gallery or listing image (PNG, JPEG, GIF, WebP; up to 5 MB)</label>
-                                <div class="d-flex flex-wrap gap-2"><input id="projectUpload" type="file" class="form-control" accept="image/png,image/jpeg,image/gif,image/webp"><button id="uploadImageButton" class="btn btn-outline-secondary" type="button">Upload image</button></div>
-                                <div class="form-check mt-2"><input id="addUploadToGallery" class="form-check-input" type="checkbox" checked><label class="form-check-label" for="addUploadToGallery">Add uploaded image to gallery</label></div>
-                            </div>
+                            <div class="col-12 upload-row"><label class="form-label mb-1" for="projectUpload">Upload project image</label><input id="projectUpload" type="file" class="form-control mt-2" accept="image/png,image/jpeg,image/webp"><button id="uploadImageButton" class="btn btn-outline-secondary mt-2" type="button">Upload image</button><div id="projectUploadStatus" class="form-text mt-2" role="status" aria-live="polite"></div><input id="addUploadToGallery" type="checkbox" class="d-none" checked></div>
                         </div>
                     </div>
                     <div class="modal-footer">

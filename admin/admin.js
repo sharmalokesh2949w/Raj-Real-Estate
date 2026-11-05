@@ -9,6 +9,7 @@ const state = {
     inquirySearchTimer: null
 };
 const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById("projectModal"));
+const previewObjectUrls = new Map();
 
 function notify(message, error = false) {
     const element = document.getElementById("notification");
@@ -17,6 +18,62 @@ function notify(message, error = false) {
     element.classList.remove("d-none");
     window.clearTimeout(notify.timeout);
     notify.timeout = window.setTimeout(() => element.classList.add("d-none"), 5000);
+}
+
+function validImageReference(value) {
+    if (/^\/(?:images|uploads)\/[A-Za-z0-9._/-]+$/.test(value) &&
+        !value.includes("..") && !value.includes("//") &&
+        /\.(?:png|jpe?g|gif|webp)$/i.test(value)) {
+        return true;
+    }
+    try {
+        const url = new URL(value);
+        const cloudName = state.admin?.cloudinaryCloudName || "";
+        return url.protocol === "https:" &&
+            url.hostname === "res.cloudinary.com" &&
+            !url.username && !url.password && !url.port && !url.search && !url.hash &&
+            /^[a-z0-9][a-z0-9_-]{0,63}$/.test(cloudName) &&
+            url.pathname.startsWith(`/${cloudName}/image/upload/`) &&
+            /^\/[A-Za-z0-9._/-]+\.(?:png|jpe?g|webp)$/i.test(url.pathname) &&
+            !url.pathname.includes("..") && !url.pathname.includes("//");
+    } catch {
+        return false;
+    }
+}
+
+function setImagePreview(previewId, value) {
+    const preview = document.getElementById(previewId);
+    const previousObjectUrl = previewObjectUrls.get(previewId);
+    if (previousObjectUrl) {
+        URL.revokeObjectURL(previousObjectUrl);
+        previewObjectUrls.delete(previewId);
+    }
+    if (!validImageReference(value)) {
+        preview.removeAttribute("src");
+        preview.hidden = true;
+        return;
+    }
+    preview.src = value;
+    preview.hidden = false;
+}
+
+function previewSelectedFile(fileInputId, previewId) {
+    const file = document.getElementById(fileInputId).files[0];
+    if (!file) return;
+    const previewIdValue = URL.createObjectURL(file);
+    const previousObjectUrl = previewObjectUrls.get(previewId);
+    if (previousObjectUrl) URL.revokeObjectURL(previousObjectUrl);
+    previewObjectUrls.set(previewId, previewIdValue);
+    const preview = document.getElementById(previewId);
+    preview.src = previewIdValue;
+    preview.hidden = false;
+}
+
+function setUploadStatus(id, message, error = false) {
+    const status = document.getElementById(id);
+    status.textContent = message;
+    status.classList.toggle("text-danger", error);
+    status.classList.toggle("text-success", !error && Boolean(message));
 }
 
 function showLogin(message = "") {
@@ -39,11 +96,16 @@ async function request(path, options = {}) {
         headers.set("Content-Type", "application/json");
     }
 
-    const response = await fetch(`${API_ROOT}${path}`, {
-        credentials: "same-origin",
-        ...options,
-        headers
-    });
+    let response;
+    try {
+        response = await fetch(`${API_ROOT}${path}`, {
+            credentials: "same-origin",
+            ...options,
+            headers
+        });
+    } catch {
+        throw new Error("Unable to reach the CMS API. Check the Cloudflare Pages proxy and backend availability.");
+    }
     let payload = null;
     if (response.status !== 204 &&
         response.headers.get("content-type")?.includes("application/json")) {
@@ -58,14 +120,11 @@ async function request(path, options = {}) {
         if (response.status === 401 && !path.startsWith("/auth/login")) {
             showLogin("Your session ended. Sign in again to continue.");
         }
-        if (response.status === 405 && path.startsWith("/auth/")) {
-            throw new Error("This CMS page is being served by Live Server or another static server, which cannot handle sign-in. Stop Live Server, run `npm start` in the project folder, and open http://localhost:5000/admin/.");
-        }
         throw new Error(payload?.error ||
-            `The CMS server returned an unexpected response (HTTP ${response.status}). Verify that this page is served by the CMS application.`);
+            `The CMS API returned HTTP ${response.status}. Check the Cloudflare Pages proxy and backend availability.`);
     }
     if (response.status !== 204 && payload === null) {
-        throw new Error("The CMS server returned an invalid response. Verify that the CMS application is running.");
+        throw new Error("The CMS API returned an invalid response. Check the Cloudflare Pages proxy and backend availability.");
     }
     return payload;
 }
@@ -387,6 +446,8 @@ function fillBlogForm(post = null) {
     document.getElementById("blogExcerpt").value = post?.excerpt || "";
     document.getElementById("blogContent").value = post?.content || "";
     document.getElementById("blogFeaturedImage").value = post?.featured_image || "";
+    setImagePreview("blogImagePreview", post?.featured_image || "");
+    setUploadStatus("blogUploadStatus", "");
     document.getElementById("blogStatus").value = post?.status || "draft";
     document.getElementById("blogFormHeading").textContent = post ? "Edit post" : "New post";
     form.classList.remove("d-none");
@@ -471,6 +532,8 @@ function fillProjectForm(project = {}) {
     document.getElementById("projectPageTitle").value = project.page_title || "";
     document.getElementById("projectSeoDescription").value = project.seo_description || "";
     document.getElementById("projectCardImage").value = project.card_image || "";
+    setImagePreview("projectImagePreview", project.card_image || "");
+    setUploadStatus("projectUploadStatus", "");
     document.getElementById("projectGallery").value = (project.gallery || []).join("\n");
     document.getElementById("projectLayout").value = project.layout_image || "";
     document.getElementById("projectMap").value = project.map_image || "";
@@ -664,6 +727,13 @@ document.getElementById("newProjectButton").addEventListener("click", () => {
 });
 
 document.getElementById("newBlogPostButton").addEventListener("click", () => fillBlogForm());
+document.getElementById("blogFeaturedImage").addEventListener("input", event => {
+    setImagePreview("blogImagePreview", event.currentTarget.value.trim());
+});
+document.getElementById("blogUpload").addEventListener("change", () => {
+    previewSelectedFile("blogUpload", "blogImagePreview");
+    setUploadStatus("blogUploadStatus", "");
+});
 document.getElementById("cancelBlogEditButton").addEventListener("click", () => {
     document.getElementById("blogForm").classList.add("d-none");
 });
@@ -694,22 +764,24 @@ document.getElementById("blogForm").addEventListener("submit", async event => {
 document.getElementById("uploadBlogImageButton").addEventListener("click", async event => {
     const file = document.getElementById("blogUpload").files[0];
     if (!file) {
-        notify("Choose an image before uploading.", true);
+        setUploadStatus("blogUploadStatus", "Choose an image before uploading.", true);
         return;
     }
 
     const button = event.currentTarget;
     button.disabled = true;
     button.textContent = "Uploading...";
+    setUploadStatus("blogUploadStatus", "Uploading image to Cloudinary…");
     try {
         const formData = new FormData();
         formData.append("image", file);
         const { image } = await request("/admin/uploads", { method: "POST", body: formData });
         document.getElementById("blogFeaturedImage").value = image.url;
         document.getElementById("blogUpload").value = "";
-        notify("Featured image uploaded to persistent CMS storage.");
+        setImagePreview("blogImagePreview", image.url);
+        setUploadStatus("blogUploadStatus", "Image uploaded. Save the post to keep this URL.");
     } catch (error) {
-        notify(error.message, true);
+        setUploadStatus("blogUploadStatus", error.message, true);
     } finally {
         button.disabled = false;
         button.textContent = "Upload";
@@ -720,6 +792,13 @@ document.getElementById("projectName").addEventListener("input", event => {
     if (!document.getElementById("projectSlug").value) {
         document.getElementById("projectUrl").value = slugFromName(event.target.value);
     }
+});
+document.getElementById("projectCardImage").addEventListener("input", event => {
+    setImagePreview("projectImagePreview", event.currentTarget.value.trim());
+});
+document.getElementById("projectUpload").addEventListener("change", () => {
+    previewSelectedFile("projectUpload", "projectImagePreview");
+    setUploadStatus("projectUploadStatus", "");
 });
 
 document.getElementById("projectForm").addEventListener("submit", async event => {
@@ -767,31 +846,31 @@ document.getElementById("deleteProjectButton").addEventListener("click", async (
 document.getElementById("uploadImageButton").addEventListener("click", async event => {
     const file = document.getElementById("projectUpload").files[0];
     if (!file) {
-        notify("Choose an image before uploading.", true);
+        setUploadStatus("projectUploadStatus", "Choose an image before uploading.", true);
         return;
     }
 
     const button = event.currentTarget;
     button.disabled = true;
     button.textContent = "Uploading...";
+    setUploadStatus("projectUploadStatus", "Uploading image to Cloudinary…");
     try {
         const formData = new FormData();
         formData.append("image", file);
         const { image } = await request("/admin/uploads", { method: "POST", body: formData });
         const cardImage = document.getElementById("projectCardImage");
         const gallery = document.getElementById("projectGallery");
-        if (!document.getElementById("addUploadToGallery").checked || !cardImage.value) {
-            cardImage.value = image.url;
-        }
+        cardImage.value = image.url;
+        setImagePreview("projectImagePreview", image.url);
         if (document.getElementById("addUploadToGallery").checked) {
             const paths = gallery.value.split(/\r?\n/).map(path => path.trim()).filter(Boolean);
-            paths.push(image.url);
+            if (!paths.includes(image.url)) paths.push(image.url);
             gallery.value = paths.join("\n");
         }
         document.getElementById("projectUpload").value = "";
-        notify("Image uploaded to persistent CMS storage.");
+        setUploadStatus("projectUploadStatus", "Image uploaded. Save the project to keep this URL.");
     } catch (error) {
-        notify(error.message, true);
+        setUploadStatus("projectUploadStatus", error.message, true);
     } finally {
         button.disabled = false;
         button.textContent = "Upload image";

@@ -71,6 +71,7 @@ function isPrivateAssetPath(relativePath) {
 
 function isPublicAssetPath(relativePath) {
     const normalizedPath = relativePath.replace(/\\/g, "/");
+    if (normalizedPath === "cms/project-template.html") return true;
     if (!normalizedPath || isPrivateAssetPath(normalizedPath)) return false;
 
     if (normalizedPath === "CNAME" ||

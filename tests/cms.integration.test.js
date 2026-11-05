@@ -12,7 +12,7 @@ process.env.CMS_DATABASE_PATH = path.join(dataDirectory, "cms.sqlite");
 process.env.CMS_UPLOAD_DIR = path.join(dataDirectory, "uploads");
 
 const { app, db } = require("../server");
-const { databasePath } = require("../cms/database");
+const { databasePath, normalizeSiteImagePath } = require("../cms/database");
 const { registerAdmin } = require("../cms/auth");
 
 const adminEmail = "cms-test@example.com";
@@ -43,11 +43,12 @@ async function request(pathname, {
     method = "GET",
     body,
     rawBody,
+    headers: extraHeaders = {},
     authenticated = false,
     includeOrigin = false,
     redirect = "follow"
 } = {}) {
-    const headers = {};
+    const headers = { ...extraHeaders };
     if (includeOrigin) headers.Origin = origin;
     if (authenticated && sessionCookie) headers.Cookie = sessionCookie;
     if (rawBody !== undefined) {
@@ -137,6 +138,14 @@ test("seeds all existing pages and projects and serves public CMS content", asyn
     assert.equal(naviMumbai.status, 200);
     assert.match(await naviMumbai.text(), /data-filter="villasinmumbai"/);
     assert.equal((await request("/api/cms/admin/settings")).status, 401);
+});
+
+test("normalizes site image paths without adding duplicate slashes", () => {
+    assert.equal(normalizeSiteImagePath("/images/heritage/1.png"), "/images/heritage/1.png");
+    assert.equal(normalizeSiteImagePath("//images/heritage/1.png"), "/images/heritage/1.png");
+    assert.equal(normalizeSiteImagePath("../images/heritage/1.png"), "/images/heritage/1.png");
+    assert.equal(normalizeSiteImagePath("images/heritage/1.png"), "/images/heritage/1.png");
+    assert.equal(normalizeSiteImagePath("https://cdn.example/image.png"), "https://cdn.example/image.png");
 });
 
 test("serves clean page routes and permanently redirects legacy HTML URLs", async () => {
@@ -230,6 +239,7 @@ test("serves clean page routes and permanently redirects legacy HTML URLs", asyn
 
 test("validates and forwards career applications through the backend integration", async () => {
     const previousScriptUrl = process.env.GOOGLE_SCRIPT_URL;
+    const previousSheetsSecret = process.env.GOOGLE_SHEETS_SHARED_SECRET;
     delete process.env.GOOGLE_SCRIPT_URL;
     const application = {
         name: "Test Applicant",
@@ -256,6 +266,7 @@ test("validates and forwards career applications through the backend integration
 
         const scriptUrl = "https://script.google.com/macros/s/test/exec";
         process.env.GOOGLE_SCRIPT_URL = scriptUrl;
+        process.env.GOOGLE_SHEETS_SHARED_SECRET = "local-test-shared-secret-at-least-thirty-two";
         const originalPost = axios.post;
         let forwarded = false;
         axios.post = async (url, params) => {
@@ -264,11 +275,17 @@ test("validates and forwards career applications through the backend integration
             assert.equal(params.get("position"), application.appliedPosition);
             assert.equal(params.get("resumeUrl"), application.resumeUrl);
             assert.equal(params.get("coverLetter"), application.coverLetter);
+            assert.equal(params.get("submissionId"), "express-career-request-0001");
+            assert.equal(params.get("sharedSecret"), "local-test-shared-secret-at-least-thirty-two");
             forwarded = true;
             return { data: { success: true } };
         };
         try {
-            const success = await request("/api/career", { method: "POST", body: application });
+            const success = await request("/api/career", {
+                method: "POST",
+                headers: { "Idempotency-Key": "express-career-request-0001" },
+                body: application
+            });
             assert.equal(success.status, 200);
             assert.equal((await success.json()).success, true);
             assert.equal(forwarded, true);
@@ -285,6 +302,8 @@ test("validates and forwards career applications through the backend integration
     } finally {
         if (previousScriptUrl === undefined) delete process.env.GOOGLE_SCRIPT_URL;
         else process.env.GOOGLE_SCRIPT_URL = previousScriptUrl;
+        if (previousSheetsSecret === undefined) delete process.env.GOOGLE_SHEETS_SHARED_SECRET;
+        else process.env.GOOGLE_SHEETS_SHARED_SECRET = previousSheetsSecret;
     }
 });
 

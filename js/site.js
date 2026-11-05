@@ -1,10 +1,38 @@
-const CMS_API_BASE_URL = window.RAJ_API_BASE_URL ||
-    (["localhost", "127.0.0.1"].includes(window.location.hostname)
-        ? window.location.origin
-        : "https://raj-real-estate.onrender.com");
+const CMS_API_BASE_URL = window.location.origin;
+let cmsCloudinaryCloudName = "";
+
+function newSubmissionKey() {
+    if (typeof crypto.randomUUID === "function") return crypto.randomUUID();
+    return [...crypto.getRandomValues(new Uint8Array(16))]
+        .map(byte => byte.toString(16).padStart(2, "0"))
+        .join("");
+}
 
 function cmsApiUrl(path) {
     return `${CMS_API_BASE_URL.replace(/\/$/, "")}/api/cms${path}`;
+}
+
+function normalizeCmsImagePath(value, cloudName = cmsCloudinaryCloudName) {
+    if (typeof value !== "string") return "";
+    if (/^\/(?:images|uploads)\/[A-Za-z0-9._/-]+$/.test(value) &&
+        !value.includes("..") && !value.includes("//") &&
+        /\.(?:png|jpe?g|gif|webp)$/i.test(value)) {
+        return value;
+    }
+    try {
+        const url = new URL(value);
+        return url.protocol === "https:" &&
+            url.hostname === "res.cloudinary.com" &&
+            !url.username && !url.password && !url.port && !url.search && !url.hash &&
+            /^[a-z0-9][a-z0-9_-]{0,63}$/.test(cloudName) &&
+            url.pathname.startsWith(`/${cloudName}/image/upload/`) &&
+            /^\/[A-Za-z0-9._/-]+\.(?:png|jpe?g|webp)$/i.test(url.pathname) &&
+            !url.pathname.includes("..") && !url.pathname.includes("//")
+            ? value
+            : "";
+    } catch {
+        return "";
+    }
 }
 
 function cmsElement(tagName, className, text) {
@@ -16,13 +44,18 @@ function cmsElement(tagName, className, text) {
 
 function projectCard(project, featured) {
     const column = cmsElement("div", featured ? "col-lg-4 col-md-6" : "col-lg-4 col-md-6 project-card animate-card");
-    if (!featured) column.dataset.city = project.category;
+    if (!featured) {
+        column.dataset.city = project.category || "";
+        column.dataset.location = [project.location_label, project.location]
+            .filter(Boolean)
+            .join(" ");
+    }
 
     const card = cmsElement("div", "luxury-card");
     if (project.card_image) {
         const imageWrapper = cmsElement("div", "card-img-wrapper");
         const image = cmsElement("img");
-        image.src = project.card_image;
+        image.src = normalizeCmsImagePath(project.card_image);
         image.alt = project.name;
         imageWrapper.append(image);
         card.append(imageWrapper);
@@ -98,10 +131,12 @@ function updateProjectDetail(project) {
 
             const image = column.querySelector("img");
             if (!image) return;
-            image.src = imagePath;
+            const source = normalizeCmsImagePath(imagePath);
+            if (!source) return;
+            image.src = source;
             image.alt = `${project.name} gallery image ${index + 1}`;
             const wrapper = image.closest(".gallery-wrapper");
-            if (wrapper) wrapper.onclick = () => window.setModalImage?.(imagePath);
+            if (wrapper) wrapper.onclick = () => window.setModalImage?.(source);
         });
         columns.slice(project.gallery.length).forEach(column => column.remove());
         if (galleryHeading) galleryHeading.hidden = project.gallery.length === 0;
@@ -112,9 +147,10 @@ function updateProjectDetail(project) {
         image.alt.toLowerCase().includes("layout map")
     );
     if (layoutImage && project.layout_image) {
-        layoutImage.src = project.layout_image;
+        const source = normalizeCmsImagePath(project.layout_image);
+        if (source) layoutImage.src = source;
         const wrapper = layoutImage.closest(".gallery-wrapper");
-        if (wrapper) wrapper.setAttribute("onclick", `setModalImage('${project.layout_image}')`);
+        if (wrapper && source) wrapper.onclick = () => window.setModalImage?.(source);
     }
 
     const amenitiesHeading = [...document.querySelectorAll("h3, h4")].find(element =>
@@ -156,7 +192,7 @@ function applyPageMetadata(page) {
             element.textContent = value;
         });
         document.querySelectorAll(`img[data-cms-image="${CSS.escape(key)}"]`).forEach(image => {
-            if (value) image.src = value;
+            if (value) image.src = normalizeCmsImagePath(value);
         });
     });
 }
@@ -215,7 +251,9 @@ async function initializeCmsPublicContent() {
     if (isDynamicProject && projectPath) {
         const response = await fetch(cmsApiUrl(`/public/projects/${encodeURIComponent(projectPath[1])}`));
         if (!response.ok) throw new Error("Project content is unavailable.");
-        const { project } = await response.json();
+        const result = await response.json();
+        cmsCloudinaryCloudName = result.cloudinaryCloudName || "";
+        const { project } = result;
         const container = document.getElementById("cmsProjectContent");
         container.replaceChildren();
 
@@ -231,10 +269,11 @@ async function initializeCmsPublicContent() {
         const details = cmsElement("section", "py-5");
         const content = cmsElement("div", "container");
         content.append(cmsElement("p", "text-muted", project.location));
-        content.append(cmsElement("p", "lead", project.description));
+        const description = project.description || project.summary;
+        if (description) content.append(cmsElement("p", "lead", description));
         if (project.card_image) {
             const cover = cmsElement("img", "img-fluid mb-4");
-            cover.src = project.card_image;
+            cover.src = normalizeCmsImagePath(project.card_image);
             cover.alt = project.name;
             content.append(cover);
         }
@@ -244,7 +283,7 @@ async function initializeCmsPublicContent() {
             project.gallery.forEach((source, index) => {
                 const column = cmsElement("div", "col-md-3 col-6");
                 const image = cmsElement("img", "img-fluid w-100");
-                image.src = source;
+                image.src = normalizeCmsImagePath(source);
                 image.alt = `${project.name} gallery image ${index + 1}`;
                 column.append(image);
                 gallery.append(column);
@@ -253,7 +292,7 @@ async function initializeCmsPublicContent() {
         }
         if (project.layout_image || project.map_image) {
             const layout = cmsElement("img", "img-fluid d-block mx-auto mb-5");
-            layout.src = project.layout_image || project.map_image;
+            layout.src = normalizeCmsImagePath(project.layout_image || project.map_image);
             layout.alt = "Project layout";
             content.append(cmsElement("h2", "text-uppercase mb-4", "Site Layout"), layout);
         }
@@ -279,7 +318,50 @@ async function initializeCmsPublicContent() {
             content.append(videoLink);
         }
         details.append(content);
-        container.append(hero, details);
+        const enquirySection = cmsElement("section", "py-5 bg-light");
+        const enquiryContainer = cmsElement("div", "container");
+        const enquiryCard = cmsElement("div", "p-4 p-md-5 bg-white border shadow-sm");
+        enquiryCard.append(
+            cmsElement("h2", "text-uppercase mb-3", "Project Enquiry"),
+            cmsElement("p", "text-muted small", "Submit your details to request a callback.")
+        );
+        const enquiryForm = cmsElement("form", "sheet-form");
+        enquiryForm.dataset.sourceForm = `${project.name} Enquiries`;
+        for (const [name, value] of [
+            ["formType", enquiryForm.dataset.sourceForm],
+            ["projectName", project.name]
+        ]) {
+            const hidden = cmsElement("input");
+            hidden.type = "hidden";
+            hidden.name = name;
+            hidden.value = value;
+            enquiryForm.append(hidden);
+        }
+        for (const [name, type, placeholder] of [
+            ["name", "text", "Full Name"],
+            ["phone", "tel", "Contact No."],
+            ["email", "email", "Email Address"]
+        ]) {
+            const field = cmsElement("input", "form-control rounded-0");
+            field.type = type;
+            field.name = name;
+            field.placeholder = placeholder;
+            field.required = true;
+            const wrapper = cmsElement("div", "mb-3");
+            wrapper.append(field);
+            enquiryForm.append(wrapper);
+        }
+        const submitButton = cmsElement(
+            "button",
+            "btn btn-luxury w-100 py-3 text-uppercase",
+            "Request Callback"
+        );
+        submitButton.type = "submit";
+        enquiryForm.append(submitButton);
+        enquiryCard.append(enquiryForm);
+        enquiryContainer.append(enquiryCard);
+        enquirySection.append(enquiryContainer);
+        container.append(hero, details, enquirySection);
         updateProjectDetail(project);
         return;
     }
@@ -300,7 +382,9 @@ async function initializeCmsPublicContent() {
     ]);
 
     if (pageResponse?.ok) {
-        const { page } = await pageResponse.json();
+        const result = await pageResponse.json();
+        cmsCloudinaryCloudName = result.cloudinaryCloudName || "";
+        const { page } = result;
         applyPageMetadata(page);
     }
     if (settingsResponse.ok) {
@@ -310,7 +394,9 @@ async function initializeCmsPublicContent() {
 
     const projectsResponse = await fetch(cmsApiUrl("/public/projects"));
     if (!projectsResponse.ok) throw new Error("Published projects are unavailable.");
-    const { projects } = await projectsResponse.json();
+    const projectResult = await projectsResponse.json();
+    cmsCloudinaryCloudName = projectResult.cloudinaryCloudName || "";
+    const { projects } = projectResult;
 
     if (isProjectsPage) {
         const grid = document.getElementById("projectsGrid");
@@ -325,8 +411,10 @@ async function initializeCmsPublicContent() {
     );
     const featuredRow = featuredHeading?.closest("section")?.querySelector(".row.g-4");
     if (featuredRow) {
-        featuredRow.replaceChildren(...projects.filter(project => project.featured)
-            .map(project => projectCard(project, true)));
+        const featuredProjects = projects.filter(project => project.featured);
+        if (featuredProjects.length) {
+            featuredRow.replaceChildren(...featuredProjects.map(project => projectCard(project, true)));
+        }
     }
 
     if (projectPath) {
@@ -335,7 +423,9 @@ async function initializeCmsPublicContent() {
             document.body.replaceChildren(cmsElement("main", "container py-5", "This project is not available."));
             return;
         }
-        const { project } = await response.json();
+        const result = await response.json();
+        cmsCloudinaryCloudName = result.cloudinaryCloudName || "";
+        const { project } = result;
         updateProjectDetail(project);
     }
 }
@@ -565,6 +655,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 coverLetter: fieldValue("coverLetter")
             };
 
+            careerForm.dataset.submissionKey ||= newSubmissionKey();
             careerForm.dataset.submitting = "true";
             submitButton.disabled = true;
             submitButton.textContent = "Submitting...";
@@ -574,7 +665,10 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
                 const response = await fetch(`${CMS_API_BASE_URL.replace(/\/$/, "")}/api/career`, {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Idempotency-Key": careerForm.dataset.submissionKey
+                    },
                     body: JSON.stringify(payload)
                 });
                 let result;
@@ -588,8 +682,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 careerForm.reset();
+                delete careerForm.dataset.submissionKey;
                 feedback.className = "form-feedback mt-3 alert alert-success";
-                feedback.textContent = "Thank you. Your application has been submitted successfully.";
+                feedback.textContent = result.sheets?.status === "sent"
+                    ? "Thank you. Your application has been saved and sent to our team."
+                    : "Thank you. Your application has been saved; spreadsheet sync is pending.";
             } catch (error) {
                 feedback.className = "form-feedback mt-3 alert alert-danger";
                 feedback.textContent = error instanceof TypeError
@@ -603,17 +700,17 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-document.querySelectorAll(".sheet-form").forEach(form => {
-    if (form.id === "careerForm" ||
+document.addEventListener("submit", async event => {
+    const form = event.target;
+    if (!(form instanceof HTMLFormElement) || !form.matches(".sheet-form") ||
+        form.id === "careerForm" ||
         !form.querySelector('[name="name"]') ||
         !form.querySelector('[name="phone"]')) {
         return;
     }
 
-    form.addEventListener("submit", async event => {
-        event.preventDefault();
-        if (form.dataset.submitting === "true") return;
-        if (!form.reportValidity()) return;
+    event.preventDefault();
+    if (form.dataset.submitting === "true" || !form.reportValidity()) return;
 
         const submitButtons = [...form.querySelectorAll('button[type="submit"], input[type="submit"]')];
         const originalButtonContent = submitButtons.map(button => button.innerHTML);
@@ -646,10 +743,14 @@ document.querySelectorAll(".sheet-form").forEach(form => {
             sourcePage: window.location.pathname
         };
 
+        form.dataset.submissionKey ||= newSubmissionKey();
         try {
             const response = await fetch(`${CMS_API_BASE_URL.replace(/\/$/, "")}/api/inquiry`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Content-Type": "application/json",
+                    "Idempotency-Key": form.dataset.submissionKey
+                },
                 body: JSON.stringify(payload)
             });
             let result;
@@ -663,8 +764,11 @@ document.querySelectorAll(".sheet-form").forEach(form => {
             }
 
             form.reset();
+            delete form.dataset.submissionKey;
             feedback.className = "form-feedback mt-3 alert alert-success";
-            feedback.textContent = "Thank you. Your enquiry has been saved successfully.";
+            feedback.textContent = result.sheets?.status === "sent"
+                ? "Thank you. Your enquiry has been saved and sent to our team."
+                : "Thank you. Your enquiry has been saved; spreadsheet sync is pending.";
         } catch (error) {
             feedback.className = "form-feedback mt-3 alert alert-danger";
             feedback.textContent = error instanceof TypeError
@@ -677,6 +781,5 @@ document.querySelectorAll(".sheet-form").forEach(form => {
                 button.innerHTML = originalButtonContent[index];
             });
         }
-    });
 });
 });

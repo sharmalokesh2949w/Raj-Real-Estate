@@ -16,6 +16,7 @@ test("Pages asset allowlist excludes environment files and private server data",
         "uploads/private.png",
         "functions/api/route.js",
         "cms/router.js",
+        "cms/project-template-private-copy.html",
         "node_modules/express/index.js",
         "private.key",
         "backup.sqlite-wal"
@@ -30,6 +31,7 @@ test("Pages asset allowlist excludes environment files and private server data",
         "projects.html",
         "admin/index.html",
         "admin/admin.js",
+        "cms/project-template.html",
         "css/custom.css",
         "images/heritage/1.png",
         "projects/heritage.html",
@@ -56,7 +58,11 @@ test("Pages build emits website assets only and leaves local environment files u
         assert.equal(fs.existsSync(path.join(outputDirectory, ".env")), false);
         assert.equal(fs.existsSync(path.join(outputDirectory, ".env.example")), false);
         assert.equal(fs.existsSync(path.join(outputDirectory, "server.js")), false);
-        assert.equal(fs.existsSync(path.join(outputDirectory, "cms")), false);
+        assert.deepEqual(
+            fs.readdirSync(path.join(outputDirectory, "cms")),
+            ["project-template.html"]
+        );
+        assert.equal(fs.existsSync(path.join(outputDirectory, "cms", "router.js")), false);
         assert.equal(fs.existsSync(path.join(outputDirectory, "functions")), false);
         assert.equal(fs.existsSync(path.join(outputDirectory, "data")), false);
         assert.equal(fs.existsSync(path.join(outputDirectory, "uploads")), false);

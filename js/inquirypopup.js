@@ -1,9 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Backend API URL
-  const API_ROOT = (window.RAJ_API_BASE_URL || (["localhost", "127.0.0.1"].includes(window.location.hostname)
-    ? window.location.origin
-    : "https://raj-real-estate.onrender.com")).replace(/\/$/, "");
+  const API_ROOT = window.location.origin;
   const API_URL = `${API_ROOT}/api/inquiry`;
   // Add popup styles
   const styles = `
@@ -333,13 +330,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     submit.disabled = true;
+    form.dataset.submissionKey ||= crypto.randomUUID();
     form.dataset.submitting = "true";
     status.textContent = "Submitting your enquiry...";
 
     try {
       const response = await fetch(API_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Idempotency-Key": form.dataset.submissionKey
+        },
         body: JSON.stringify({
           name,
           phone,
@@ -361,6 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       form.reset();
+      delete form.dataset.submissionKey;
       content.hidden = true;
       success.hidden = false;
       popup.setAttribute("aria-labelledby", "inquiry-popup-success-title");

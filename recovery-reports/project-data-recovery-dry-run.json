@@ -1,0 +1,3134 @@
+{
+  "generated_at": "2026-11-05T10:08:56.385Z",
+  "mode": "read-only-dry-run",
+  "database": {
+    "name": "raj-real-estate-local",
+    "scope": "local Wrangler D1 only",
+    "project_records_read": 11,
+    "records_written": 0,
+    "migrations_applied": 0
+  },
+  "source_files": [
+    "projects.html",
+    "projects/heritage.html",
+    "projects/neelkanth-nagar.html",
+    "projects/riyasat-paradise-ii.html",
+    "projects/riyasat-ecopark.html",
+    "projects/happy-aerocity.html",
+    "projects/aerocrystal.html",
+    "projects/riyasat-royalcrest.html",
+    "projects/riyasat-bliss.html",
+    "projects/the-riyasat-sankalp.html",
+    "projects/riyasat-montera.html",
+    "projects/riyasatsankalpvilla.html",
+    "Propertys/index.html"
+  ],
+  "summary": {
+    "source_projects_found": 11,
+    "local_projects_matched": 11,
+    "local_projects_missing": 0,
+    "fields_to_fill_after_approval": 63,
+    "fields_preserved": 77,
+    "conflicts_requiring_review": 22,
+    "source_fact_conflicts_requiring_review": 12,
+    "unsupported_source_facts": 68,
+    "verified_local_project_images": 117,
+    "missing_local_project_images": 0,
+    "supplemental_images_found_outside_cms_roots": 6,
+    "supplemental_images_missing": 3
+  },
+  "notes": [
+    "This report reads only the local raj-real-estate-local D1 database and static project files.",
+    "No D1 writes, migrations, backup creation, network requests, or production access occur in dry-run mode.",
+    "Existing non-empty D1 values are never proposed for overwrite.",
+    "Conflicting values are retained as separate source facts and require human review.",
+    "Area, RERA, configuration, roads, and infrastructure are not represented by columns in the current CMS project schema; source facts are reported but not proposed for storage.",
+    "Only image paths that resolve to an existing local /images asset are eligible for recovery.",
+    "Propertys/index.html image mappings are reported separately because those source files are outside the CMS-supported /images and /uploads roots."
+  ],
+  "projects": [
+    {
+      "slug": "heritage",
+      "project_name": "Heritage",
+      "status": "review_required",
+      "fields": [
+        {
+          "field": "name",
+          "existing": "Heritage",
+          "proposed": "Heritage",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "category",
+          "existing": "jaipur",
+          "proposed": "jaipur",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "location_label",
+          "existing": "Jaipur",
+          "proposed": "Jaipur",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "banner_label",
+          "existing": "Jaipur",
+          "proposed": "Salagrampura & Dahar • Jaipur - 303901 (Rajasthan)",
+          "source_file": "projects/heritage.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "location",
+          "existing": "Salagrampura & Dahar",
+          "proposed": "Salagrampura & Dahar",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "summary",
+          "existing": "Premium gated community offering secure, verified plots with excellent connectivity throughout.",
+          "proposed": "Premium gated community offering secure, verified plots with excellent connectivity throughout.",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "description",
+          "existing": "",
+          "proposed": "A well-planned gated community offering verified land plots, quality infrastructure, excellent connectivity, and a secure environment for families and investors.",
+          "source_file": "projects/heritage.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_title",
+          "existing": "Heritage",
+          "proposed": "Heritage - Gated Lands in Jagathpura, Jaipur | RAJ REAL ESTATE",
+          "source_file": "projects/heritage.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "seo_description",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/heritage.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "card_image",
+          "existing": "/images/heritage/1.png",
+          "proposed": "/images/heritage/1.png",
+          "source_file": "projects.html",
+          "asset_checks": [
+            {
+              "path": "/images/heritage/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "keep_existing"
+        },
+        {
+          "field": "gallery_json",
+          "existing": "[]",
+          "proposed": "[\"/images/heritage/1.png\",\"/images/heritage/2.png\",\"/images/heritage/9.png\",\"/images/heritage/4.png\",\"/images/heritage/5.png\",\"/images/heritage/8.png\",\"/images/heritage/7.png\",\"/images/heritage/10.png\"]",
+          "source_file": "projects/heritage.html",
+          "asset_checks": [
+            {
+              "path": "/images/heritage/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/heritage/2.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/heritage/9.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/heritage/4.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/heritage/5.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/heritage/8.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/heritage/7.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/heritage/10.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "layout_image",
+          "existing": "",
+          "proposed": "/images/heritage/map.png",
+          "source_file": "projects/heritage.html",
+          "asset_checks": [
+            {
+              "path": "/images/heritage/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "map_image",
+          "existing": "",
+          "proposed": "/images/heritage/map.png",
+          "source_file": "projects/heritage.html",
+          "asset_checks": [
+            {
+              "path": "/images/heritage/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "amenities_json",
+          "existing": "[]",
+          "proposed": "[{\"label\":\"Hindu Temple\",\"icon\":\"bi-brightness-high\"},{\"label\":\"Community Hall\",\"icon\":\"bi-building\"},{\"label\":\"Nirvana Dispensary\",\"icon\":\"bi-heart-pulse\"},{\"label\":\"Bamboo Bliss Garden\",\"icon\":\"bi-tree\"},{\"label\":\"Peace Garden\",\"icon\":\"bi-flower1\"},{\"label\":\"Celebration Courtyard\",\"icon\":\"bi-stars\"},{\"label\":\"Serenity Meditation Bay\",\"icon\":\"bi-activity\"},{\"label\":\"Open Kids Play Area\",\"icon\":\"bi-dribbble\"},{\"label\":\"Feature Wall\",\"icon\":\"bi-trophy\"},{\"label\":\"Relay Track\",\"icon\":\"bi-cursor\"},{\"label\":\"Kids Play Area\",\"icon\":\"bi-emoji-smile\"},{\"label\":\"Open Gym\",\"icon\":\"bi-egg\"},{\"label\":\"Zumba Zone\",\"icon\":\"bi-music-note\"},{\"label\":\"Solar Plant\",\"icon\":\"bi-sun-fill\"},{\"label\":\"CCTV Security\",\"icon\":\"bi-eye\"},{\"label\":\"Boom Barrier\",\"icon\":\"bi-shield-check\"},{\"label\":\"Boundary Wall\",\"icon\":\"bi-border-style\"},{\"label\":\"Plot Demarcation\",\"icon\":\"bi-layout-sidebar\"}]",
+          "source_file": "projects/heritage.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "video_url",
+          "existing": "",
+          "proposed": "https://www.youtube.com/watch?v=09-Z1IS-pis&t=109s",
+          "source_file": "projects/heritage.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_path",
+          "existing": "/projects/heritage",
+          "proposed": "/projects/heritage",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        }
+      ],
+      "source_facts": [
+        {
+          "label": "Project Area",
+          "value": "10 hector",
+          "source_file": "projects/heritage.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project RERA",
+          "value": "RAJ/P/2025/3524",
+          "source_file": "projects/heritage.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Location Status",
+          "value": "High Growth Potential",
+          "source_file": "projects/heritage.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_facts": [],
+      "supplemental_images": [],
+      "conflicts": [
+        {
+          "field": "banner_label",
+          "existing": "Jaipur",
+          "source_value": "Salagrampura & Dahar • Jaipur - 303901 (Rajasthan)",
+          "source_file": "projects/heritage.html"
+        },
+        {
+          "field": "page_title",
+          "existing": "Heritage",
+          "source_value": "Heritage - Gated Lands in Jagathpura, Jaipur | RAJ REAL ESTATE",
+          "source_file": "projects/heritage.html"
+        }
+      ],
+      "source_fact_conflicts": []
+    },
+    {
+      "slug": "neelkanth-nagar",
+      "project_name": "Neelkanth Nagar",
+      "status": "review_required",
+      "fields": [
+        {
+          "field": "name",
+          "existing": "Neelkanth Nagar",
+          "proposed": "Neelkanth Nagar",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "category",
+          "existing": "jaipur",
+          "proposed": "jaipur",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "location_label",
+          "existing": "Jaipur",
+          "proposed": "Jaipur",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "banner_label",
+          "existing": "Jaipur",
+          "proposed": "Chaksu(west) • Jaipur",
+          "source_file": "projects/neelkanth-nagar.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "location",
+          "existing": "Chaksu(west)",
+          "proposed": "Chaksu(west)",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "summary",
+          "existing": "Premium 133-bigha gated township offering residential commercial plots, seamlessly connected.",
+          "proposed": "Premium 133-bigha gated township offering residential commercial plots, seamlessly connected.",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "description",
+          "existing": "",
+          "proposed": "A premium gated township spread across 133 bighas, offering residential and commercial plots, modern infrastructure, luxury amenities, 24×7 security, and excellent connectivity for a secure lifestyle and promising investment opportunity.",
+          "source_file": "projects/neelkanth-nagar.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_title",
+          "existing": "Neelkanth Nagar",
+          "proposed": "Neelkanth Nagar - Gated Lands in Tonk Road, Jaipur | RAJ REAL ESTATE",
+          "source_file": "projects/neelkanth-nagar.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "seo_description",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/neelkanth-nagar.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "card_image",
+          "existing": "/images/neelkanth/1.png",
+          "proposed": "/images/neelkanth/1.png",
+          "source_file": "projects.html",
+          "asset_checks": [
+            {
+              "path": "/images/neelkanth/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "keep_existing"
+        },
+        {
+          "field": "gallery_json",
+          "existing": "[]",
+          "proposed": "[\"/images/neelkanth/1.png\",\"/images/neelkanth/2.png\",\"/images/neelkanth/3.png\",\"/images/neelkanth/4.png\",\"/images/neelkanth/5.png\",\"/images/neelkanth/11.png\",\"/images/neelkanth/7.png\",\"/images/neelkanth/9.png\"]",
+          "source_file": "projects/neelkanth-nagar.html",
+          "asset_checks": [
+            {
+              "path": "/images/neelkanth/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/neelkanth/2.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/neelkanth/3.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/neelkanth/4.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/neelkanth/5.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/neelkanth/11.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/neelkanth/7.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/neelkanth/9.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "layout_image",
+          "existing": "",
+          "proposed": "/images/neelkanth/map.png",
+          "source_file": "projects/neelkanth-nagar.html",
+          "asset_checks": [
+            {
+              "path": "/images/neelkanth/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "map_image",
+          "existing": "",
+          "proposed": "/images/neelkanth/map.png",
+          "source_file": "projects/neelkanth-nagar.html",
+          "asset_checks": [
+            {
+              "path": "/images/neelkanth/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "amenities_json",
+          "existing": "[]",
+          "proposed": "[{\"label\":\"Hindu Temple\",\"icon\":\"bi-brightness-high\"},{\"label\":\"Community Hall\",\"icon\":\"bi-building\"},{\"label\":\"Nirvana Dispensary\",\"icon\":\"bi-heart-pulse\"},{\"label\":\"Bamboo Bliss Garden\",\"icon\":\"bi-tree\"},{\"label\":\"Peace Garden\",\"icon\":\"bi-flower1\"},{\"label\":\"Celebration Courtyard\",\"icon\":\"bi-stars\"},{\"label\":\"Serenity Meditation Bay\",\"icon\":\"bi-activity\"},{\"label\":\"Open kids play area\",\"icon\":\"bi-dribbble\"},{\"label\":\"Feature wall\",\"icon\":\"bi-trophy\"},{\"label\":\"Relay Track\",\"icon\":\"bi-cursor\"},{\"label\":\"Kids Play Area\",\"icon\":\"bi-emoji-smile\"},{\"label\":\"Open Gym\",\"icon\":\"bi-egg\"},{\"label\":\"Zumba Zone\",\"icon\":\"bi-music-note\"},{\"label\":\"Solar Plant\",\"icon\":\"bi-sun-fill\"},{\"label\":\"CCTV Security\",\"icon\":\"bi-eye\"},{\"label\":\"Boom Barrier\",\"icon\":\"bi-shield-check\"},{\"label\":\"Boundary Wall\",\"icon\":\"bi-border-style\"},{\"label\":\"Plot Demarcation\",\"icon\":\"bi-layout-sidebar\"}]",
+          "source_file": "projects/neelkanth-nagar.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "video_url",
+          "existing": "",
+          "proposed": "https://www.youtube.com/watch?v=kztiv639Rfc&t=4s",
+          "source_file": "projects/neelkanth-nagar.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_path",
+          "existing": "/projects/neelkanth-nagar",
+          "proposed": "/projects/neelkanth-nagar",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        }
+      ],
+      "source_facts": [
+        {
+          "label": "Project Area",
+          "value": "133 bigha",
+          "source_file": "projects/neelkanth-nagar.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project RERA",
+          "value": "RAJ/P/2026/5056",
+          "source_file": "projects/neelkanth-nagar.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Location Status",
+          "value": "Rapidly Developing Area",
+          "source_file": "projects/neelkanth-nagar.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_facts": [],
+      "supplemental_images": [],
+      "conflicts": [
+        {
+          "field": "banner_label",
+          "existing": "Jaipur",
+          "source_value": "Chaksu(west) • Jaipur",
+          "source_file": "projects/neelkanth-nagar.html"
+        },
+        {
+          "field": "page_title",
+          "existing": "Neelkanth Nagar",
+          "source_value": "Neelkanth Nagar - Gated Lands in Tonk Road, Jaipur | RAJ REAL ESTATE",
+          "source_file": "projects/neelkanth-nagar.html"
+        }
+      ],
+      "source_fact_conflicts": []
+    },
+    {
+      "slug": "riyasat-paradise-ii",
+      "project_name": "Riyasat Paradise II",
+      "status": "review_required",
+      "fields": [
+        {
+          "field": "name",
+          "existing": "Riyasat Paradise II",
+          "proposed": "Riyasat Paradise II",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "category",
+          "existing": "jaipur",
+          "proposed": "jaipur",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "location_label",
+          "existing": "Jaipur",
+          "proposed": "Jaipur",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "banner_label",
+          "existing": "Jaipur",
+          "proposed": "Village-Vatika • Jaipur",
+          "source_file": "projects/riyasat-paradise-ii.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "location",
+          "existing": "Village-Vatika",
+          "proposed": "Village-Vatika",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "summary",
+          "existing": "Premium 60-bigha Dubai-inspired township with JDA-RERA approved luxury residential plots.",
+          "proposed": "Premium 60-bigha Dubai-inspired township with JDA-RERA approved luxury residential plots.",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "description",
+          "existing": "",
+          "proposed": "Riyasat Paradise II is a premium 60 Bigha gated residential township in Sanganer, Jaipur, inspired by Dubai's modern elegance. It offers JDA-approved and RERA-registered plots, wide roads (18 m, 12 m & 9 m), landscaped green spaces, premium amenities, and excellent connectivity, making it an ideal choice for luxury living and long-term investment.",
+          "source_file": "projects/riyasat-paradise-ii.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_title",
+          "existing": "Riyasat Paradise II",
+          "proposed": "Riyasat Paradise II - Gated Lands in Sanganer, Jaipur | RAJ REAL ESTATE",
+          "source_file": "projects/riyasat-paradise-ii.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "seo_description",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/riyasat-paradise-ii.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "card_image",
+          "existing": "/images/paradise/1.png",
+          "proposed": "/images/paradise/1.png",
+          "source_file": "projects.html",
+          "asset_checks": [
+            {
+              "path": "/images/paradise/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "keep_existing"
+        },
+        {
+          "field": "gallery_json",
+          "existing": "[]",
+          "proposed": "[\"/images/paradise/1.png\",\"/images/paradise/2.png\",\"/images/paradise/3.png\",\"/images/paradise/4.png\",\"/images/paradise/5.png\",\"/images/paradise/6.png\",\"/images/paradise/7.png\",\"/images/paradise/8.png\"]",
+          "source_file": "projects/riyasat-paradise-ii.html",
+          "asset_checks": [
+            {
+              "path": "/images/paradise/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/paradise/2.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/paradise/3.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/paradise/4.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/paradise/5.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/paradise/6.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/paradise/7.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/paradise/8.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "layout_image",
+          "existing": "",
+          "proposed": "/images/paradise/map.png",
+          "source_file": "projects/riyasat-paradise-ii.html",
+          "asset_checks": [
+            {
+              "path": "/images/paradise/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "map_image",
+          "existing": "",
+          "proposed": "/images/paradise/map.png",
+          "source_file": "projects/riyasat-paradise-ii.html",
+          "asset_checks": [
+            {
+              "path": "/images/paradise/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "amenities_json",
+          "existing": "[]",
+          "proposed": "[{\"label\":\"Hindu Temple\",\"icon\":\"bi-brightness-high\"},{\"label\":\"Community Hall\",\"icon\":\"bi-building\"},{\"label\":\"Theme Park\",\"icon\":\"bi-tree\"},{\"label\":\"Peace Garden\",\"icon\":\"bi-flower1\"},{\"label\":\"Courtyard\",\"icon\":\"bi-stars\"},{\"label\":\"Kids Play Area\",\"icon\":\"bi-emoji-smile\"},{\"label\":\"CCTV Security\",\"icon\":\"bi-eye\"},{\"label\":\"Boom Barrier\",\"icon\":\"bi-shield-check\"},{\"label\":\"Boundary Wall\",\"icon\":\"bi-border-style\"}]",
+          "source_file": "projects/riyasat-paradise-ii.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "video_url",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/riyasat-paradise-ii.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "page_path",
+          "existing": "/projects/riyasat-paradise-ii",
+          "proposed": "/projects/riyasat-paradise-ii",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        }
+      ],
+      "source_facts": [
+        {
+          "label": "Project Area",
+          "value": "60 Bigha",
+          "source_file": "projects/riyasat-paradise-ii.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project RERA",
+          "value": "RAJ/P/2026/5205",
+          "source_file": "projects/riyasat-paradise-ii.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Location Status",
+          "value": "Promising Investment Destination",
+          "source_file": "projects/riyasat-paradise-ii.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_facts": [],
+      "supplemental_images": [],
+      "conflicts": [
+        {
+          "field": "banner_label",
+          "existing": "Jaipur",
+          "source_value": "Village-Vatika • Jaipur",
+          "source_file": "projects/riyasat-paradise-ii.html"
+        },
+        {
+          "field": "page_title",
+          "existing": "Riyasat Paradise II",
+          "source_value": "Riyasat Paradise II - Gated Lands in Sanganer, Jaipur | RAJ REAL ESTATE",
+          "source_file": "projects/riyasat-paradise-ii.html"
+        }
+      ],
+      "source_fact_conflicts": []
+    },
+    {
+      "slug": "riyasat-ecopark",
+      "project_name": "Riyasat Ecopark",
+      "status": "review_required",
+      "fields": [
+        {
+          "field": "name",
+          "existing": "Riyasat Ecopark",
+          "proposed": "Riyasat Ecopark",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "category",
+          "existing": "jaipur",
+          "proposed": "jaipur",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "location_label",
+          "existing": "Jaipur",
+          "proposed": "Jaipur",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "banner_label",
+          "existing": "Jaipur",
+          "proposed": "Village Bhated and Village Basdi Jogiyan • Jaipur",
+          "source_file": "projects/riyasat-ecopark.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "location",
+          "existing": "Village Bhated and Village Basdi Jogiyan",
+          "proposed": "Village Bhated and Village Basdi Jogiyan",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "summary",
+          "existing": "Premium 10-hectare Gulabi-themed township with JDA-RERA approved residential plots.",
+          "proposed": "Premium 10-hectare Gulabi-themed township with JDA-RERA approved residential plots.",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "description",
+          "existing": "",
+          "proposed": "Riyasat Eco Park is a premium 10-hectare township in Jaipur inspired by the city's iconic Gulabi Nagari theme. Offering JDA & RERA-approved residential plots and retail shops, the project features modern infrastructure, wide roads (9 m, 18 m & 24 m), premium amenities, and excellent connectivity, making it an ideal destination for comfortable living and smart investment.",
+          "source_file": "projects/riyasat-ecopark.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_title",
+          "existing": "Riyasat Ecopark",
+          "proposed": "Riyasat Ecopark - Gated Lands in Sirsi Road, Jaipur | RAJ REAL ESTATE",
+          "source_file": "projects/riyasat-ecopark.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "seo_description",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/riyasat-ecopark.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "card_image",
+          "existing": "/images/ecopark/1.png",
+          "proposed": "/images/ecopark/1.png",
+          "source_file": "projects.html",
+          "asset_checks": [
+            {
+              "path": "/images/ecopark/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "keep_existing"
+        },
+        {
+          "field": "gallery_json",
+          "existing": "[]",
+          "proposed": "[\"/images/ecopark/1.png\",\"/images/ecopark/2.png\",\"/images/ecopark/3.png\",\"/images/ecopark/4.png\",\"/images/ecopark/5.png\",\"/images/ecopark/6.png\",\"/images/ecopark/7.png\",\"/images/ecopark/8.png\"]",
+          "source_file": "projects/riyasat-ecopark.html",
+          "asset_checks": [
+            {
+              "path": "/images/ecopark/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/ecopark/2.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/ecopark/3.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/ecopark/4.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/ecopark/5.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/ecopark/6.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/ecopark/7.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/ecopark/8.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "layout_image",
+          "existing": "",
+          "proposed": "/images/ecopark/map.png",
+          "source_file": "projects/riyasat-ecopark.html",
+          "asset_checks": [
+            {
+              "path": "/images/ecopark/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "map_image",
+          "existing": "",
+          "proposed": "/images/ecopark/map.png",
+          "source_file": "projects/riyasat-ecopark.html",
+          "asset_checks": [
+            {
+              "path": "/images/ecopark/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "amenities_json",
+          "existing": "[]",
+          "proposed": "[{\"label\":\"Organic Farm\",\"icon\":\"bi-tree\"},{\"label\":\"Botanical Garden\",\"icon\":\"bi-flower1\"},{\"label\":\"Eco Clubhouse\",\"icon\":\"bi-building\"},{\"label\":\"Relay Track\",\"icon\":\"bi-stars\"},{\"label\":\"Solar Lights\",\"icon\":\"bi-sun-fill\"},{\"label\":\"CCTV Security\",\"icon\":\"bi-eye\"},{\"label\":\"Boundary Wall\",\"icon\":\"bi-border-style\"}]",
+          "source_file": "projects/riyasat-ecopark.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "video_url",
+          "existing": "",
+          "proposed": "https://www.youtube.com/watch?v=jYdiTa3ccos",
+          "source_file": "projects/riyasat-ecopark.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_path",
+          "existing": "/projects/riyasat-ecopark",
+          "proposed": "/projects/riyasat-ecopark",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        }
+      ],
+      "source_facts": [
+        {
+          "label": "Project Area",
+          "value": "10 Hectares",
+          "source_file": "projects/riyasat-ecopark.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project RERA",
+          "value": "RAJ/P/2023/2691",
+          "source_file": "projects/riyasat-ecopark.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Location Status",
+          "value": "Eco-Appreciation Corridor",
+          "source_file": "projects/riyasat-ecopark.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_facts": [],
+      "supplemental_images": [],
+      "conflicts": [
+        {
+          "field": "banner_label",
+          "existing": "Jaipur",
+          "source_value": "Village Bhated and Village Basdi Jogiyan • Jaipur",
+          "source_file": "projects/riyasat-ecopark.html"
+        },
+        {
+          "field": "page_title",
+          "existing": "Riyasat Ecopark",
+          "source_value": "Riyasat Ecopark - Gated Lands in Sirsi Road, Jaipur | RAJ REAL ESTATE",
+          "source_file": "projects/riyasat-ecopark.html"
+        }
+      ],
+      "source_fact_conflicts": []
+    },
+    {
+      "slug": "happy-aerocity",
+      "project_name": "Happy Aerocity",
+      "status": "review_required",
+      "fields": [
+        {
+          "field": "name",
+          "existing": "Happy Aerocity",
+          "proposed": "Happy Aerocity",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "category",
+          "existing": "ajmer",
+          "proposed": "ajmer",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "location_label",
+          "existing": "Ajmer",
+          "proposed": "Ajmer",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "banner_label",
+          "existing": "Ajmer",
+          "proposed": "Farasiya, Kishangarh • Ajmer",
+          "source_file": "projects/happy-aerocity.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "location",
+          "existing": "Farasiya, Kishangarh",
+          "proposed": "Farasiya, Kishangarh",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "summary",
+          "existing": "Premium airport-themed township with RERA-approved residential plots near Kishangarh Airport.",
+          "proposed": "Premium airport-themed township with RERA-approved residential plots near Kishangarh Airport.",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "description",
+          "existing": "",
+          "proposed": "Happy Aerocity-1 is a premium airport-themed plotted township located on NH-8, Kishangarh, Ajmer. Approved by Kishangarh Nagar Parishad and RERA, the project offers residential and informal plots with 9 m wide roads, modern infrastructure, premium amenities, and excellent connectivity to Kishangarh Airport, making it an ideal destination for comfortable living and long-term investment.",
+          "source_file": "projects/happy-aerocity.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_title",
+          "existing": "Happy Aerocity",
+          "proposed": "Happy Aerocity - Gated Lands in Airport Road, Ajmer | RAJ REAL ESTATE",
+          "source_file": "projects/happy-aerocity.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "seo_description",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/happy-aerocity.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "card_image",
+          "existing": "/images/aerocity/1.png",
+          "proposed": "/images/aerocity/1.png",
+          "source_file": "projects.html",
+          "asset_checks": [
+            {
+              "path": "/images/aerocity/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "keep_existing"
+        },
+        {
+          "field": "gallery_json",
+          "existing": "[]",
+          "proposed": "[\"/images/aerocity/1.png\",\"/images/aerocity/2.png\",\"/images/aerocity/3.png\",\"/images/aerocity/4.png\",\"/images/aerocity/5.png\",\"/images/aerocity/6.png\",\"/images/aerocity/7.png\",\"/images/aerocity/8.png\"]",
+          "source_file": "projects/happy-aerocity.html",
+          "asset_checks": [
+            {
+              "path": "/images/aerocity/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocity/2.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocity/3.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocity/4.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocity/5.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocity/6.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocity/7.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocity/8.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "layout_image",
+          "existing": "",
+          "proposed": "/images/aerocity/map.png",
+          "source_file": "projects/happy-aerocity.html",
+          "asset_checks": [
+            {
+              "path": "/images/aerocity/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "map_image",
+          "existing": "",
+          "proposed": "/images/aerocity/map.png",
+          "source_file": "projects/happy-aerocity.html",
+          "asset_checks": [
+            {
+              "path": "/images/aerocity/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "amenities_json",
+          "existing": "[]",
+          "proposed": "[{\"label\":\"Hindu Temple\",\"icon\":\"bi-brightness-high\"},{\"label\":\"Community Hall\",\"icon\":\"bi-building\"},{\"label\":\"Nirvana Dispensary\",\"icon\":\"bi-heart-pulse\"},{\"label\":\"Bamboo Bliss Garden\",\"icon\":\"bi-tree\"},{\"label\":\"Peace Garden\",\"icon\":\"bi-flower1\"},{\"label\":\"Celebration Courtyard\",\"icon\":\"bi-stars\"},{\"label\":\"Serenity Meditation Bay\",\"icon\":\"bi-activity\"},{\"label\":\"Open kids play area\",\"icon\":\"bi-dribbble\"},{\"label\":\"Underground electricity line\",\"icon\":\"bi-trophy\"},{\"label\":\"Relay Track\",\"icon\":\"bi-cursor\"},{\"label\":\"Kids Play Area\",\"icon\":\"bi-emoji-smile\"},{\"label\":\"Open Gym\",\"icon\":\"bi-egg\"},{\"label\":\"Zumba Zone\",\"icon\":\"bi-music-note\"},{\"label\":\"Solar Plant\",\"icon\":\"bi-sun-fill\"},{\"label\":\"CCTV Security\",\"icon\":\"bi-eye\"},{\"label\":\"Boom Barrier\",\"icon\":\"bi-shield-check\"},{\"label\":\"Boundary Wall\",\"icon\":\"bi-border-style\"},{\"label\":\"Plot Demarcation\",\"icon\":\"bi-layout-sidebar\"}]",
+          "source_file": "projects/happy-aerocity.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "video_url",
+          "existing": "",
+          "proposed": "https://www.youtube.com/watch?v=rheYY6sTb64",
+          "source_file": "projects/happy-aerocity.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_path",
+          "existing": "/projects/happy-aerocity",
+          "proposed": "/projects/happy-aerocity",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        }
+      ],
+      "source_facts": [
+        {
+          "label": "Project Area",
+          "value": "19,499.25 sq. m",
+          "source_file": "projects/happy-aerocity.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project RERA",
+          "value": "RAJ/P/2025/4179",
+          "source_file": "projects/happy-aerocity.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Location Status",
+          "value": "High Growth Potential",
+          "source_file": "projects/happy-aerocity.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_facts": [],
+      "supplemental_images": [],
+      "conflicts": [
+        {
+          "field": "banner_label",
+          "existing": "Ajmer",
+          "source_value": "Farasiya, Kishangarh • Ajmer",
+          "source_file": "projects/happy-aerocity.html"
+        },
+        {
+          "field": "page_title",
+          "existing": "Happy Aerocity",
+          "source_value": "Happy Aerocity - Gated Lands in Airport Road, Ajmer | RAJ REAL ESTATE",
+          "source_file": "projects/happy-aerocity.html"
+        }
+      ],
+      "source_fact_conflicts": []
+    },
+    {
+      "slug": "aerocrystal",
+      "project_name": "Aerocrystal",
+      "status": "review_required",
+      "fields": [
+        {
+          "field": "name",
+          "existing": "Aerocrystal",
+          "proposed": "Aerocrystal",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "category",
+          "existing": "ajmer",
+          "proposed": "ajmer",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "location_label",
+          "existing": "Ajmer",
+          "proposed": "Ajmer",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "banner_label",
+          "existing": "Ajmer",
+          "proposed": "Kishangarh • Ajmer",
+          "source_file": "projects/aerocrystal.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "location",
+          "existing": "Kishangarh",
+          "proposed": "Kishangarh",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "summary",
+          "existing": "Premium RERA-approved township offering residential and commercial plots in Kishangarh, Ajmer.",
+          "proposed": "Premium RERA-approved township offering residential and commercial plots in Kishangarh, Ajmer.",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "description",
+          "existing": "",
+          "proposed": "Aero Crystal is a premium plotted township in Kishangarh, Ajmer, approved by Kishangarh Nagar Parishad and RERA. Offering residential, commercial, and informal commercial plots, the project features 30-feet-wide roads, modern infrastructure, landscaped parks, premium amenities, and excellent connectivity, making it an ideal destination for comfortable living and smart investment.",
+          "source_file": "projects/aerocrystal.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_title",
+          "existing": "Aerocrystal",
+          "proposed": "Aerocrystal - Gated Lands in Srinagar Road, Ajmer | RAJ REAL ESTATE",
+          "source_file": "projects/aerocrystal.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "seo_description",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/aerocrystal.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "card_image",
+          "existing": "/images/aerocrystal/1.png",
+          "proposed": "/images/aerocrystal/1.png",
+          "source_file": "projects.html",
+          "asset_checks": [
+            {
+              "path": "/images/aerocrystal/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "keep_existing"
+        },
+        {
+          "field": "gallery_json",
+          "existing": "[]",
+          "proposed": "[\"/images/aerocrystal/1.png\",\"/images/aerocrystal/2.png\",\"/images/aerocrystal/3.png\",\"/images/aerocrystal/4.png\",\"/images/aerocrystal/5.png\",\"/images/aerocrystal/6.png\",\"/images/aerocrystal/7.png\",\"/images/aerocrystal/8.png\"]",
+          "source_file": "projects/aerocrystal.html",
+          "asset_checks": [
+            {
+              "path": "/images/aerocrystal/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocrystal/2.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocrystal/3.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocrystal/4.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocrystal/5.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocrystal/6.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocrystal/7.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/aerocrystal/8.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "layout_image",
+          "existing": "",
+          "proposed": "/images/aerocrystal/map.png",
+          "source_file": "projects/aerocrystal.html",
+          "asset_checks": [
+            {
+              "path": "/images/aerocrystal/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "map_image",
+          "existing": "",
+          "proposed": "/images/aerocrystal/map.png",
+          "source_file": "projects/aerocrystal.html",
+          "asset_checks": [
+            {
+              "path": "/images/aerocrystal/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "amenities_json",
+          "existing": "[]",
+          "proposed": "[{\"label\":\"Hindu Temple\",\"icon\":\"bi-brightness-high\"},{\"label\":\"Community Hall\",\"icon\":\"bi-building\"},{\"label\":\"Nirvana Dispensary\",\"icon\":\"bi-heart-pulse\"},{\"label\":\"Bamboo Bliss Garden\",\"icon\":\"bi-tree\"},{\"label\":\"Peace Garden\",\"icon\":\"bi-flower1\"},{\"label\":\"Celebration Courtyard\",\"icon\":\"bi-stars\"},{\"label\":\"Serenity Meditation Bay\",\"icon\":\"bi-activity\"},{\"label\":\"Open kids play area\",\"icon\":\"bi-dribbble\"},{\"label\":\"Underground electricity wires\",\"icon\":\"bi-trophy\"},{\"label\":\"Relay Track\",\"icon\":\"bi-cursor\"},{\"label\":\"Kids Play Area\",\"icon\":\"bi-emoji-smile\"},{\"label\":\"Open Gym\",\"icon\":\"bi-egg\"},{\"label\":\"Zumba Zone\",\"icon\":\"bi-music-note\"},{\"label\":\"Solar Plant\",\"icon\":\"bi-sun-fill\"},{\"label\":\"CCTV Security\",\"icon\":\"bi-eye\"},{\"label\":\"Boom Barrier\",\"icon\":\"bi-shield-check\"},{\"label\":\"Boundary Wall\",\"icon\":\"bi-border-style\"},{\"label\":\"Plot Demarcation\",\"icon\":\"bi-layout-sidebar\"}]",
+          "source_file": "projects/aerocrystal.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "video_url",
+          "existing": "",
+          "proposed": "https://www.youtube.com/watch?v=eWfA9w6AiyE",
+          "source_file": "projects/aerocrystal.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_path",
+          "existing": "/projects/aerocrystal",
+          "proposed": "/projects/aerocrystal",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        }
+      ],
+      "source_facts": [
+        {
+          "label": "Project Area",
+          "value": "19,425 sq. m.",
+          "source_file": "projects/aerocrystal.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project RERA",
+          "value": "RAJ/P/2026/4620",
+          "source_file": "projects/aerocrystal.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Location Status",
+          "value": "High growth potential",
+          "source_file": "projects/aerocrystal.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_facts": [],
+      "supplemental_images": [],
+      "conflicts": [
+        {
+          "field": "banner_label",
+          "existing": "Ajmer",
+          "source_value": "Kishangarh • Ajmer",
+          "source_file": "projects/aerocrystal.html"
+        },
+        {
+          "field": "page_title",
+          "existing": "Aerocrystal",
+          "source_value": "Aerocrystal - Gated Lands in Srinagar Road, Ajmer | RAJ REAL ESTATE",
+          "source_file": "projects/aerocrystal.html"
+        }
+      ],
+      "source_fact_conflicts": []
+    },
+    {
+      "slug": "riyasat-royalcrest",
+      "project_name": "Riyasat Royalcrest",
+      "status": "review_required",
+      "fields": [
+        {
+          "field": "name",
+          "existing": "Riyasat Royalcrest",
+          "proposed": "Riyasat Royalcrest",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "category",
+          "existing": "mumbai",
+          "proposed": "mumbai",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "location_label",
+          "existing": "Old Mumbai",
+          "proposed": "Old Mumbai",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "banner_label",
+          "existing": "Old Mumbai",
+          "proposed": "Vavandhal • Old Mumbai",
+          "source_file": "projects/riyasat-royalcrest.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "location",
+          "existing": "Vavandhal",
+          "proposed": "Vavandhal",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "summary",
+          "existing": "Premium 15-acre European-inspired township offering luxury residential plots near Panvel.",
+          "proposed": "Premium 15-acre European-inspired township offering luxury residential plots near Panvel.",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "description",
+          "existing": "",
+          "proposed": "Riyasat Royalcrest is a premium 15-acre residential township near Panvel, inspired by European elegance and surrounded by lush greenery. Offering luxury residential plots, modern infrastructure, 12+ premium amenities, 24×7 security, and excellent connectivity to Mumbai, Lonavala, Matheran, and Imagica, it provides the perfect blend of peaceful living and long-term investment potential.",
+          "source_file": "projects/riyasat-royalcrest.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_title",
+          "existing": "Riyasat Royalcrest",
+          "proposed": "Riyasat Royalcrest - Gated Lands in Kharghar Extension, Navi Mumbai | RAJ REAL ESTATE",
+          "source_file": "projects/riyasat-royalcrest.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "seo_description",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/riyasat-royalcrest.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "card_image",
+          "existing": "/images/royalcrest/1.png",
+          "proposed": "/images/royalcrest/1.png",
+          "source_file": "projects.html",
+          "asset_checks": [
+            {
+              "path": "/images/royalcrest/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "keep_existing"
+        },
+        {
+          "field": "gallery_json",
+          "existing": "[]",
+          "proposed": "[\"/images/royalcrest/1.png\",\"/images/royalcrest/2.png\",\"/images/royalcrest/3.png\",\"/images/royalcrest/4.png\",\"/images/royalcrest/5.png\",\"/images/royalcrest/6.png\",\"/images/royalcrest/7.png\",\"/images/royalcrest/8.png\"]",
+          "source_file": "projects/riyasat-royalcrest.html",
+          "asset_checks": [
+            {
+              "path": "/images/royalcrest/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/royalcrest/2.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/royalcrest/3.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/royalcrest/4.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/royalcrest/5.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/royalcrest/6.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/royalcrest/7.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/royalcrest/8.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "layout_image",
+          "existing": "",
+          "proposed": "/images/royalcrest/map.png",
+          "source_file": "projects/riyasat-royalcrest.html",
+          "asset_checks": [
+            {
+              "path": "/images/royalcrest/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "map_image",
+          "existing": "",
+          "proposed": "/images/royalcrest/map.png",
+          "source_file": "projects/riyasat-royalcrest.html",
+          "asset_checks": [
+            {
+              "path": "/images/royalcrest/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "amenities_json",
+          "existing": "[]",
+          "proposed": "[{\"label\":\"Hindu Temple\",\"icon\":\"bi-brightness-high\"},{\"label\":\"Community Hall\",\"icon\":\"bi-building\"},{\"label\":\"Nirvana Dispensary\",\"icon\":\"bi-heart-pulse\"},{\"label\":\"Bamboo Bliss Garden\",\"icon\":\"bi-tree\"},{\"label\":\"Peace Garden\",\"icon\":\"bi-flower1\"},{\"label\":\"Celebration Courtyard\",\"icon\":\"bi-stars\"},{\"label\":\"Serenity Meditation Bay\",\"icon\":\"bi-activity\"},{\"label\":\"Basket Ball Court\",\"icon\":\"bi-dribbble\"},{\"label\":\"Badminton Court\",\"icon\":\"bi-trophy\"},{\"label\":\"Relay Track\",\"icon\":\"bi-cursor\"},{\"label\":\"Kids Play Area\",\"icon\":\"bi-emoji-smile\"},{\"label\":\"Open Gym\",\"icon\":\"bi-egg\"},{\"label\":\"Zumba Zone\",\"icon\":\"bi-music-note\"},{\"label\":\"Solar Plant\",\"icon\":\"bi-sun-fill\"},{\"label\":\"CCTV Security\",\"icon\":\"bi-eye\"},{\"label\":\"Boom Barrier\",\"icon\":\"bi-shield-check\"},{\"label\":\"Boundary Wall\",\"icon\":\"bi-border-style\"},{\"label\":\"Plot Demarcation\",\"icon\":\"bi-layout-sidebar\"}]",
+          "source_file": "projects/riyasat-royalcrest.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "video_url",
+          "existing": "",
+          "proposed": "https://www.youtube.com/watch?v=fZvL2I2mgWs",
+          "source_file": "projects/riyasat-royalcrest.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_path",
+          "existing": "/projects/riyasat-royalcrest",
+          "proposed": "/projects/riyasat-royalcrest",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        }
+      ],
+      "source_facts": [
+        {
+          "label": "Project Area",
+          "value": "15 acres",
+          "source_file": "projects/riyasat-royalcrest.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project RERA",
+          "value": "PP1270002600401",
+          "source_file": "projects/riyasat-royalcrest.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Location Status",
+          "value": "High Returns Potential",
+          "source_file": "projects/riyasat-royalcrest.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_facts": [
+        {
+          "label": "Location",
+          "value": "Vavandhal, Mumbai 3.0, Khalapur, Raigad",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project size",
+          "value": "15 acres; 206 plots",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Property types / configuration",
+          "value": "Premium residential plots with a dedicated commercial space",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Amenities",
+          "value": [
+            "Convenience shopping plaza",
+            "Jogging track, open gym",
+            "Multipurpose club house, swimming pool",
+            "Multipurpose court, cricket turf",
+            "Yoga and meditation area",
+            "Kids play area",
+            "Temple, pergola"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Infrastructure / roads",
+          "value": [
+            "Outer boundary with wire fencing",
+            "Entry gate with boom barrier",
+            "CCTV cameras at gate",
+            "Sewerage, harvesting and water line networks",
+            "Underground electrification with substation",
+            "Street lights, CC roads, kerb stone work",
+            "Overhead water storage tank / CWR, rainwater harvesting tank",
+            "Sewage treatment plant"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Advantages",
+          "value": [
+            "Nestled in the lap of mountains",
+            "European-inspired township design",
+            "Low-density premium plotting"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Connectivity",
+          "value": [
+            "Navi Mumbai International Airport: 40 mins drive",
+            "Atal Setu: 45 mins drive",
+            "South Mumbai: 70 mins drive",
+            "Pune: 1 hour drive",
+            "Karjat Railway Station: 24 mins drive"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Approvals and RERA",
+          "value": "MahaRERA No. PP1270002600401",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Offer",
+          "value": "Price hike alert: offer extended until 8 November 2026. Confirm current pricing and plot availability with our team.",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_images": [
+        {
+          "slug": "riyasat-royalcrest",
+          "mapping_key": "royalcrest/cover.webp",
+          "source_path": "Propertys/images/royalcrest front.jpeg",
+          "source_file": "Propertys/index.html",
+          "exists": false,
+          "status": "missing_source_asset"
+        },
+        {
+          "slug": "riyasat-royalcrest",
+          "mapping_key": "royalcrest/layout.webp",
+          "source_path": "Propertys/images/royalcrest map.jpeg",
+          "source_file": "Propertys/index.html",
+          "exists": false,
+          "status": "missing_source_asset"
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "banner_label",
+          "existing": "Old Mumbai",
+          "source_value": "Vavandhal • Old Mumbai",
+          "source_file": "projects/riyasat-royalcrest.html"
+        },
+        {
+          "field": "page_title",
+          "existing": "Riyasat Royalcrest",
+          "source_value": "Riyasat Royalcrest - Gated Lands in Kharghar Extension, Navi Mumbai | RAJ REAL ESTATE",
+          "source_file": "projects/riyasat-royalcrest.html"
+        }
+      ],
+      "source_fact_conflicts": [
+        {
+          "field": "Project area / project size",
+          "existing": null,
+          "values": [
+            {
+              "value": "15 acres",
+              "source_file": "projects/riyasat-royalcrest.html"
+            },
+            {
+              "value": "15 acres; 206 plots",
+              "source_file": "Propertys/index.html"
+            }
+          ],
+          "action": "review_required_no_value_selected"
+        },
+        {
+          "field": "Project RERA / approvals",
+          "existing": null,
+          "values": [
+            {
+              "value": "PP1270002600401",
+              "source_file": "projects/riyasat-royalcrest.html"
+            },
+            {
+              "value": "MahaRERA No. PP1270002600401",
+              "source_file": "Propertys/index.html"
+            }
+          ],
+          "action": "review_required_no_value_selected"
+        },
+        {
+          "field": "Project location",
+          "existing": "Vavandhal",
+          "values": [
+            {
+              "value": "Vavandhal",
+              "source_file": "projects.html"
+            },
+            {
+              "value": "Vavandhal, Mumbai 3.0, Khalapur, Raigad",
+              "source_file": "Propertys/index.html"
+            }
+          ],
+          "action": "review_required_no_value_selected"
+        }
+      ]
+    },
+    {
+      "slug": "riyasat-bliss",
+      "project_name": "Riyasat Bliss",
+      "status": "review_required",
+      "fields": [
+        {
+          "field": "name",
+          "existing": "Riyasat Bliss",
+          "proposed": "Riyasat Bliss",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "category",
+          "existing": "mumbai",
+          "proposed": "mumbai",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "location_label",
+          "existing": "Navi Mumbai",
+          "proposed": "Navi Mumbai",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "banner_label",
+          "existing": "Navi Mumbai",
+          "proposed": "Village Panshil and Talegaon • Navi Mumbai",
+          "source_file": "projects/riyasat-bliss.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "location",
+          "existing": "Village Panshil and Talegaon",
+          "proposed": "Village Panshil and Talegaon",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "summary",
+          "existing": "Premium 23.82-acre township offering luxury residential plots in Panvel.",
+          "proposed": "Premium 23.82-acre township offering luxury residential plots in Panvel.",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "description",
+          "existing": "",
+          "proposed": "Riyasat Bliss is a premium 23.82-acre residential township in Panvel, surrounded by lush greenery and designed for a peaceful, modern lifestyle. Featuring luxury residential plots, 25+ world-class amenities, a secure gated community with 24×7 surveillance, premium infrastructure, and excellent connectivity, it offers the perfect blend of nature, comfort, and long-term investment potential.",
+          "source_file": "projects/riyasat-bliss.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_title",
+          "existing": "Riyasat Bliss",
+          "proposed": "Riyasat Bliss - Gated Lands in Panvel, Navi Mumbai | RAJ REAL ESTATE",
+          "source_file": "projects/riyasat-bliss.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "seo_description",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/riyasat-bliss.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "card_image",
+          "existing": "/images/bliss/1.png",
+          "proposed": "/images/bliss/1.png",
+          "source_file": "projects.html",
+          "asset_checks": [
+            {
+              "path": "/images/bliss/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "keep_existing"
+        },
+        {
+          "field": "gallery_json",
+          "existing": "[]",
+          "proposed": "[\"/images/bliss/1.png\",\"/images/bliss/2.png\",\"/images/bliss/3.png\",\"/images/bliss/4.png\",\"/images/bliss/5.png\",\"/images/bliss/6.png\",\"/images/bliss/7.png\",\"/images/bliss/8.png\"]",
+          "source_file": "projects/riyasat-bliss.html",
+          "asset_checks": [
+            {
+              "path": "/images/bliss/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/bliss/2.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/bliss/3.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/bliss/4.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/bliss/5.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/bliss/6.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/bliss/7.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/bliss/8.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "layout_image",
+          "existing": "",
+          "proposed": "/images/bliss/map.png",
+          "source_file": "projects/riyasat-bliss.html",
+          "asset_checks": [
+            {
+              "path": "/images/bliss/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "map_image",
+          "existing": "",
+          "proposed": "/images/bliss/map.png",
+          "source_file": "projects/riyasat-bliss.html",
+          "asset_checks": [
+            {
+              "path": "/images/bliss/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "amenities_json",
+          "existing": "[]",
+          "proposed": "[{\"label\":\"Hindu Temple\",\"icon\":\"bi-brightness-high\"},{\"label\":\"Community Hall\",\"icon\":\"bi-building\"},{\"label\":\"Nirvana Dispensary\",\"icon\":\"bi-heart-pulse\"},{\"label\":\"Bamboo Bliss Garden\",\"icon\":\"bi-tree\"},{\"label\":\"Peace Garden\",\"icon\":\"bi-flower1\"},{\"label\":\"Celebration Courtyard\",\"icon\":\"bi-stars\"},{\"label\":\"Serenity Meditation Bay\",\"icon\":\"bi-activity\"},{\"label\":\"Basketball Court\",\"icon\":\"bi-dribbble\"},{\"label\":\"Badminton Court\",\"icon\":\"bi-trophy\"},{\"label\":\"Relay Track\",\"icon\":\"bi-cursor\"},{\"label\":\"Kids Play Area\",\"icon\":\"bi-emoji-smile\"},{\"label\":\"Indoor Gym\",\"icon\":\"bi-egg\"},{\"label\":\"Zumba Zone\",\"icon\":\"bi-music-note\"},{\"label\":\"Solar Plant\",\"icon\":\"bi-sun-fill\"},{\"label\":\"CCTV Security\",\"icon\":\"bi-eye\"},{\"label\":\"Boom Barrier\",\"icon\":\"bi-shield-check\"},{\"label\":\"Boundary Wall\",\"icon\":\"bi-border-style\"},{\"label\":\"Plot Demarcation\",\"icon\":\"bi-layout-sidebar\"}]",
+          "source_file": "projects/riyasat-bliss.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "video_url",
+          "existing": "",
+          "proposed": "https://www.youtube.com/watch?v=82p0e82yDeE",
+          "source_file": "projects/riyasat-bliss.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_path",
+          "existing": "/projects/riyasat-bliss",
+          "proposed": "/projects/riyasat-bliss",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        }
+      ],
+      "source_facts": [
+        {
+          "label": "Project Area",
+          "value": "23.82 Acres",
+          "source_file": "projects/riyasat-bliss.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project RERA",
+          "value": "P52000079379",
+          "source_file": "projects/riyasat-bliss.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Location Status",
+          "value": "High Return Potential",
+          "source_file": "projects/riyasat-bliss.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_facts": [
+        {
+          "label": "Location",
+          "value": "Panshil, Panvel (Panshil Talegaon Road, Tal. Khalapur, Dist. Raigad)",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project size",
+          "value": "23 acres",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Property types / configuration",
+          "value": "Residential and commercial plots",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Amenities",
+          "value": [
+            "Trishul sculpture, entry gate with water body",
+            "Temple, landscape garden with seating",
+            "Gazebo with water body, open gym",
+            "Amphitheatre, Shivji statue with artificial water wall",
+            "Swimming pool and kids pool, open kids play area",
+            "Sports complex (club house), basketball court, shopping centre",
+            "Open fire pit, pergola, multipurpose court, open stage",
+            "Box cricket pitch, kids play school / day care"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Infrastructure / roads",
+          "value": [
+            "Outer boundary with wire fencing",
+            "Entry gate with boom barriers",
+            "24x7 CCTV at entry and junctions",
+            "Underground water, sewerage, harvesting and electrification networks",
+            "CC roads, street lights",
+            "Solar plant for common area",
+            "Underground and overhead tanks, sewage treatment plant"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Approvals and RERA",
+          "value": "MahaRERA No. P52000079379",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_images": [
+        {
+          "slug": "riyasat-bliss",
+          "mapping_key": "bliss/layout.webp",
+          "source_path": "Propertys/images/bliss front.jpeg",
+          "source_file": "Propertys/index.html",
+          "exists": true,
+          "status": "found_outside_cms_image_roots"
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "banner_label",
+          "existing": "Navi Mumbai",
+          "source_value": "Village Panshil and Talegaon • Navi Mumbai",
+          "source_file": "projects/riyasat-bliss.html"
+        },
+        {
+          "field": "page_title",
+          "existing": "Riyasat Bliss",
+          "source_value": "Riyasat Bliss - Gated Lands in Panvel, Navi Mumbai | RAJ REAL ESTATE",
+          "source_file": "projects/riyasat-bliss.html"
+        }
+      ],
+      "source_fact_conflicts": [
+        {
+          "field": "Project area / project size",
+          "existing": null,
+          "values": [
+            {
+              "value": "23.82 Acres",
+              "source_file": "projects/riyasat-bliss.html"
+            },
+            {
+              "value": "23 acres",
+              "source_file": "Propertys/index.html"
+            }
+          ],
+          "action": "review_required_no_value_selected"
+        },
+        {
+          "field": "Project RERA / approvals",
+          "existing": null,
+          "values": [
+            {
+              "value": "P52000079379",
+              "source_file": "projects/riyasat-bliss.html"
+            },
+            {
+              "value": "MahaRERA No. P52000079379",
+              "source_file": "Propertys/index.html"
+            }
+          ],
+          "action": "review_required_no_value_selected"
+        },
+        {
+          "field": "Project location",
+          "existing": "Village Panshil and Talegaon",
+          "values": [
+            {
+              "value": "Village Panshil and Talegaon",
+              "source_file": "projects.html"
+            },
+            {
+              "value": "Panshil, Panvel (Panshil Talegaon Road, Tal. Khalapur, Dist. Raigad)",
+              "source_file": "Propertys/index.html"
+            }
+          ],
+          "action": "review_required_no_value_selected"
+        }
+      ]
+    },
+    {
+      "slug": "the-riyasat-sankalp",
+      "project_name": "The Riyasat Sankalp",
+      "status": "review_required",
+      "fields": [
+        {
+          "field": "name",
+          "existing": "The Riyasat Sankalp",
+          "proposed": "The Riyasat Sankalp",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "category",
+          "existing": "mumbai",
+          "proposed": "mumbai",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "location_label",
+          "existing": "Panvel",
+          "proposed": "Panvel",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "banner_label",
+          "existing": "Panvel",
+          "proposed": "Village - Nadhal • Panvel",
+          "source_file": "projects/the-riyasat-sankalp.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "location",
+          "existing": "Village - Nadhal",
+          "proposed": "Village - Nadhal",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "summary",
+          "existing": "Premium 37-acre royal-themed township with MAHARERA-registered residential plots.",
+          "proposed": "Premium 37-acre royal-themed township with MAHARERA-registered residential plots.",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "description",
+          "existing": "",
+          "proposed": "Riyasat Royal Kingdom is a premium 37-acre royal-themed township offering MSRDC-approved and MAHARERA-registered residential plots and a shopping area. With world-class infrastructure, 9 m, 12 m & 30 m wide roads, premium amenities, and excellent connectivity to the Mumbai–Pune Highway, it provides the perfect blend of luxury, comfort, and long-term investment potential.",
+          "source_file": "projects/the-riyasat-sankalp.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_title",
+          "existing": "The Riyasat Sankalp",
+          "proposed": "The Riyasat Sankalp - Gated Lands in Taloja, Navi Mumbai | RAJ REAL ESTATE",
+          "source_file": "projects/the-riyasat-sankalp.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "seo_description",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/the-riyasat-sankalp.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "card_image",
+          "existing": "/images/sankalp/1.png",
+          "proposed": "/images/sankalp/1.png",
+          "source_file": "projects.html",
+          "asset_checks": [
+            {
+              "path": "/images/sankalp/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "keep_existing"
+        },
+        {
+          "field": "gallery_json",
+          "existing": "[]",
+          "proposed": "[\"/images/sankalp/1.png\",\"/images/sankalp/2.png\",\"/images/sankalp/3.png\",\"/images/sankalp/4.png\",\"/images/sankalp/5.png\",\"/images/sankalp/6.png\",\"/images/sankalp/7.png\",\"/images/sankalp/8.png\"]",
+          "source_file": "projects/the-riyasat-sankalp.html",
+          "asset_checks": [
+            {
+              "path": "/images/sankalp/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/sankalp/2.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/sankalp/3.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/sankalp/4.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/sankalp/5.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/sankalp/6.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/sankalp/7.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/sankalp/8.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "layout_image",
+          "existing": "",
+          "proposed": "/images/sankalp/map.png",
+          "source_file": "projects/the-riyasat-sankalp.html",
+          "asset_checks": [
+            {
+              "path": "/images/sankalp/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "map_image",
+          "existing": "",
+          "proposed": "/images/sankalp/map.png",
+          "source_file": "projects/the-riyasat-sankalp.html",
+          "asset_checks": [
+            {
+              "path": "/images/sankalp/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "amenities_json",
+          "existing": "[]",
+          "proposed": "[{\"label\":\"Hindu Temple\",\"icon\":\"bi-brightness-high\"},{\"label\":\"Community Hall\",\"icon\":\"bi-building\"},{\"label\":\"Nirvana Dispensary\",\"icon\":\"bi-heart-pulse\"},{\"label\":\"Bamboo Bliss Garden\",\"icon\":\"bi-tree\"},{\"label\":\"Peace Garden\",\"icon\":\"bi-flower1\"},{\"label\":\"Celebration Courtyard\",\"icon\":\"bi-stars\"},{\"label\":\"Serenity Meditation Bay\",\"icon\":\"bi-activity\"},{\"label\":\"Basketball Court\",\"icon\":\"bi-dribbble\"},{\"label\":\"Badminton Court\",\"icon\":\"bi-trophy\"},{\"label\":\"Relay Track\",\"icon\":\"bi-cursor\"},{\"label\":\"Kids Play Area\",\"icon\":\"bi-emoji-smile\"},{\"label\":\"Indoor Gym\",\"icon\":\"bi-egg\"},{\"label\":\"Zumba Zone\",\"icon\":\"bi-music-note\"},{\"label\":\"Solar Plant\",\"icon\":\"bi-sun-fill\"},{\"label\":\"CCTV Security\",\"icon\":\"bi-eye\"},{\"label\":\"Boom Barrier\",\"icon\":\"bi-shield-check\"},{\"label\":\"Boundary Wall\",\"icon\":\"bi-border-style\"},{\"label\":\"Plot Demarcation\",\"icon\":\"bi-layout-sidebar\"}]",
+          "source_file": "projects/the-riyasat-sankalp.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "video_url",
+          "existing": "",
+          "proposed": "https://www.youtube.com/watch?v=xV50b747gpc",
+          "source_file": "projects/the-riyasat-sankalp.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_path",
+          "existing": "/projects/the-riyasat-sankalp",
+          "proposed": "/projects/the-riyasat-sankalp",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        }
+      ],
+      "source_facts": [
+        {
+          "label": "Project Area",
+          "value": "37 acres",
+          "source_file": "projects/the-riyasat-sankalp.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project RERA",
+          "value": "P52000054353",
+          "source_file": "projects/the-riyasat-sankalp.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Location Status",
+          "value": "For best Investment Returns",
+          "source_file": "projects/the-riyasat-sankalp.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_facts": [
+        {
+          "label": "Location",
+          "value": "Nadhal, Khalapur, Raigad (Mumbai-Pune Highway area)",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project size",
+          "value": "37 acres",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Property types / configuration",
+          "value": "Residential and commercial plots; plot sizes starting from 1,100 sq. ft.; 1.5 FSI (G+1) facility",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Amenities",
+          "value": [
+            "Vasundhara Park (with Hindu temple)",
+            "Jeevan Park",
+            "Hill watch tower",
+            "Pawan Park: kids play area, flower bed zone, open-air gym, gazebo",
+            "Shopping centre",
+            "Entrance gazebo"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Infrastructure / roads",
+          "value": "Roads of 9 m, 12 m and 30 m widths",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Advantages",
+          "value": "Plotted township with parks, shopping centre and a hill watch tower",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Connectivity",
+          "value": [
+            "Airport: 20 mins",
+            "Trans Harbour Link: 30 mins",
+            "Navi Mumbai: 15 mins",
+            "Chowk Station: 5 mins"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Approvals and RERA",
+          "value": "MahaRERA No. P52000054353",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_images": [
+        {
+          "slug": "the-riyasat-sankalp",
+          "mapping_key": "sankalp/cover.webp",
+          "source_path": "Propertys/images/sankalp front.jpeg",
+          "source_file": "Propertys/index.html",
+          "exists": true,
+          "status": "found_outside_cms_image_roots"
+        },
+        {
+          "slug": "the-riyasat-sankalp",
+          "mapping_key": "sankalp/layout.webp",
+          "source_path": "Propertys/images/sankalp 1.jpeg",
+          "source_file": "Propertys/index.html",
+          "exists": false,
+          "status": "missing_source_asset"
+        },
+        {
+          "slug": "the-riyasat-sankalp",
+          "mapping_key": "sankalp/1.webp",
+          "source_path": "Propertys/images/sankalp 2.jpeg",
+          "source_file": "Propertys/index.html",
+          "exists": true,
+          "status": "found_outside_cms_image_roots"
+        },
+        {
+          "slug": "the-riyasat-sankalp",
+          "mapping_key": "sankalp/2.webp",
+          "source_path": "Propertys/images/sankalp map.jpeg",
+          "source_file": "Propertys/index.html",
+          "exists": true,
+          "status": "found_outside_cms_image_roots"
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "banner_label",
+          "existing": "Panvel",
+          "source_value": "Village - Nadhal • Panvel",
+          "source_file": "projects/the-riyasat-sankalp.html"
+        },
+        {
+          "field": "page_title",
+          "existing": "The Riyasat Sankalp",
+          "source_value": "The Riyasat Sankalp - Gated Lands in Taloja, Navi Mumbai | RAJ REAL ESTATE",
+          "source_file": "projects/the-riyasat-sankalp.html"
+        }
+      ],
+      "source_fact_conflicts": [
+        {
+          "field": "Project RERA / approvals",
+          "existing": null,
+          "values": [
+            {
+              "value": "P52000054353",
+              "source_file": "projects/the-riyasat-sankalp.html"
+            },
+            {
+              "value": "MahaRERA No. P52000054353",
+              "source_file": "Propertys/index.html"
+            }
+          ],
+          "action": "review_required_no_value_selected"
+        },
+        {
+          "field": "Project location",
+          "existing": "Village - Nadhal",
+          "values": [
+            {
+              "value": "Village - Nadhal",
+              "source_file": "projects.html"
+            },
+            {
+              "value": "Nadhal, Khalapur, Raigad (Mumbai-Pune Highway area)",
+              "source_file": "Propertys/index.html"
+            }
+          ],
+          "action": "review_required_no_value_selected"
+        }
+      ]
+    },
+    {
+      "slug": "riyasat-montera",
+      "project_name": "Riyasat Montera",
+      "status": "review_required",
+      "fields": [
+        {
+          "field": "name",
+          "existing": "Riyasat Montera",
+          "proposed": "Riyasat Montera",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "category",
+          "existing": "mumbai",
+          "proposed": "mumbai",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "location_label",
+          "existing": "Panvel",
+          "proposed": "Panvel",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "banner_label",
+          "existing": "Panvel",
+          "proposed": "Village - NaVillage - Ambivali • Panvel",
+          "source_file": "projects/riyasat-montera.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "location",
+          "existing": "Village - NaVillage - Ambivali",
+          "proposed": "Village - NaVillage - Ambivali",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "summary",
+          "existing": "Premium 17-acre contemporary township offering luxury residential plots in Ambivali.",
+          "proposed": "Premium 17-acre contemporary township offering luxury residential plots in Ambivali.",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "description",
+          "existing": "",
+          "proposed": "Riyasat Montera is a premium 17-acre residential township in Ambivali, inspired by a modern contemporary lifestyle and surrounded by serene mountain views. Offering luxury residential plots, world-class infrastructure, premium amenities, and excellent connectivity to the Mumbai–Pune Expressway, it provides the perfect blend of peaceful living, modern comfort, and long-term investment potential.",
+          "source_file": "projects/riyasat-montera.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_title",
+          "existing": "Riyasat Montera",
+          "proposed": "Riyasat Montera - Gated Lands in Taloja, Navi Mumbai | RAJ REAL ESTATE",
+          "source_file": "projects/riyasat-montera.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "seo_description",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/riyasat-montera.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "card_image",
+          "existing": "/images/montera/1.png",
+          "proposed": "/images/montera/1.png",
+          "source_file": "projects.html",
+          "asset_checks": [
+            {
+              "path": "/images/montera/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "keep_existing"
+        },
+        {
+          "field": "gallery_json",
+          "existing": "[]",
+          "proposed": "[\"/images/montera/1.png\",\"/images/montera/2.png\",\"/images/montera/3.png\",\"/images/montera/4.png\",\"/images/montera/5.png\",\"/images/montera/6.png\",\"/images/montera/7.png\",\"/images/montera/8.png\"]",
+          "source_file": "projects/riyasat-montera.html",
+          "asset_checks": [
+            {
+              "path": "/images/montera/1.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/montera/2.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/montera/3.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/montera/4.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/montera/5.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/montera/6.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/montera/7.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/montera/8.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "layout_image",
+          "existing": "",
+          "proposed": "/images/montera/map.png",
+          "source_file": "projects/riyasat-montera.html",
+          "asset_checks": [
+            {
+              "path": "/images/montera/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "map_image",
+          "existing": "",
+          "proposed": "/images/montera/map.png",
+          "source_file": "projects/riyasat-montera.html",
+          "asset_checks": [
+            {
+              "path": "/images/montera/map.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "amenities_json",
+          "existing": "[]",
+          "proposed": "[{\"label\":\"Clubhouse\",\"icon\":\"bi-building\"},{\"label\":\"Landscape Parks\",\"icon\":\"bi-tree\"},{\"label\":\"Kids Play Area\",\"icon\":\"bi-emoji-smile\"},{\"label\":\"CCTV Security\",\"icon\":\"bi-eye\"},{\"label\":\"Boom Barrier\",\"icon\":\"bi-shield-check\"},{\"label\":\"Boundary Wall\",\"icon\":\"bi-border-style\"}]",
+          "source_file": "projects/riyasat-montera.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "video_url",
+          "existing": "",
+          "proposed": "https://www.youtube.com/watch?v=zqWpSLBeGpY",
+          "source_file": "projects/riyasat-montera.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_path",
+          "existing": "/projects/riyasat-montera",
+          "proposed": "/projects/riyasat-montera",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        }
+      ],
+      "source_facts": [
+        {
+          "label": "Project Area",
+          "value": "17 acres",
+          "source_file": "projects/riyasat-montera.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project RERA",
+          "value": "PP1270002600684",
+          "source_file": "projects/riyasat-montera.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Location Status",
+          "value": "High Development Corridor",
+          "source_file": "projects/riyasat-montera.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_facts": [
+        {
+          "label": "Location",
+          "value": "Ambivali, near Magic Hills, Majgaon, Tal. Khalapur, Dist. Raigad",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Project size",
+          "value": "17 acres; 206 residential and commercial plots; 10+ lifestyle amenities",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Property types / configuration",
+          "value": "Residential, commercial and hold plots (as marked on the marketing map)",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Amenities",
+          "value": [
+            "Grand entrance gate",
+            "Convenience shopping plaza",
+            "Nature trail walk, jogging track",
+            "Sit-out garden, water feature fountain",
+            "Kids play area, multipurpose lawn, multipurpose court",
+            "Yoga and meditation zone",
+            "Temple"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Infrastructure / roads",
+          "value": [
+            "Outer boundaries with wire fencing",
+            "Entry gate with boom barrier, CCTV at gate",
+            "Water, sewerage and harvesting line networks",
+            "Underground electrification with substation",
+            "Street lights, CC roads, kerb stone work",
+            "Overhead water storage tank / CWR, rainwater harvesting",
+            "Sewage treatment plant"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Advantages",
+          "value": [
+            "Modern contemporary township",
+            "Scenic mountain living",
+            "Expressway touch connectivity"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Landmarks",
+          "value": [
+            "Education: Pillai University 15 mins, Vishwaniketan Institute 15 mins, Chhatrapati Shivaji Maharaj University 30 mins",
+            "Weekend: Imagica 15 mins, Lonavala 35 mins, Matheran 1 hour"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Connectivity",
+          "value": [
+            "Mumbai-Pune Expressway: 15 mins",
+            "Chowk Railway Station: 23 mins",
+            "Rasayani Railway Station: 24 mins",
+            "Panvel Junction: 40 mins",
+            "Atal Setu: 50 mins",
+            "Navi Mumbai International Airport: 50 mins",
+            "Pune City: 1 hour"
+          ],
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Approvals and RERA",
+          "value": "MahaRERA No. PP1270002600684",
+          "source_file": "Propertys/index.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_images": [
+        {
+          "slug": "riyasat-montera",
+          "mapping_key": "montera/plaza.webp",
+          "source_path": "Propertys/images/montera front.jpeg",
+          "source_file": "Propertys/index.html",
+          "exists": true,
+          "status": "found_outside_cms_image_roots"
+        },
+        {
+          "slug": "riyasat-montera",
+          "mapping_key": "montera/layout.webp",
+          "source_path": "Propertys/images/montera 2.jpeg",
+          "source_file": "Propertys/index.html",
+          "exists": true,
+          "status": "found_outside_cms_image_roots"
+        }
+      ],
+      "conflicts": [
+        {
+          "field": "banner_label",
+          "existing": "Panvel",
+          "source_value": "Village - NaVillage - Ambivali • Panvel",
+          "source_file": "projects/riyasat-montera.html"
+        },
+        {
+          "field": "page_title",
+          "existing": "Riyasat Montera",
+          "source_value": "Riyasat Montera - Gated Lands in Taloja, Navi Mumbai | RAJ REAL ESTATE",
+          "source_file": "projects/riyasat-montera.html"
+        }
+      ],
+      "source_fact_conflicts": [
+        {
+          "field": "Project area / project size",
+          "existing": null,
+          "values": [
+            {
+              "value": "17 acres",
+              "source_file": "projects/riyasat-montera.html"
+            },
+            {
+              "value": "17 acres; 206 residential and commercial plots; 10+ lifestyle amenities",
+              "source_file": "Propertys/index.html"
+            }
+          ],
+          "action": "review_required_no_value_selected"
+        },
+        {
+          "field": "Project RERA / approvals",
+          "existing": null,
+          "values": [
+            {
+              "value": "PP1270002600684",
+              "source_file": "projects/riyasat-montera.html"
+            },
+            {
+              "value": "MahaRERA No. PP1270002600684",
+              "source_file": "Propertys/index.html"
+            }
+          ],
+          "action": "review_required_no_value_selected"
+        },
+        {
+          "field": "Project location",
+          "existing": "Village - NaVillage - Ambivali",
+          "values": [
+            {
+              "value": "Village - NaVillage - Ambivali",
+              "source_file": "projects.html"
+            },
+            {
+              "value": "Ambivali, near Magic Hills, Majgaon, Tal. Khalapur, Dist. Raigad",
+              "source_file": "Propertys/index.html"
+            }
+          ],
+          "action": "review_required_no_value_selected"
+        }
+      ]
+    },
+    {
+      "slug": "riyasatsankalpvilla",
+      "project_name": "Riyasat Sankalp Villa",
+      "status": "review_required",
+      "fields": [
+        {
+          "field": "name",
+          "existing": "Riyasat Sankalp Villa",
+          "proposed": "Riyasat Sankalp Villa",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "category",
+          "existing": "villasinmumbai",
+          "proposed": "villasinmumbai",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "location_label",
+          "existing": "Mumbai",
+          "proposed": "Mumbai",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "banner_label",
+          "existing": "Mumbai",
+          "proposed": "READY TO SHIFT • THE RIYASAT SANKALP",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "location",
+          "existing": "Mumbai, Maharashtra",
+          "proposed": "Mumbai, Maharashtra",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "summary",
+          "existing": "Premium 17-acre contemporary township offering luxury residential plots in Ambivali.",
+          "proposed": "Premium 17-acre contemporary township offering luxury residential plots in Ambivali.",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        },
+        {
+          "field": "description",
+          "existing": "",
+          "proposed": "A fully furnished 3.5 BHK bungalow created for comfortable family living within The Riyasat Sankalp. From the custom furnishings to the polished interiors, this home is engineered for buyers seeking immediate convenience and an elevated living environment.",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "page_title",
+          "existing": "Riyasat Sankalp Villa",
+          "proposed": "Ready-to-Shift 3.5 BHK Villa in Panvel, Navi Mumbai | The Riyasat Sankalp | RAJ REAL ESTATE",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "action": "keep_existing_review_conflict"
+        },
+        {
+          "field": "seo_description",
+          "existing": "",
+          "proposed": "Explore a fully furnished 3.5 BHK ready-to-shift villa at The Riyasat Sankalp, Panvel, Navi Mumbai. 1,192 sq. ft. | ₹1.92 Crore. Schedule a private visit.",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "card_image",
+          "existing": "/images/riyasatsankalpvilla/1.jpg",
+          "proposed": "/images/riyasatsankalpvilla/1.jpg",
+          "source_file": "projects.html",
+          "asset_checks": [
+            {
+              "path": "/images/riyasatsankalpvilla/1.jpg",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "keep_existing"
+        },
+        {
+          "field": "gallery_json",
+          "existing": "[]",
+          "proposed": "[\"/images/riyasatsankalpvilla/16.png\",\"/images/riyasatsankalpvilla/18.jpg\",\"/images/riyasatsankalpvilla/19.jpg\",\"/images/riyasatsankalpvilla/15.jpg\",\"/images/riyasatsankalpvilla/14.jpg\",\"/images/riyasatsankalpvilla/13.jpg\"]",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "asset_checks": [
+            {
+              "path": "/images/riyasatsankalpvilla/16.png",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/riyasatsankalpvilla/18.jpg",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/riyasatsankalpvilla/19.jpg",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/riyasatsankalpvilla/15.jpg",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/riyasatsankalpvilla/14.jpg",
+              "exists": true,
+              "status": "verified_local_asset"
+            },
+            {
+              "path": "/images/riyasatsankalpvilla/13.jpg",
+              "exists": true,
+              "status": "verified_local_asset"
+            }
+          ],
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "layout_image",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "map_image",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "amenities_json",
+          "existing": "[]",
+          "proposed": "[{\"label\":\"Temple\",\"icon\":\"bi-brightness-high\"},{\"label\":\"Clubhouse\",\"icon\":\"bi-building\"},{\"label\":\"Amphitheatre\",\"icon\":\"bi-disc\"},{\"label\":\"Pawan Park\",\"icon\":\"bi-tree\"},{\"label\":\"Vasundhara Park\",\"icon\":\"bi-flower1\"},{\"label\":\"Jeevan Park\",\"icon\":\"bi-sun\"},{\"label\":\"Ambar Park\",\"icon\":\"bi-cloud-sun\"},{\"label\":\"Hill Watch Tower\",\"icon\":\"bi-binoculars\"},{\"label\":\"Kids' Play Area\",\"icon\":\"bi-emoji-smile\"},{\"label\":\"Gym & Open-Air Gym\",\"icon\":\"bi-heart-pulse\"},{\"label\":\"Primary School\",\"icon\":\"bi-book\"},{\"label\":\"Shopping Area\",\"icon\":\"bi-shop\"}]",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "action": "fill_empty_after_approval"
+        },
+        {
+          "field": "video_url",
+          "existing": "",
+          "proposed": "",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "action": "no_source_value"
+        },
+        {
+          "field": "page_path",
+          "existing": "/projects/riyasatsankalpvilla",
+          "proposed": "/projects/riyasatsankalpvilla",
+          "source_file": "projects.html",
+          "action": "keep_existing"
+        }
+      ],
+      "source_facts": [
+        {
+          "label": "Offered At",
+          "value": "₹1.92 Crore",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Configuration",
+          "value": "3.5 BHK Villa",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Built-Up Area",
+          "value": "1,192 sq. ft.",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Status & Furnishing",
+          "value": "Fully Furnished",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "Location",
+          "value": "Panvel, Navi Mumbai",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        },
+        {
+          "label": "RERA registration reference",
+          "value": "Registration No. P52000054353",
+          "source_file": "projects/riyasatsankalpvilla.html",
+          "existing": null,
+          "schema_column_available": false,
+          "action": "review_required_schema_extension"
+        }
+      ],
+      "supplemental_facts": [],
+      "supplemental_images": [],
+      "conflicts": [
+        {
+          "field": "banner_label",
+          "existing": "Mumbai",
+          "source_value": "READY TO SHIFT • THE RIYASAT SANKALP",
+          "source_file": "projects/riyasatsankalpvilla.html"
+        },
+        {
+          "field": "page_title",
+          "existing": "Riyasat Sankalp Villa",
+          "source_value": "Ready-to-Shift 3.5 BHK Villa in Panvel, Navi Mumbai | The Riyasat Sankalp | RAJ REAL ESTATE",
+          "source_file": "projects/riyasatsankalpvilla.html"
+        }
+      ],
+      "source_fact_conflicts": [
+        {
+          "field": "Project location",
+          "existing": "Mumbai, Maharashtra",
+          "values": [
+            {
+              "value": "Mumbai, Maharashtra",
+              "source_file": "projects.html"
+            },
+            {
+              "value": "Panvel, Navi Mumbai",
+              "source_file": "projects/riyasatsankalpvilla.html"
+            }
+          ],
+          "action": "review_required_no_value_selected"
+        }
+      ]
+    }
+  ]
+}

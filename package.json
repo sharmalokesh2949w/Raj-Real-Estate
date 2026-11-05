@@ -31,5 +31,12 @@
     "express": "^5.2.1",
     "multer": "^2.2.0",
     "mysql2": "^3.23.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.157.0"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "workerd@1.20261103.1": true
   }
 }

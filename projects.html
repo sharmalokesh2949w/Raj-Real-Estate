@@ -86,7 +86,7 @@
                 <button type="button" class="btn btn-outline-dark rounded-0 px-4 py-2 active" data-filter="all">ALL CITIES</button>
                 <button type="button"  class="btn btn-outline-dark rounded-0 px-4 py-2" data-filter="jaipur">JAIPUR</button>
                 <button type="button" class="btn btn-outline-dark rounded-0 px-4 py-2" data-filter="ajmer">AJMER</button>
-                <button type="button" class="btn btn-outline-dark rounded-0 px-4 py-2" data-filter="mumbai">NAVI MUMBAI</button>
+                <button type="button" class="btn btn-outline-dark rounded-0 px-4 py-2" data-filter="navi-mumbai">NAVI MUMBAI</button>
                  <button type="button" class="btn btn-outline-dark rounded-0 px-4 py-2" data-filter="villasinmumbai">VILLAS IN MUMBAI</button>
             </div>
 
@@ -421,6 +421,30 @@ document.addEventListener("DOMContentLoaded", () => {
         .filter(city => city !== "all");
     let activeFilter = "all";
 
+    function normalizeCity(value) {
+        return typeof value === "string"
+            ? value.trim().toLowerCase().replace(/[\s_]+/g, "-")
+            : "";
+    }
+
+    function cardMatchesFilter(card, filterValue) {
+        if (filterValue === "all") return true;
+
+        const category = normalizeCity(card.getAttribute("data-city"));
+        const location = normalizeCity(card.getAttribute("data-location"));
+        const values = [category, location].filter(Boolean);
+        const filter = normalizeCity(filterValue);
+
+        if (filter === "navi-mumbai") {
+            return values.some(value => value.includes("mumbai"));
+        }
+        if (filter.replace(/-/g, "") === "villasinmumbai") {
+            return values.some(value => value.replace(/-/g, "").includes("villasinmumbai"));
+        }
+
+        return values.some(value => value === filter);
+    }
+
     function applyFilter(filterValue) {
         activeFilter = filterValue;
 
@@ -428,7 +452,7 @@ document.addEventListener("DOMContentLoaded", () => {
             button.classList.remove("active", "bg-dark", "text-light");
         });
 
-        const selectedButton = filterValue === "navi-mumbai" ? "mumbai" : filterValue;
+        const selectedButton = filterValue;
         const activeButton = document.querySelector(
             `#filterContainer [data-filter="${selectedButton}"]`
         );
@@ -442,18 +466,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         document.querySelectorAll(".project-card").forEach(card => {
-
-            const city = card.getAttribute("data-city");
-            const matchesFilter = filterValue === "all" ||
-                city === filterValue ||
-                (filterValue === "navi-mumbai" && ["mumbai", "villasinmumbai"].includes(city));
-
-            if (matchesFilter) {
-                card.style.display = "";
-            } else {
-                card.style.display = "none";
-            }
-
+            card.style.display = cardMatchesFilter(card, filterValue) ? "" : "none";
         });
     }
 
