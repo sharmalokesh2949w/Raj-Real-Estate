@@ -1,0 +1,37 @@
+# Local development only; replace project names and database IDs only after review.
+name = "raj-real-estate-local-only"
+pages_build_output_dir = "./dist"
+compatibility_date = "2026-11-04"
+
+[vars]
+APP_ENV = "local"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "raj-real-estate-local"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[env.preview]
+name = "raj-real-estate-preview-placeholder"
+
+[env.preview.vars]
+APP_ENV = "preview"
+
+[[env.preview.d1_databases]]
+binding = "DB"
+database_name = "REPLACE_WITH_PREVIEW_DATABASE_NAME"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[env.production]
+name = "raj-real-estate-production-placeholder"
+
+[env.production.vars]
+APP_ENV = "production"
+
+[[env.production.d1_databases]]
+binding = "DB"
+database_name = "REPLACE_WITH_PRODUCTION_DATABASE_NAME"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"

@@ -83,6 +83,14 @@ router.post("/", async (req, res) => {
         });
     }
 
+    const submissionId = req.get("Idempotency-Key");
+    if (submissionId && !/^[A-Za-z0-9_-]{16,100}$/.test(submissionId)) {
+        return res.status(400).json({
+            success: false,
+            error: "Submission key is invalid."
+        });
+    }
+
     const params = new URLSearchParams({
         sheet: "Careers",
         name: name.trim(),
@@ -93,7 +101,11 @@ router.post("/", async (req, res) => {
         experience: experience.trim(),
         position: appliedPosition.trim(),
         resumeUrl: cleanResumeUrl,
-        coverLetter: typeof coverLetter === "string" ? coverLetter.trim() : ""
+        coverLetter: typeof coverLetter === "string" ? coverLetter.trim() : "",
+        ...(submissionId ? { submissionId } : {}),
+        ...(process.env.GOOGLE_SHEETS_SHARED_SECRET
+            ? { sharedSecret: process.env.GOOGLE_SHEETS_SHARED_SECRET }
+            : {})
     });
 
     try {

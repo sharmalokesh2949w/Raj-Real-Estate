@@ -137,6 +137,7 @@ function decodeHtml(value) {
     return value
         .replace(/&nbsp;/gi, " ")
         .replace(/&amp;/gi, "&")
+        .replace(/&bull;/gi, "•")
         .replace(/&quot;/gi, '"')
         .replace(/&#39;|&apos;/gi, "'")
         .replace(/&lt;/gi, "<")
@@ -159,6 +160,14 @@ function attribute(tag, name) {
     const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const match = tag.match(new RegExp(`\\b${escaped}\\s*=\\s*(["'])(.*?)\\1`, "i"));
     return match ? decodeHtml(match[2]) : "";
+}
+
+function normalizeSiteImagePath(value) {
+    const withoutRelativePrefix = value.replace(/^(?:\.\.\/)+/, "").replace(/^\/+/, "");
+    if (/^(?:images|uploads)\//.test(withoutRelativePrefix)) {
+        return `/${withoutRelativePrefix}`;
+    }
+    return value;
 }
 
 function getDivBlock(source, start) {
@@ -209,7 +218,7 @@ function parseProjectCards(source) {
             location_label: spans[0] ? textContent(spans[0][1]) : "",
             location: spans[1] ? textContent(spans[1][1]) : "",
             summary: textContent(summary),
-            card_image: attribute(imageTag, "src").replace(/^(?:\.\.\/)?/, "/"),
+            card_image: normalizeSiteImagePath(attribute(imageTag, "src")),
             page_path: pagePath,
             sort_order: cards.length
         });
@@ -218,9 +227,65 @@ function parseProjectCards(source) {
     return cards;
 }
 
+function projectDetailPath(project, rootDirectory) {
+    const pagePath = project.page_path.replace(/^\/+/, "");
+    const filePath = path.join(rootDirectory, pagePath);
+    if (fs.existsSync(filePath)) return filePath;
+    if (!path.extname(pagePath) && fs.existsSync(`${filePath}.html`)) return `${filePath}.html`;
+    return "";
+}
+
+function parseProjectSpecifications(source) {
+    const supportedLabels = new Set([
+        "Project Area",
+        "Project RERA",
+        "Location Status",
+        "Configuration",
+        "Built-Up Area",
+        "Status & Furnishing",
+        "Location",
+        "Offered At"
+    ]);
+    const specifications = [];
+    const spans = [...source.matchAll(/<span\b[^>]*>([\s\S]*?)<\/span>/gi)];
+
+    for (let index = 0; index < spans.length - 1; index += 1) {
+        const label = textContent(spans[index][1]).trim();
+        if (!supportedLabels.has(label)) continue;
+        const value = textContent(spans[index + 1][1]).trim();
+        if (value) specifications.push({ label, value });
+    }
+
+    const reraRegistration = source.match(
+        /<strong\b[^>]*>\s*MahaRERA Registered\s*<\/strong>\s*<span\b[^>]*>([\s\S]*?)<\/span>/i
+    );
+    if (reraRegistration) {
+        const value = textContent(reraRegistration[1]);
+        if (value) specifications.push({ label: "RERA registration reference", value });
+    }
+
+    return specifications;
+}
+
+function parseProjectGallery(source, slug) {
+    const headings = [...source.matchAll(/<h[34]\b[^>]*>([\s\S]*?)<\/h[34]>/gi)];
+    const galleryHeadingIndex = headings.findIndex(match => /\bgallery\b/i.test(textContent(match[1])));
+    if (galleryHeadingIndex < 0) return [];
+
+    const start = headings[galleryHeadingIndex].index;
+    const end = headings[galleryHeadingIndex + 1]?.index ?? source.length;
+    const gallerySource = source.slice(start, end);
+    const maximum = slug === "riyasatsankalpvilla" ? 6 : 8;
+    return [...gallerySource.matchAll(/<img\b[^>]*src=(["'])(.*?)\1[^>]*>/gi)]
+        .map(match => match[2])
+        .filter(image => image.includes("../images/") && !/\/map\./i.test(image))
+        .map(normalizeSiteImagePath)
+        .slice(0, maximum);
+}
+
 function parseProjectDetail(project, rootDirectory) {
-    const filePath = path.join(rootDirectory, project.page_path.replace(/^\//, ""));
-    if (!fs.existsSync(filePath)) return {};
+    const filePath = projectDetailPath(project, rootDirectory);
+    if (!filePath) return {};
 
     const source = fs.readFileSync(filePath, "utf8");
     const title = textContent(source.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1] || "");
@@ -233,14 +298,11 @@ function parseProjectDetail(project, rootDirectory) {
         source.match(/<div\b[^>]*id=(["'])villa\1[^>]*>[\s\S]*?<p\b[^>]*>([\s\S]*?)<\/p>/i)?.[2] ||
         ""
     );
-    const imagePaths = [...source.matchAll(/<img\b[^>]*src=(["'])(.*?)\1[^>]*>/gi)]
-        .map(match => match[2])
-        .filter(image => image.includes("../images/") && !/\/map\./i.test(image))
-        .map(image => image.replace(/^\.\.\//, "/"));
+    const imagePaths = parseProjectGallery(source, project.slug);
     const layoutImage = [...source.matchAll(/<img\b[^>]*>/gi)]
         .map(match => match[0])
         .find(tag => /alt=(["'])Layout Map\1/i.test(tag));
-    const mapImage = layoutImage ? attribute(layoutImage, "src").replace(/^\.\.\//, "/") : "";
+    const mapImage = layoutImage ? normalizeSiteImagePath(attribute(layoutImage, "src")) : "";
     const amenities = [...source.matchAll(/<div\b[^>]*class=(["'])[^"']*\bamenity-card\b[^"']*\1[^>]*>([\s\S]*?)<\/div>/gi)]
         .map(match => {
             const iconTag = match[2].match(/<i\b[^>]*>/i)?.[0] || "";
@@ -267,7 +329,9 @@ function parseProjectDetail(project, rootDirectory) {
         layout_image: mapImage,
         map_image: mapImage,
         amenities_json: JSON.stringify(amenities),
-        video_url: videoUrl
+        video_url: videoUrl,
+        source_file: path.relative(rootDirectory, filePath).split(path.sep).join("/"),
+        source_facts: parseProjectSpecifications(source)
     };
 }
 
@@ -457,7 +521,7 @@ function extractPageFields(source) {
     }
     for (const match of source.matchAll(/<img\b[^>]*\bdata-cms-image=(["'])(.*?)\1[^>]*>/gi)) {
         const key = match[2];
-        fields[key] = attribute(match[0], "src").replace(/^(?:\.\.\/)?/, "/");
+        fields[key] = normalizeSiteImagePath(attribute(match[0], "src"));
     }
     return fields;
 }
@@ -469,5 +533,10 @@ module.exports = {
     projectFromRow,
     pageFromRow,
     extractPageFields,
+    normalizeSiteImagePath,
+    parseProjectCards,
+    parseProjectDetail,
+    parseProjectGallery,
+    parseProjectSpecifications,
     seedInitialContent
 };
