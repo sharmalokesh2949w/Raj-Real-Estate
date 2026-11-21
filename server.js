@@ -155,7 +155,7 @@ app.use((req, res, next) => {
     }
 
     const slug = req.path.match(/^\/projects\/([a-z0-9-]+)$/i)?.[1];
-    if (slug) {
+    if (slug && !projectFilterPaths.has(req.path)) {
         const project = db.prepare(`
             SELECT slug, status, page_path FROM cms_projects WHERE slug = ?
         `).get(slug);
