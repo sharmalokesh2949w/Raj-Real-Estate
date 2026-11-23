@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const API_ROOT = (window.RAJ_API_BASE_URL || (["localhost", "127.0.0.1"].includes(window.location.hostname)
     ? window.location.origin
     : "https://raj-real-estate.onrender.com")).replace(/\/$/, "");
-  const API_URL = `${API_ROOT}/api/inquiry`;
+ const API_URL = "https://docs.google.com/spreadsheets/d/1pc3-N7E52Ohrc33y5rDfolg7j40ln7kue1St8HVEDj0/edit?usp=sharing";
   // Add popup styles
   const styles = `
     #inquiry-popup-overlay {
