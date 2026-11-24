@@ -372,11 +372,25 @@ function seedInitialContent(rootDirectory = process.cwd()) {
              status, updated_at)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'published', ?)
     `);
+    
+const updateMissingProjectImage = db.prepare(`
+    UPDATE cms_projects
+    SET card_image = ?, updated_at = ?
+    WHERE slug = ? AND TRIM(card_image) = ''
+`);
+
 
     for (const card of cards) {
         const detail = parseProjectDetail(card, rootDirectory);
         const featured = new RegExp(`(?:/|\\b)${card.slug}\\.html`, "i").test(featuredSource);
         insertProject.run(
+            if (card.card_image) {
+    updateMissingProjectImage.run(
+        card.card_image,
+        now,
+        card.slug
+    );
+}
             card.slug,
             card.name,
             card.category,
