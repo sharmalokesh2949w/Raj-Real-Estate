@@ -354,13 +354,43 @@ async function initializeCmsPublicContent() {
     if (!projectsResponse.ok) throw new Error("Published projects are unavailable.");
     const { projects } = await projectsResponse.json();
 
-    if (isProjectsPage) {
-        const grid = document.getElementById("projectsGrid");
-        if (grid) {
-            grid.replaceChildren(...projects.map(project => projectCard(project, false)));
-            window.dispatchEvent(new Event("cms:projects-updated"));
-        }
+   
+if (isProjectsPage) {
+    const grid = document.getElementById("projectsGrid");
+
+    if (grid) {
+        const fallbackImages = new Map();
+
+        // Purane HTML cards se images aur project slugs save karein
+        grid.querySelectorAll(".project-card").forEach(card => {
+            const link = card.querySelector('a[href^="/projects/"]');
+            const image = card.querySelector("img");
+
+            const slug = link
+                ?.getAttribute("href")
+                ?.match(/^\/projects\/([^/?#]+)/)?.[1];
+
+            const imagePath = image?.getAttribute("src");
+
+            if (slug && imagePath) {
+                fallbackImages.set(slug.toLowerCase(), imagePath);
+            }
+        });
+
+        // CMS cards ko original images ke fallback ke saath render karein
+        grid.replaceChildren(
+            ...projects.map(project => {
+                const slug = (project.slug || "").toLowerCase();
+                const fallbackImage = fallbackImages.get(slug) || "";
+
+                return projectCard(project, false, fallbackImage);
+            })
+        );
+
+        window.dispatchEvent(new Event("cms:projects-updated"));
     }
+}
+
 
     const featuredHeading = [...document.querySelectorAll("h2")].find(element =>
         element.textContent.trim() === "Featured Listings"
