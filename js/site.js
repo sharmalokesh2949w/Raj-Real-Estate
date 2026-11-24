@@ -14,40 +14,82 @@ function cmsElement(tagName, className, text) {
     return element;
 }
 
-function projectCard(project, featured) {
-    const column = cmsElement("div", featured ? "col-lg-4 col-md-6" : "col-lg-4 col-md-6 project-card animate-card");
+
+function projectCard(project, featured, fallbackImage = "") {
+    const column = cmsElement(
+        "div",
+        featured
+            ? "col-lg-4 col-md-6"
+            : "col-lg-4 col-md-6 project-card animate-card"
+    );
+
     if (!featured) column.dataset.city = project.category;
 
     const card = cmsElement("div", "luxury-card");
-    if (project.card_image) {
+
+    // CMS image nahi ho to original HTML image use hogi
+    const imageSource = project.card_image || fallbackImage;
+
+    if (imageSource) {
         const imageWrapper = cmsElement("div", "card-img-wrapper");
         const image = cmsElement("img");
-        image.src = project.card_image;
-        image.alt = project.name;
+
+        image.src = imageSource;
+        image.alt = project.name || "Project";
+
+        // CMS image load fail hone par original image use hogi
+        if (fallbackImage) {
+            image.addEventListener("error", () => {
+                if (image.getAttribute("src") !== fallbackImage) {
+                    image.src = fallbackImage;
+                }
+            }, { once: true });
+        }
+
         imageWrapper.append(image);
         card.append(imageWrapper);
     }
 
     const content = cmsElement("div", "p-4");
-    const labels = cmsElement("div", "d-flex justify-content-between align-items-center mb-3");
+    const labels = cmsElement(
+        "div",
+        "d-flex justify-content-between align-items-center mb-3"
+    );
+
     labels.append(
         cmsElement("span", "badge bg-light text-dark text-uppercase", project.location_label),
         cmsElement("span", "text-gold small", project.location)
     );
+
     const heading = cmsElement("h4", "mb-3", project.name);
     const action = cmsElement("div", "d-flex justify-content-end align-items-center");
-    const link = cmsElement("a", featured ? "btn btn-sm btn-luxury" : "btn btn-luxury btn-sm", featured ? "Know More" : "Explore");
+
+    const link = cmsElement(
+        "a",
+        featured ? "btn btn-sm btn-luxury" : "btn btn-luxury btn-sm",
+        featured ? "Know More" : "Explore"
+    );
+
     link.href = project.page_path;
     action.append(link);
 
     content.append(labels, heading);
-    if (project.summary) content.append(cmsElement("p", featured ? "text-muted small mb-4" : "text-muted small mb-4", project.summary));
+
+    if (project.summary) {
+        content.append(
+            cmsElement("p", "text-muted small mb-4", project.summary)
+        );
+    }
+
     if (!featured) content.append(cmsElement("hr", "border-light"));
+
     content.append(action);
     card.append(content);
     column.append(card);
+
     return column;
 }
+
 
 function updateProjectDetail(project) {
     document.title = project.page_title || `${project.name} | RAJ REAL ESTATE`;
